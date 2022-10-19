@@ -1,5 +1,5 @@
-<p align="center" width:200px>
-<img src="https://pbs.twimg.com/profile_images/1227195181897854977/Fi6u7gpY_400x400.jpg" alt="logo-M2iFormation" align="center"/>
+<p align="center" >
+<img src="https://pbs.twimg.com/profile_images/1227195181897854977/Fi6u7gpY_400x400.jpg" alt="logo-M2iFormation" width:200px align="center"/>
 </p>
   
 # IDP88-PRF-POEC-DotNET
