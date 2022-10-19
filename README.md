@@ -1,5 +1,7 @@
+<p align="center">
 <img src="https://pbs.twimg.com/profile_images/1227195181897854977/Fi6u7gpY_400x400.jpg" alt="logo-M2iFormation" align="center"/>
-
+</p>
+  
 # IDP88-PRF-POEC-DotNET
 Repos de la session de formation IDP 88 PRF + POEC - DotNET  -  M2iFormation
 
