@@ -1,0 +1,40 @@
+.container {
+    background-color: black;
+    padding :10px;
+    display: flex;
+    /* flex-wrap: wrap; */
+    /* flex-direction :row;
+    flex-wrap: wrap-reverse; */
+    /* flex-flow : row wrap;
+    justify-content: space-evenly;
+    height: 500px;
+    align-items: center;
+    align-content: space-between; */
+    gap:50px 5px;
+    height: 500px;
+    align-items: center;
+}
+
+.cont-item {
+    background-color: white;
+}
+
+#itemA {
+    order : 1;
+}
+#itemB {
+    order : 0;
+}
+#itemC {
+    order : 2;
+    align-self: flex-end;
+}
+#itemD {
+    order : 4;
+}
+#itemE {
+    order : 3;
+}
+#itemF {
+    order : 5;
+}

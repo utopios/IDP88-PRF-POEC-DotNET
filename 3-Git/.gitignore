@@ -1,0 +1,12 @@
+# Mon fichier test.txt
+test.txt
+*.txt
+
+# Ignorer le fichier CSS compilé
+/css/main.css
+
+# Ignorer tous les logs
+/logs/*
+
+# Ignorer les fichiers system cachés (mac)
+.DS_Store
