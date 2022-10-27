@@ -142,3 +142,28 @@ switch (cond) {
         console.log(`Désole, nous sommes à cour de ${cond}`);
         break;
 }
+
+/**
+ * Switch avec Range de valeurs
+ */
+var age = 3;
+var resultat="";
+ switch (true) {
+    case age <= 6:
+        resultat = `Votre enfant est dans la catégorie "BABY"`;
+        break;
+    case age <= 8:
+        resultat = `Votre enfant est dans la catégorie "Poussin"`;
+        break;
+    case age <= 10:
+        resultat = `Votre enfant est dans la catégorie "Pupille"`;
+        break;
+    case age <= 12:
+        resultat = `Votre enfant est dans la catégorie "Minime"`;
+        break;
+    default:
+        resultat = `Votre enfant est dans la catégorie "Cadet"`;
+        break;
+}
+
+console.log(resultat);
