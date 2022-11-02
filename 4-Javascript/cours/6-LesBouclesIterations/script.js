@@ -75,9 +75,52 @@ for (var j = 0; j < jourSem.length; j++) {
 
  var names = ["Adam", "Etienne", "Sebastien", "Clement", "Virginie"];
 
+ console.log("Exercice Tableau");
+ console.log("Avec boucle for");
 
+// boucle for
+for(var k = 0 ; k < names.length ; k++ ){
+    console.log(names[k]);
+}
 
+console.log("Avec boucle while");
 
+// boucle while
 
+var k = 0;
+while(k < names.length){
+    console.log(names[k]);
+    k++;
+}
+
+/**
+ * La boucle Pour... dans... (For... in...)
+ */
+
+ console.log("Avec For... In");
+
+// Parfait pour les tableaux associatif
+var contact = {
+    nom :"Richard",
+    prenom :"Pierre",
+    telephone :"+33 6 41 52 63 98",
+    email :"pierre.richard@gmail.com"
+}
+
+// Exemple de boucle  For...in
+for(var key in contact){
+    console.log(key); // Affiche les clé du tableau
+    console.log(contact[key]); // Affiche les valeurs
+    console.log(key + " : " + contact[key]); // Affiche les pairs de clé +  valeurs
+}
+
+/**
+ * La boucle For Of
+ */
+
+// Iteration du tableau names avec une boucle for of
+for(const name of names){
+    console.log(`La boucle for...Of, names contient ${name}`);
+}
 
 
