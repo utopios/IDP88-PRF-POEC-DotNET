@@ -123,4 +123,16 @@ for(const name of names){
     console.log(`La boucle for...Of, names contient ${name}`);
 }
 
+/**
+ * Boucles Imbriquées
+ */
+
+for(var i = 1 ; i < 5; i++){
+    console.log("i = "+i);
+    for(var j = 1 ; j < 5 ; j ++){
+        console.log("j = "+j);
+    }
+    // plus d'instructions
+}
+
 
