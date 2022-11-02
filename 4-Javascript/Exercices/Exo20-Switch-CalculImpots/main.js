@@ -1,5 +1,5 @@
 /**
- * Exercice17 - IfElse - Calcul Impôts
+ * Exercice 20 - Switch - Calcul Impôts
  */
 // Déclaration variables
 var revenus = 0,
