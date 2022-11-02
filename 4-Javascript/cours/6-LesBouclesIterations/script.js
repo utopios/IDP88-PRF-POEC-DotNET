@@ -54,7 +54,7 @@ var jourSem = ["Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi", "Dim
 
 for (var j = 0; j < jourSem.length; j++) {
     //if (j === 0) {
-    if (j >= 1 && j <4) {
+    if (j >= 1 && j < 4) {
         console.log("Début de la semaine");
         continue;
     }
@@ -63,6 +63,17 @@ for (var j = 0; j < jourSem.length; j++) {
         break;
 }
 
+/**
+     * EXERCICE
+     * A partir du tableau numérique suivant :
+     * 
+     * var names = ["Adam", "Etienne", "Sebastien", "Clement", "Virginie"];
+     * 
+     * 1/ Gràce à une boucle for, afficher la liste des prenoms du tableau
+     * 2/ Gràce à une boucle while, afficher la liste des prenoms du tableau
+ */
+
+ var names = ["Adam", "Etienne", "Sebastien", "Clement", "Virginie"];
 
 
 
