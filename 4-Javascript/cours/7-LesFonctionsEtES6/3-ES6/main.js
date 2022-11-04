@@ -275,3 +275,18 @@ console.log(d);
 
 // console.log(a);
 // console.log(b);
+
+
+/**
+ * Valeurs par défaut pour les paramètres d'une fonction
+ */
+ console.log("\n---------- Valeur par defaut ----------\n");
+
+ function Carre(nb = 10) {
+     return nb * nb;
+ }
+ 
+ console.log(Carre(5)); // 25
+ console.log("Default params : " + Carre()); // 100
+
+ 
