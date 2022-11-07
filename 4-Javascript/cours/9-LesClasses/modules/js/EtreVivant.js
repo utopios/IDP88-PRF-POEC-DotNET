@@ -6,15 +6,15 @@ export default class EtreVivant {
     }
 
     Naissance(){
-        console.log("Tous les etres vivant naissent")
+        console.log("Tous les etres vivant naissent");
     }
     Mort(){
-        console.log("Tous les etres vivant meurent...")
+        console.log("Tous les etres vivant meurent...");
     }
     Respiration(){
-        console.log("Tous les etres vivant respirent...à leur maniere")
+        console.log("Tous les etres vivant respirent...à leur maniere");
     }
     Alimentation(){
-        console.log("Tous les etres vivant s'alimentent.. à leur maniere")
+        console.log("Tous les etres vivant s'alimentent.. à leur maniere");
     }
 }
