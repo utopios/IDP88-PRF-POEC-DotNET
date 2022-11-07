@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="fr">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <!-- link CSS -->
+    <link rel="stylesheet" href="style.css">
+
+    <title>EXERCICE09BIS - LES VARIABLES - Calcul Taux Intérêts</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="jumbotron">
+            <h1 class="display-4">EXERCICE09BIS - Les Variables et Opérateurs Arithmetiques - Calcul taux intérêts</h1>
+            <hr>
+            <p class="lead">Création et utilisation des<mark>Variables et Opérateurs Arithmetiques </mark> en
+                <mark>Javascript</mark> avec <mark>interface HTML</mark>
+            </p>
+        </div>
+
+        <div class="card">
+            <h2 class="title">Calcul du montant des intérêts</h2>
+            <div class="row m-1">
+                <input type="text" id="capitalInitial" class="col p-1 form-control"
+                    placeholder="Saisir votre capital initial" />
+                <input type="text" id="taux" class="col p-1 form-control" placeholder="Saisir le taux d'intérêts" />
+                <input type="text" id="duree" class="col p-1 form-control" placeholder="Saisir la durée de l'épargne" />
+            </div>
+            <div class="row m-1">
+                <button type="button" class="btn btn-success" id="btnValider" onclick="Valider()">Calculer</button>
+            </div>
+        </div>
+
+
+        <div class="card">
+            <div class="result lead"></div>
+        </div>
+    </div>
+
+
+    <!-- Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+    <script src="./main.js"></script>
+</body>
+
+</html>
