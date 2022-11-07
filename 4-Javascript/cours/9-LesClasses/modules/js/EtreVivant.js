@@ -15,6 +15,6 @@ export default class EtreVivant {
         console.log("Tous les etres vivant respirent...à leur maniere")
     }
     Alimentation(){
-        console.log("Tous les etres vivant s'alimeentent.. à leur maniere")
+        console.log("Tous les etres vivant s'alimentent.. à leur maniere")
     }
 }

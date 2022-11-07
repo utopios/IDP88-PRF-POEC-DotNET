@@ -1,4 +1,4 @@
-import EtreVivant from "./EtreVivant";
+import EtreVivant from "./EtreVivant.js";
 
 
 export default class Mammifere extends EtreVivant{
