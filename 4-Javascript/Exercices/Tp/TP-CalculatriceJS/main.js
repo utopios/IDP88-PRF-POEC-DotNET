@@ -6,11 +6,11 @@ const ecranBas = document.querySelector('.ecranBas');
 
 // Ecouteur évenement Keydown
 document.addEventListener('keydown', (e) => {
-    let valeur = e.keyCode.toString(); // Deprecated
-    console.log("Keycode : " + valeur);
-    valeur = e.key.toString();
+    let valeur = e.key.toString(); 
     console.log("Key : " + valeur);
-    calculer(valeur)
+    valeur = e.keyCode.toString(); // Deprecated
+    console.log("Keycode : " + valeur);
+    calculer(valeur);
 })
 
 // Ecouteur évenement click
