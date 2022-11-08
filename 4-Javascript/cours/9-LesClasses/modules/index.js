@@ -2,6 +2,12 @@ import Person from './js/Person.js'
 import Fleur from './js/Fleur.js'
 import Chien from './js/Chien.js'
 
+const BtnValider = document.querySelector('#ValiderBtn');
+
+
+BtnValider.onclick = () => {
+    alert("Ca marche!");
+}
 
 /**
  * PERSON
