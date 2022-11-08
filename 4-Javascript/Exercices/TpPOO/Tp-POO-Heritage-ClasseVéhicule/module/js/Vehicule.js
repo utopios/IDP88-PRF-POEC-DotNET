@@ -1,3 +1,5 @@
+import {millier} from '../../../../../Ressources/helpers.js'
+
 export default class Vehicule{
     constructor(marque, modele, kilometrage, annee){
         this.marque = marque;
@@ -6,23 +8,22 @@ export default class Vehicule{
         this.annee = annee;
     }
 
-    // Méthode permettant de séparer le millier
-    millier(nbr) {
-        let nombre = '' + nbr;
-        let retour = '';
-        let count = 0;
-        for (let i = nombre.length - 1; i >= 0; i--) {
-            if (count != 0 && count % 3 == 0)
-                retour = nombre[i] + '.' + retour;
-            else
-                retour = nombre[i] + retour;
-            count++;
-        }
-       
-        return retour;
-    }
+    // // Méthode permettant de séparer le millier
+    // millier(nbr , symbol ) {
+    //     let nombre = '' + nbr;
+    //     let retour = '';
+    //     let count = 0;
+    //     for (let i = nombre.length - 1; i >= 0; i--) {
+    //         if (count != 0 && count % 3 == 0)
+    //             retour = nombre[i] + symbol + retour;
+    //         else
+    //             retour = nombre[i] + retour;
+    //         count++;
+    //     }       
+    //     return retour;
+    // }
 
     display(){
-        return(`${this.marque} - ${this.modele} - ${this.millier(this.kilometrage )}km - ${this.annee}`)
+        return(`${this.marque} - ${this.modele} - ${millier(this.kilometrage , ".")}km - ${this.annee}`)
     }
 }
