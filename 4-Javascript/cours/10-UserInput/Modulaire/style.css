@@ -1,0 +1,14 @@
+
+.resultat{
+    font-size: 25px;
+}
+
+#magic{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 200px;
+    background-color: orangered;
+    border-radius: 30px;
+    color: white;
+}

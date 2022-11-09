@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="fr">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <!-- Link Style.css -->
+    <link rel="stylesheet" href="style.css">
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <!-- Title -->
+    <title>COURS JS - LES INPUTS - MODULES ES6</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="jumbotron">
+            <h1 class="display-4">COURS JS - LES INPUTS - MODULES ES6</h1>
+            <hr>
+            <p class="lead">Création et utilisation des<mark> INPUTS et EVENTS </mark> en <mark>Javascript</mark>
+            </p>
+        </div>
+        <div class="jumbotron" id="magic">
+            <h2>La Div magique</h2>
+        </div>
+        <div class="jumbotron">
+
+            <h2>Récupération de value sur des Boutons Radio :</h2>
+            <div id="conteneurRadio">
+                <input type="radio" id="choix1" name="choix" value="email" checked>
+                <label for="contactChoice1">Email</label>
+
+                <input type="radio" id="choix2" name="choix" value="telephone">
+                <label for="contactChoice2">Téléphone</label>
+
+                <input type="radio" id="choix3" name="choix" value="courrier">
+                <label for="contactChoice3">Courrier</label>
+            </div>
+            <div>
+                <button id="btnValider" class="btn btn-primary">Envoyer</button>
+            </div>
+
+        </div>
+        
+        <div class="jumbotron">
+
+          <span class="resultat">Vous avez séléctionné : </span>
+           <span class="resultat" id="result"></span>
+
+        </div>
+
+
+
+
+
+
+    </div>
+    <!-- Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+    <script type="module" src="./module/index.js"></script>
+</body>
+
+</html>
