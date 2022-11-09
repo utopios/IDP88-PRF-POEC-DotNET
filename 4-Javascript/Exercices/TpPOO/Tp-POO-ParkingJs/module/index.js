@@ -46,6 +46,7 @@ btnPayer.onclick = () => {
     if (vehicule != undefined) {
         if (vehicule.endDate == '') {
             // definir une end date
+            vehicule._endDate = new Date();
             vehicule.changeEndDate(new Date());
             //console.log("EndDate : " + vehicule.endDate)
 

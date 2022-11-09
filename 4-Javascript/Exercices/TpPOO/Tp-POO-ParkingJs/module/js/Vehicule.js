@@ -11,10 +11,18 @@ export default class Vehicule {
     get startDate() { return this._startDate }
     get endDate() { return this._endDate }
 
-    changeEndDate(date) {
-        this._endDate = date;
-        // console.log("date" + date);
-        // console.log("endDate" +this._endDate);
+
+
+    set EndDate(value) {
+        this._endDate = value;        
+    }
+
+    set StartDate(value) {
+        this._startDate = value;        
+    }
+    
+    set Id(value) {
+        this._id = value;       
     }
 
 }
