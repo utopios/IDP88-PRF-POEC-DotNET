@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="fr">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <title>Input User</title>
+</head>
+
+<body>
+    <div class="jumbotron">
+        <h1 class="display-4">User Input en Javascript</h1>
+        <hr>
+        <p class="lead">Récupération des <mark>saisies utilisateur </mark> depuis les champs <mark>inputs</mark></p>
+    </div>
+    <div class="container">        
+            <div class="form-group">
+                <div class="row m-1">
+                    <input type="text" id="nom" class="col p-1 form-control" placeholder="nom" /> 
+                    <input type="text" id="prenom" class="col p-1 form-control" placeholder="prenom" /> 
+                </div>
+                <div class="row m-1">
+                    <button class="col btn btn-success" onclick="Valider()" id="valider">Ajouter</button>
+                </div>
+            </div>
+            <span>Résultat :</span>
+            
+            <div id="result"></div>        
+    </div>
+
+
+    <!-- Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+    <script src="./main.js"></script>
+</body>
+
+</html>
