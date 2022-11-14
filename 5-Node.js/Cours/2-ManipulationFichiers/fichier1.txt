@@ -1,0 +1,6 @@
+Mon fichier contient du texte
+Contenu Ajouté
+J'ajoute du nouveau contenu Sync
+J'ajoute du nouveau contenu Async
+Je suis un event d'écriture et sauvegarde
+Je suis un 2nd event d'écriture et sauvegarde

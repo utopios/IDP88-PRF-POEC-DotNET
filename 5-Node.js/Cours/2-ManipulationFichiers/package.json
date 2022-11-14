@@ -1,0 +1,16 @@
+{
+  "name": "2-manipulationfichiers",
+  "version": "1.0.0",
+  "description": "Cours sur la création de fichiers NodeJs",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Anthony Di Persio <anthony@utopios.net>",
+  "license": "ISC",
+  "dependencies": {
+    "readline": "^1.3.0"
+  }
+}
