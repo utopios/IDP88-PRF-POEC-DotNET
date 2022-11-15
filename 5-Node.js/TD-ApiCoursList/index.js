@@ -20,6 +20,9 @@ const bodyParser = require('body-parser');
 // Import de CORS
 const cors = require('cors');
 
+// Import Ip
+let ip = require('ip');
+
 // Import de helpers.js
 const { success, getUniqueId, M2iFunction } = require('./helper.js');
 
@@ -110,4 +113,4 @@ app.delete('/api/cours/:id', (req, res) => {
 /**
  * Ecoute d'un port
  */
-app.listen(port, () => M2iFunction(port));
+app.listen(port, () => console.log(M2iFunction(port,ip.address())));

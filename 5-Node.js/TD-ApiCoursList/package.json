@@ -15,7 +15,6 @@
     "cors": "^2.8.5",
     "express": "^4.18.2",
     "ip": "^1.1.8",
-    "ipware": "^2.0.0",
     "serve-favicon": "^2.5.0"
   },
   "devDependencies": {
