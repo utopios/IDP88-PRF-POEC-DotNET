@@ -11,9 +11,15 @@
   "author": "Anthony Di Persio <anthony@utopios.net>",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.18.2"
+    "body-parser": "^1.20.1",
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "ip": "^1.1.8",
+    "ipware": "^2.0.0",
+    "serve-favicon": "^2.5.0"
   },
   "devDependencies": {
+    "morgan": "^1.10.0",
     "nodemon": "^2.0.20"
   }
 }
