@@ -8,7 +8,10 @@ console.table(coursList);
 const app = express();
 const port = 7777;
 
+// Import de helpers.js
+const helpers = require('./helper.js')
 
+// Créarion du service Logger
 
 
 
@@ -35,7 +38,9 @@ app.get('/api/cours/:id', (req, res) => {
 // GET => http://localhost:7777/api/cours
 app.get('/api/cours', (req, res) => {
     // let maVar = coursList.length
-    res.json({ message: `Il y a ${coursList.length} cours dans notre catalogue...`, error: false, data: coursList })
+    //res.json({ message: `Il y a ${coursList.length} cours dans notre catalogue...`, data: coursList })
+    let message = `Il y a ${coursList.length} cours dans notre catalogue...`
+    res.json(helpers.success(message,coursList));
 });
 
 
