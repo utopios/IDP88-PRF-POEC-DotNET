@@ -1,7 +1,9 @@
 // Création d'une constante pour les lib express
 const express = require('express');
+const { readFileSync, writeFileSync } = require('fs');
 // Import de la liste de cours
-let coursList = require('./data/CoursList');
+// let coursList = require('./data/CoursList');
+let coursList = JSON.parse(readFileSync('./data/savedList.json', 'utf-8'))
 console.table(coursList);
 
 // Instanciation d'express
@@ -25,6 +27,7 @@ let ip = require('ip');
 
 // Import de helpers.js
 const { success, getUniqueId, M2iFunction } = require('./helper.js');
+const { json } = require('body-parser');
 
 // // Création du service Logger
 // const logger = (req, res, next) => {
@@ -42,6 +45,15 @@ app
     .use(morgan('dev'))
     .use(bodyParser.json())
 
+/**
+ * FUNCTION()
+ */
+
+function saveList(){
+    const objectToJson = JSON.stringify(coursList);
+    writeFileSync('./data/savedList.json', objectToJson);
+    console.log('Données sauvegardées...');
+}
 
 /**
  * END POINT 
@@ -83,8 +95,9 @@ app.get('/api/cours', (req, res) => {
 app.post('/api/cours', (req, res) => {
     const nextId = getUniqueId(coursList);
     //console.log(nextId);
-    const coursCreated = { ...req.body, ...{ id: nextId, created: new Date() } }
+    const coursCreated = { ...req.body, ...{ id: nextId, created: new Date() } };
     coursList.push(coursCreated);
+    saveList();
     let message = `Le cours n°${nextId} a été ajouté`;
     res.json(success(message, coursCreated));
 });
@@ -95,7 +108,8 @@ app.put('/api/cours/:id', (req, res) => {
     const coursUpdated = { ...req.body, Updated: new Date() }
     coursList = coursList.map(cours => {
         return cours.id === Id ? coursUpdated : cours
-    })
+    });
+    saveList();
     let message = `Le cours n° ${Id} a été modifié`
     res.json(success(message, coursUpdated));
 });
@@ -103,8 +117,9 @@ app.put('/api/cours/:id', (req, res) => {
 // DELETE => http://localhost:7777/api/cours/:id
 app.delete('/api/cours/:id', (req, res) => {
     const Id = parseInt(req.params.id);
-    const coursDeleted = coursList.find(cours => cours.id === Id)
-    coursList = coursList.filter(cours => cours.id != Id)
+    const coursDeleted = coursList.find(cours => cours.id === Id);
+    coursList = coursList.filter(cours => cours.id != Id);
+    saveList();
     let message = `Le cours n° ${Id} a été supprimé`
     res.json(success(message, coursDeleted));
 });
@@ -113,4 +128,4 @@ app.delete('/api/cours/:id', (req, res) => {
 /**
  * Ecoute d'un port
  */
-app.listen(port, () => console.log(M2iFunction(port,ip.address())));
+app.listen(port, () => console.log(M2iFunction(port, ip.address())));
