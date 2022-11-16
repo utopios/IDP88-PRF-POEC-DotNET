@@ -2,7 +2,7 @@ import express from 'express';
 import multer from 'multer';
 import cors from 'cors';
 import path from 'path';
-import { M2iFunction } from './helper.js';
+import { M2iFunction, success } from './helper.js';
 import { fileURLToPath } from 'url';
 import ip from 'ip';
 
@@ -37,6 +37,8 @@ app
             res.send()
         })
     })
+    .use(express.static(path.join(__dirName, 'public')))
+    .use('/static', express.static(path.join(__dirName, 'public')));
 
 /**
  * CONFIG MULTER
@@ -84,10 +86,18 @@ app.get('/', (req, res) => {
     res.json({ message: "Ca marche" });
 })
 
-app.post('/upload', upload.single('img'), async (req,res)=>{
+app.post('/upload', upload.single('img'), async (req, res) => {
     // console.log(req);
     console.log(`UPLOAD : ${req.file.originalname} => ${req.file.filename} - Folder : ${req.file.destination} - Size = ${req.file.size}ko`)
-    res.send()
+
+    try {
+        let filename = req.file.filename;
+        let message ="Upload OK"
+        res.json(success(message,filename))
+    }
+    catch (e) {
+        res.send(400).send(e)
+    }
 })
 
 

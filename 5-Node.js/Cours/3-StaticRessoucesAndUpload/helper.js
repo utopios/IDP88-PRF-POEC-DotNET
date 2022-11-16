@@ -2,6 +2,12 @@
 export function success(message, data){
     return { message, data }
 }
+// export function success(error=false,message, data){
+//     return { error,message, data }
+// }
+// export function error(error=true,message, data){
+//     return { error,message, data }
+// }
 
 // Rediger une fonction qui prend en params une liste et nous retourne le dernier Id
 
