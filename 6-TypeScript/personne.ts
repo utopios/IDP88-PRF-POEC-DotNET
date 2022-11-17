@@ -1,19 +1,32 @@
 export class Personne {
     //Attributs
-    nom:String
-    prenom:String
+    _nom: String
+    _prenom: String
 
-    constructor(n:String, p:String) {
-        this.nom = n
-        this.prenom = p
+    constructor(n: String, p: String) {
+        this.Nom = n
+        this.Prenom = p
     }
 
-    afficher():void {
-        console.log(this.nom + " "+this.prenom)
+    // Proprièté
+    get Nom() { return this._nom };
+    get Prenom() { return this._nom };
+
+    set Nom(value) {
+        if (value.length < 1)
+            this._nom = value;
+    };
+    set Prenom(value) {
+        if (value.length < 1)
+            this._prenom = value
+    };
+
+    afficher(): void {
+        console.log(this._nom + " " + this._prenom)
     }
 
-    nomComplet():String {
-        return this.nom + " "+ this.prenom
+    nomComplet(): String {
+        return this._nom + " " + this._prenom
     }
-    
+
 }
