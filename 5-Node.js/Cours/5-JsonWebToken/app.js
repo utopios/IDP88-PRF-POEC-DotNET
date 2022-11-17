@@ -1,9 +1,13 @@
 const jwt = require('jsonwebtoken');
 require('dotenv').config();
 const morgan = require('morgan');
+const {M2iFunction} = require('./helper.js');
+const ip = require('ip');
 
 const express = require('express');
 const app = express();
+const port = 3000;
+const ipAddress = ip.address();
 app
   .use(express.json())
   .use(express.urlencoded({ extended: true }))
@@ -98,4 +102,4 @@ app.get('/api/me', authenticateToken, (req, res) => {
   res.send(req.user);
 });
 
-app.listen(3000, () => { console.log('http://localhost:3000') });
+app.listen(port, () => { console.log(M2iFunction(port,ipAddress)) });

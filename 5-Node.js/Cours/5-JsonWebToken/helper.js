@@ -1,5 +1,26 @@
-// Logo Console Serveur Express
-export function M2iFunction(port, ipAddress){
+
+
+//ES6
+exports.success = (message, data) => {
+    return { message, data }
+}
+
+// Rediger une fonction qui prend en params une liste et nous retourne le dernier Id
+
+exports.getUniqueId = (list) => {
+    // Recupération de l'ensemble des clé Id de mes objets et stockage dans un tableau
+    const coursIds = list.map(cour => cour.id);
+    // Utilisation de Reduce combiné à la Méthode max pour retourner la plus grande des valeur
+    const maxId = coursIds.reduce((a, b) => Math.max(a, b));
+    // Ajout de 1 au plus Id
+    const uniqueId = maxId + 1;
+    // Retourne la uniqueId
+    return uniqueId;
+
+}
+
+
+exports.M2iFunction = (port, ipAddress) => {
     return `\n\n\n                             __  __ ____  _                    
                             |  \\/  |___ \\(_)                   
                             | |\\/| | __) | |                   
@@ -13,21 +34,7 @@ export function M2iFunction(port, ipAddress){
                  
                  \n\t\t\tL'application node est démarée\n
                 ***************************************************
-                  Local\t\t:\thttp://localhost:${port}     
-                  on Network\t:\thttp://${ipAddress}:${port}  
+                 Local\t\t:\thttp://localhost:${port}     
+                 on Network\t:\thttp://${ipAddress}:${port}  
                 ***************************************************`;
 }
-
-// Fonction pour formater les réponses Json
-export function success (message, data) {
-    return{message,data}
-}
-
-// Méthode pour retourner le plus grand ID
-export function getUniqueId (coursList) {
-    const coursIds = coursList.map(cours => cours.id);
-    const maxId = coursIds.reduce((a,b)=>Math.max(a,b));
-    const uniqueId = maxId + 1;
-    return uniqueId;
-}
-

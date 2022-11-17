@@ -1,6 +1,7 @@
 // Création d'une constante pour les lib express
 const express = require('express');
 const { readFileSync, writeFileSync } = require('fs');
+
 // Import de la liste de cours
 // let coursList = require('./data/CoursList');
 let coursList = JSON.parse(readFileSync('./data/savedList.json', 'utf-8'))

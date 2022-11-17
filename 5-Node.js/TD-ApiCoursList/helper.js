@@ -1,12 +1,4 @@
-// // Syntaxe ES5
-// const success = (message, data) => {
-//     return {
-//         message:message,
-//         data:data
-//     }
-// }
 
-// exports.success;
 
 //ES6
 exports.success = (message, data) => {
@@ -27,31 +19,6 @@ exports.getUniqueId = (list) => {
 
 }
 
-//Solution de Nicolas le grand génie de NodeJS
-// exports.getUniqueID = (coursList) => {
-//     let maxID = 0;
-//     for (const id of coursList) {
-//         if (maxID < id.id) {
-//             maxID = id.id;
-//         }
-//     }
-//     return maxID + 1;
-// }
-
-// Solution de Allison
-// exports.getUniqueId = (list) => {
-//     let lastId = 0;
-//     let uniqueId = 0
-
-//     list.forEach((cours) => {
-//         if (lastId < cours.id) {
-//             lastId = cours.id;
-//         }
-//     });
-
-//     uniqueId = lastId + 1;
-//     return uniqueId;
-// }
 
 exports.M2iFunction = (port, ipAddress) => {
     return `\n\n\n                             __  __ ____  _                    
