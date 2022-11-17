@@ -5,6 +5,7 @@ import path from 'path';
 import { M2iFunction, success } from './helper.js';
 import { fileURLToPath } from 'url';
 import ip from 'ip';
+import Contact from '../../Exercices/TP1-NODE-ApiRestContact/classes/contact.js';
 
 const app = express();
 const port = 7777;
@@ -94,6 +95,7 @@ app.post('/upload', upload.single('img'), async (req, res) => {
         let filename = req.file.filename;
         let message ="Upload OK"
         res.json(success(message,filename))
+        let tmp = new Contact()
     }
     catch (e) {
         res.send(400).send(e)
