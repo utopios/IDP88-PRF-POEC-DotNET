@@ -44,12 +44,14 @@ app
     .use(favicon(__dirname + "/favicon.ico"))
     .use(morgan('dev'))
     .use(bodyParser.json())
+    .use(express.static(path.join(__dirName, 'public')))
+    .use('/static', express.static(path.join(__dirName, 'public')));
 
 /**
  * FUNCTION()
  */
 
-function saveList(){
+function saveList() {
     const objectToJson = JSON.stringify(coursList);
     writeFileSync('./data/savedList.json', objectToJson);
     console.log('Données sauvegardées...');
@@ -73,14 +75,6 @@ app.get('/api/cours/:id', (req, res) => {
         res.json(cours);
     else
         res.send("Ce cours n'existe pas...")
-});
-
-// GET => http://localhost:7777/api/cours
-app.get('/api/cours', (req, res) => {
-    // let maVar = coursList.length
-    //res.json({ message: `Il y a ${coursList.length} cours dans notre catalogue...`, data: coursList })
-    let message = `Il y a ${coursList.length} cours dans notre catalogue...`
-    res.json(success(message, coursList));
 });
 
 // GET => http://localhost:7777/api/cours

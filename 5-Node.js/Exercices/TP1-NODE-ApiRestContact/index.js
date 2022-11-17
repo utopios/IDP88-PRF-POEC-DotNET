@@ -174,6 +174,20 @@ app.delete('/api/contact/:id', (req, res) => {
     res.json(success(message, contactDeleted));
 });
 
+// UPLOAD IMG
+app.post('/upload', upload.single('img'), async (req, res) => {
+    // console.log(req);
+    console.log(`UPLOAD : ${req.file.originalname} => ${req.file.filename} - Folder : ${req.file.destination} - Size = ${req.file.size}ko`)
+
+    try {
+        let filename = req.file.filename;
+        let message = "Upload OK"
+        res.json(success(message, filename))
+    }
+    catch (e) {
+        res.send(400).send(e)
+    }
+})
 
 
 

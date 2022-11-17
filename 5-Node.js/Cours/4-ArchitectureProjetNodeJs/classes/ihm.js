@@ -1,4 +1,4 @@
-import {askQuestion} from '../helper.js'
+import {askQuestion} from '../tools/helper.js';
 
 export default class Ihm {
     constructor() {
@@ -8,6 +8,7 @@ export default class Ihm {
     async menu() {
         let choix;
         do {
+            console.log("***** Annuaire - Tp List Contact *****");
             console.log("1- Ajouter une personne");
             console.log("2- Afficher la liste des personnes");
             console.log("0-- Quitter");
