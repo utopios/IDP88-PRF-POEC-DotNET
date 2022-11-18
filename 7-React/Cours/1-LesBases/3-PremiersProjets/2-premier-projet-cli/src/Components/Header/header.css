@@ -1,0 +1,8 @@
+.header{
+    align-items: center;    
+    display:flex;    
+    justify-content: center;
+    background-color: salmon;
+    margin-left: -15px;
+    margin-right: -15px;
+}
