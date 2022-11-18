@@ -31,7 +31,12 @@ function MySecondComponent({ nom, prenom }) {
 //     lastname:"Marolex",
 // }
 
-function formatName({ user }) {
+// function formatName(props) {
+//     console.log(props);
+//     return props.user.firstname + ' ' + props.user.lastname;
+// }
+function formatName({user}) {
+    //console.log(props);
     return user.firstname + ' ' + user.lastname;
 }
 
@@ -41,13 +46,23 @@ function MyThirdComponent(user) {
     )
 }
 
-function MyPage() {
+function Title() {
+    return(
+        <h1>Les composants React</h1>
+    )
+    
+}
+
+function App() {
+    // Logique JS
     const user = {
         firstname: "Eleonore",
         lastname: "Marolex",
     }
+    // Return JSX (Template HTML)
     return (
         <div>
+            <Title/>
             <MyFirstComponent />
             <MySecondComponent nom="Abadi" prenom="Ihab"/>
             <MyThirdComponent user={user}/>
@@ -60,10 +75,10 @@ function MyPage() {
  * 0 - Rendu => Avec ElementReact (JSX)
  */
 
-ReactDOM.render(
-    elementReact,
-    document.getElementById('root')
-);
+// ReactDOM.render(
+//     elementReact,
+//     document.getElementById('root')
+// );
 
 // /**
 //  * 1 - Rendu => Avec Un composant (sans params)
@@ -100,7 +115,7 @@ ReactDOM.render(
 ReactDOM.render(
     //<MyPage />,
     <React.StrictMode>
-        <MyPage />
+        <App />
     </React.StrictMode>,
     document.getElementById('app')
 );
