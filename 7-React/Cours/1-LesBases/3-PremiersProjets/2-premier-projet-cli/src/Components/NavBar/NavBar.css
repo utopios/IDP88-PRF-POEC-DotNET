@@ -1,0 +1,33 @@
+ul{
+    display: flex;
+    flex-flow: row;
+    justify-content: center;
+}
+
+li{
+    list-style-type: none;
+    margin-top: 15px;
+}
+
+.navBar{
+    background-color: blueviolet;
+}
+
+.lien{
+    font-size: 25px;
+    text-decoration: none;
+    margin: 0 15px;
+    color: rgb(40, 40, 40);
+    font-weight: bold;
+}
+.lien:hover{
+    color: orangered;
+}
+.lien.Active{
+    border-bottom: 4px solid rgb(40, 40, 40);
+}
+.lien.Active:hover{
+    color: rgb(206, 252, 0);
+    border-bottom: 4px solid rgb(206, 252, 0);
+}
+

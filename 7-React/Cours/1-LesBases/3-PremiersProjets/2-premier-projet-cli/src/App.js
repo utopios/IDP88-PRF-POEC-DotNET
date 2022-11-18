@@ -1,11 +1,21 @@
+import {BrowserRouter, Routes, Route} from 'react-router-dom'
 import Home from './Views/Home/Home';
+import About from './Views/About/About';
 import './App.css';
 
 
 function App() {
   return (
     <div className="App">
-<Home/>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Home />}/>
+          <Route path="/about" element={<About />}/>
+          <Route path="/*" element={<Home />}/>
+        </Routes>
+      </BrowserRouter>
+     
+   
     </div>
   );
 }
