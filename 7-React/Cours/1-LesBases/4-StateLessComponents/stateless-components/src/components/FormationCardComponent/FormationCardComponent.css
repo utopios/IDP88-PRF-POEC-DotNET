@@ -1,0 +1,41 @@
+.card{
+    border-radius: 25px;
+    max-width: 300px;
+    margin: 10px;
+    padding: 20px;
+}
+.card-title{
+    font-size: 30px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.img{
+    width: 300px;
+    transform: translateX(-21px);
+}
+
+.category{
+    margin: 15px 0; 
+    height: 50px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.difficulty{
+    display:flex;
+    margin-bottom: 15px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.price{
+    font-size: larger;
+}
+.diff-label{
+    margin-right: 10px;
+}
+.stars{
+    margin-left: auto;
+    margin-right: auto;
+}

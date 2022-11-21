@@ -1,0 +1,17 @@
+.footer{
+    background-color: rgb(40, 44, 52);
+    color: white;
+    border-top: 3px solid rgb(226, 13, 23);
+    padding-top: 5px;
+    margin-top: 40px;
+    height: 30px;
+}
+
+.footer a{
+    text-decoration: none;
+    color: white;
+}
+
+.footer a:hover{
+    color: orangered;
+}

@@ -1,0 +1,20 @@
+.bouton a{
+    color: white;
+    text-decoration: none;
+}
+.bouton a:hover{
+    background-color: rgb(59, 65, 77);
+}
+
+.bouton{
+    background-color: rgb(40, 44, 52);
+    border:1px solid white;
+    border-radius:10px;
+    margin: 0 15px;
+}
+#NavBar{
+    background-color: red;
+    padding-bottom: 5px;
+}
+
+

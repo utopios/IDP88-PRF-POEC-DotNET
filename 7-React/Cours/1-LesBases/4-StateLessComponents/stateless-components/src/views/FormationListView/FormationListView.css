@@ -1,0 +1,15 @@
+.formation-list{
+    color: rgb(40, 40, 40);
+}
+
+
+.card-container{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.paddingTop{
+    padding-top: 20px;
+}
