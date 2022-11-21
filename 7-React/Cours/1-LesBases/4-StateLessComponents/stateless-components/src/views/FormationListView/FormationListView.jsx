@@ -3,8 +3,9 @@ import CategoryComponent from '../../components/CategoryComponent/CategoryCompon
 import './FormationListView.css';
 import { coursList } from '../../datas/CoursList';
 import FormationCardComponent from '../../components/FormationCardComponent/FormationCardComponent';
+import CartComponent from '../../components/CartComponent/CartComponent';
 
-const FormationListView = () => {
+const FormationListView = ({ cart, updateCart }) => {
 
     const [activeCategory, setActiveCategory] = useState('');
 
@@ -12,6 +13,27 @@ const FormationListView = () => {
         (acc, elem) => acc.includes(elem.category) ? acc : acc.concat(elem.category), []
     )
     //console.log(categoryList);
+
+    function AddToCart(name, price) {
+
+        const formationAdded = cart.find((cours) => cours.name === name);
+
+        if (formationAdded) {
+            const filteredCart = cart.filter(
+                (cours) => cours.name !== name
+            )
+            updateCart([
+                ...filteredCart,
+                { name, price, amount: formationAdded.amount + 1 }
+            ])
+        }else{
+            updateCart([
+                ...cart,
+                { name, price, amount: 1 }
+            ])
+        }
+        alert(`La formation ${name} a été ajoutée !`);
+    }
 
     return (
         <div className='formation-list'>
@@ -25,17 +47,19 @@ const FormationListView = () => {
                     />
                 </div>
                 <div className="col-4">
-                    {/* Panier */}
+                    <CartComponent cart={cart} updateCart={updateCart} />
                 </div>
             </div>
             <div className="card-container">
                 {coursList.map((cours, index) =>
                     !activeCategory || activeCategory === cours.category ?
 
-                        <FormationCardComponent
-                            key={index}
-                            cours={cours}
-                        />
+                        <div key={index} onClick={() => AddToCart(cours.name, cours.price)}>
+                            <FormationCardComponent
+                                key={index}
+                                cours={cours}
+                            />
+                        </div>
 
                         :
                         null

@@ -13,7 +13,7 @@ export const coursList = [
         id: 1,
         category: "Reférencement",
         name: "SEO Premium",
-        difficulte: 3,
+        difficulte: 1,
         logo: SEO,
         price: 249
     },
@@ -21,7 +21,7 @@ export const coursList = [
         id: 2,
         category: "Langage de programmation",
         name: "C#",
-        difficulte: 4,
+        difficulte: 5,
         logo: CSharp,
         price: 299
     },

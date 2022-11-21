@@ -11,7 +11,7 @@ import HomeView from '../../views/HomeView/HomeView';
 import AboutView from '../../views/AboutView/AboutView';
 import FormationListView from '../../views/FormationListView/FormationListView';
 
-const NavBarComponent = () => {
+const NavBarComponent = ({cart, updateCart}) => {
     return (
         <div>
             <BrowserRouter>
@@ -28,7 +28,7 @@ const NavBarComponent = () => {
                 </div>
                 <Routes>
                     <Route path="/" element={<HomeView />} />
-                    <Route path="/formation" element={<FormationListView />} />
+                    <Route path="/formation" element={<FormationListView cart={cart} updateCart={updateCart}/>} />
                     <Route path="/about" element={<AboutView />} />
                     <Route path="/*" element={<HomeView />} />
                 </Routes>
