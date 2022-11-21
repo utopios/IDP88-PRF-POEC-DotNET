@@ -5,7 +5,7 @@ import './FormationCardComponent.css';
 const FormationCardComponent = ({ cours, index }) => {
     //console.log(cours)
     return (
-        <div className='card' key={index}>
+        <div className='card formation' key={index}>
             <div className="card-title">
                 {cours.name}
             </div>

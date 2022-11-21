@@ -10,6 +10,7 @@ import './NavBarComponent.css';
 import HomeView from '../../views/HomeView/HomeView';
 import AboutView from '../../views/AboutView/AboutView';
 import FormationListView from '../../views/FormationListView/FormationListView';
+import FormulaireView from '../../views/FormulaireView/FormulaireView';
 
 const NavBarComponent = ({cart, updateCart}) => {
     return (
@@ -23,12 +24,16 @@ const NavBarComponent = ({cart, updateCart}) => {
                         <Link to="/formation">FormationList</Link>
                     </button>
                     <button className='bouton'>
+                        <Link to="/form">Formulaire</Link>
+                    </button>
+                    <button className='bouton'>
                         <Link to="/about">About</Link>
                     </button>
                 </div>
                 <Routes>
                     <Route path="/" element={<HomeView />} />
                     <Route path="/formation" element={<FormationListView cart={cart} updateCart={updateCart}/>} />
+                    <Route path="/form" element={<FormulaireView />} />
                     <Route path="/about" element={<AboutView />} />
                     <Route path="/*" element={<HomeView />} />
                 </Routes>
