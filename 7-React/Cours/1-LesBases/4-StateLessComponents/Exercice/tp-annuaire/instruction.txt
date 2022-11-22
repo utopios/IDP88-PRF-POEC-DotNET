@@ -1,0 +1,8 @@
+Créer une application avec des composant stateless permettant de:
+
+1- Afficher une liste de contacts (nom, prenom, email, phone)
+
+2- Créer un composant pour ajouter des contact à la liste
+
+3- Ajouter le router pour naviguer entre les 3 vues => Home, List, AddPerson
+
