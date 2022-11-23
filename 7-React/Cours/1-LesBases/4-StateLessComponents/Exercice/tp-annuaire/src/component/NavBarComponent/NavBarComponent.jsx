@@ -1,0 +1,50 @@
+import React from 'react';
+import {
+    BrowserRouter,
+    Routes,
+    Route,
+    Outlet,
+    Link
+} from 'react-router-dom';
+import HomeView from '../../view/HomeView/HomeView';
+import ListPersonView from '../../view/ListPersonView/ListPersonView';
+import AddEditView from '../../view/AddEditView/AddEditView';
+import './NavBarComponent.css';
+
+const NavBarComponent = ({ personList, updatePersonList }) => {
+    return (
+        <div>
+            <BrowserRouter>
+                <div id="Navbar">
+                    <Link to="/">
+                        <button className='bouton'>
+                            Home
+                        </button>
+                    </Link>
+                    <Link to="/list">
+                        <button className='bouton'>
+                            List
+                        </button>
+                    </Link>
+                    <Link to="/form">
+                        <button className='bouton'>
+                            Formulaire
+                        </button>
+                    </Link>
+                    <hr />
+                </div>
+                <Routes>
+                    <Route path="/" element={<HomeView />} />
+                    <Route path="/list" element={<ListPersonView personList={personList} updatePersonList={updatePersonList} />} />
+                    <Route path="/form" element={<AddEditView personList={personList} updatePersonList={updatePersonList} />} />
+                    <Route path="/*" element={<HomeView />} />
+                </Routes>
+            </BrowserRouter>
+            <div className="container">
+                <Outlet />
+            </div>
+        </div>
+    );
+}
+
+export default NavBarComponent;
