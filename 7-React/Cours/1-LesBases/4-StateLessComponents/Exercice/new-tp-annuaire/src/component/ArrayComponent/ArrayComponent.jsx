@@ -1,7 +1,8 @@
 import React from 'react';
 import './ArrayComponent.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faTrash } from '@fortawesome/free-solid-svg-icons'
+import { faTrash, faPenToSquare } from '@fortawesome/free-solid-svg-icons'
+import { NavLink } from 'react-router-dom';
 
 const ArrayComponent = ({ personList, updatePersonList, deletePerson }) => {
     return (
@@ -15,7 +16,7 @@ const ArrayComponent = ({ personList, updatePersonList, deletePerson }) => {
                         <th scope='col'>Prénom</th>
                         <th scope='col'>Email</th>
                         <th scope='col'>Téléphone</th>
-                        <th scope='col'>Action</th>
+                        <th scope='col'>Actions</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -29,7 +30,10 @@ const ArrayComponent = ({ personList, updatePersonList, deletePerson }) => {
                                     <td>{person.email}</td>
                                     <td>{person.telephone}</td>
                                     <td>
-                                        <FontAwesomeIcon icon={faTrash}  onClick={() => deletePerson(index)}/>
+                                        <NavLink to={"/form/" + index}>
+                                            <FontAwesomeIcon icon={faPenToSquare} />
+                                        </NavLink>
+                                        <FontAwesomeIcon icon={faTrash} onClick={() => deletePerson(index)} />
                                     </td>
                                 </tr>
                             </React.Fragment>

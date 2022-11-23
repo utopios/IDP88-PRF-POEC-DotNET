@@ -1,11 +1,39 @@
 import React from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {
+    faHome,
+    faAddressCard,
+    faBatteryEmpty,
+    faBatteryQuarter,
+    faBatteryHalf,
+    faBatteryThreeQuarters,
+    faBatteryFull,
+    faEnvelope
+} from "@fortawesome/free-solid-svg-icons";
+
 
 const HomeView = () => {
     return (
         <div>
-             <h1>Tp List Contact</h1>
-             <img src="./img/logo192.png" alt="Logo-React" />
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta architecto, voluptatum voluptates aliquid nisi illum corporis cumque quo accusantium! Recusandae maxime distinctio laboriosam repudiandae voluptas, reprehenderit voluptatum dolor, odio illo, nihil est architecto at id eum culpa atque veritatis accusamus dolorum illum. Exercitationem animi asperiores et optio quibusdam pariatur eveniet? </p>
+            <h1>Tp Annuaire</h1>
+            <div>
+                <div>
+                    <FontAwesomeIcon icon={faBatteryEmpty} style={{ padding: '10px', color: 'red', fontSize: '45px' }} />
+                    <FontAwesomeIcon icon={faBatteryQuarter} style={{ padding: '10px', color: 'rgb(40, 44, 52)', fontSize: '45px' }} />
+                    <FontAwesomeIcon icon={faBatteryHalf} style={{ padding: '10px', color: 'rgb(40, 44, 52)', fontSize: '45px' }} />
+                    <FontAwesomeIcon icon={faBatteryThreeQuarters} style={{ padding: '10px', color: 'rgb(40, 44, 52)', fontSize: '45px' }} />
+                    <FontAwesomeIcon icon={faBatteryFull} style={{ padding: '10px', color: 'green', fontSize: '45px' }} />
+                </div>
+                <div>
+                    <FontAwesomeIcon icon={faAddressCard} style={{ padding: '10px' }} />
+                    <FontAwesomeIcon icon={faEnvelope} style={{ padding: '10px' }} />
+                </div>
+                <div>
+                    <FontAwesomeIcon icon={faHome} style={{ padding: '10px' }} />
+                    <FontAwesomeIcon icon={faHome} transform="down-4 grow-2.5" style={{ padding: '10px' }} />
+                    <FontAwesomeIcon icon={faHome} style={{ padding: '10px', color: 'red', fontSize: '25px' }} />
+                </div>
+            </div>
         </div>
     );
 }

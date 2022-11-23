@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
-const AddEditComponent = ({ personList, updatePersonList, AddPerson }) => {
+const AddEditComponent = ({ personList, UpdatePerson, AddPerson, index }) => {
 
     /**
     * States
@@ -11,10 +11,22 @@ const AddEditComponent = ({ personList, updatePersonList, AddPerson }) => {
     const [telephone, setTelephone] = useState('');
 
 
+    useEffect(() => {
+        const getPerson = () => {
+            if (index) {
+                let person = personList[index];
+                setNom(person.nom);
+                setPrenom(person.prenom);
+                setEmail(person.email);
+                setTelephone(person.telephone);
+            }
+        }
+        getPerson();
+    }, [index,personList]);
 
     return (
         <>
-            <h1>Add Person</h1>
+            <h1>{index ? "Update Person" : "Add Person"}</h1>
             <div className="card">
                 <form>
                     <div className="form-control formulaire">
@@ -35,7 +47,12 @@ const AddEditComponent = ({ personList, updatePersonList, AddPerson }) => {
                             <input type="text" name="telephone" id="telephone" onChange={(e) => setTelephone(e.target.value)} className="form-control" value={telephone} />
                         </div>
 
-                        <button className='btn btn-secondary form-contol' onClick={() => AddPerson(nom,prenom,email,telephone)}>Ajouter</button>
+                        {
+                            index === undefined ?
+                                <button className='btn btn-secondary form-contol' onClick={() => AddPerson(nom, prenom, email, telephone)}>Ajouter</button>
+                                :
+                                <button className='btn btn-secondary form-contol' onClick={() => UpdatePerson(index, nom, prenom, email, telephone)}>Modifier</button>
+                        }
                     </div>
                 </form>
             </div>

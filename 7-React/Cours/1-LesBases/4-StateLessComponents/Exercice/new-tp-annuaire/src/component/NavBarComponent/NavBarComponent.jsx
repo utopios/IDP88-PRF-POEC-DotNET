@@ -17,7 +17,7 @@ const NavBarComponent = ({ personList, updatePersonList }) => {
     return (
         <div>
             <BrowserRouter>
-                <div id="Navbar">
+                <div id="navbar">
                     {/* <Link to="/">
                         <button className='bouton'>
                             Home
@@ -48,6 +48,7 @@ const NavBarComponent = ({ personList, updatePersonList }) => {
                     <Route path="/" element={<HomeView />} />
                     <Route path="/list" element={<ListPersonView personList={personList} updatePersonList={updatePersonList} />} />
                     <Route path="/form" element={<AddEditView personList={personList} updatePersonList={updatePersonList} />} />
+                    <Route path="/form/:index" element={<AddEditView personList={personList} updatePersonList={updatePersonList} />} />
                     <Route path="/*" element={<HomeView />} />
                 </Routes>
             </BrowserRouter>
