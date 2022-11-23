@@ -76,7 +76,7 @@ class ListTodoComponent extends Component {
     }
 
     renderContentTodo = () => {
-        render(
+        return(
             <div onClick={this.changeStatus} className={(this.props.todo.status === 'done' ? 'btn col-9 text-success' : 'btn col-9 text-danger')}>
                 {this.props.todo.content}
             </div>
