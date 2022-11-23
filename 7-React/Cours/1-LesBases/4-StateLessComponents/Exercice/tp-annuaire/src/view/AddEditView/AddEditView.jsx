@@ -31,7 +31,6 @@ const AddEditView = ({ personList, updatePersonList }) => {
         alert(`Le contact n°${tabIndex + 1} a été modifié!`)
         index = undefined;
         return navigate("/list");
-
     }
 
     return (
