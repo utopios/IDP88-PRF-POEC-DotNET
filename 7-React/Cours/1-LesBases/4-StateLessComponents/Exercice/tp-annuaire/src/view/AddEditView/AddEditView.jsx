@@ -9,15 +9,15 @@ const AddEditView = ({ personList, updatePersonList }) => {
     function AddPerson(nom, prenom, email, telephone) {
         //alert(`${nom} ${prenom} ${email} ${telephone}`);
         let newPerson = { nom, prenom, email, telephone };
-        console.log(newPerson);
+        //console.log(newPerson);
         let listTmp = [...personList];
-        console.table(listTmp);
+        //console.table(listTmp);
         listTmp.push(newPerson)
-        console.table(listTmp);
+       // console.table(listTmp);
         updatePersonList(listTmp);
         //updatePersonList([...personList, { nom, prenom, email, telephone }])
         alert(`${nom} ${prenom} a été ajouté`);
-        console.table(personList);
+        //console.table(personList);
     }
 
     return (

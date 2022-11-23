@@ -9,6 +9,8 @@ import {
 import HomeView from '../../view/HomeView/HomeView';
 import ListPersonView from '../../view/ListPersonView/ListPersonView';
 import AddEditView from '../../view/AddEditView/AddEditView';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faHome, faAddressCard, faFolderPlus } from "@fortawesome/free-solid-svg-icons";
 import './NavBarComponent.css';
 
 const NavBarComponent = ({ personList, updatePersonList }) => {
@@ -16,7 +18,7 @@ const NavBarComponent = ({ personList, updatePersonList }) => {
         <div>
             <BrowserRouter>
                 <div id="Navbar">
-                    <Link to="/">
+                    {/* <Link to="/">
                         <button className='bouton'>
                             Home
                         </button>
@@ -30,6 +32,15 @@ const NavBarComponent = ({ personList, updatePersonList }) => {
                         <button className='bouton'>
                             Formulaire
                         </button>
+                    </Link> */}
+                    <Link to="/">
+                        <FontAwesomeIcon className='iconMenu' icon={faHome} />
+                    </Link>
+                    <Link to="/list">
+                        <FontAwesomeIcon className='iconMenu' icon={faAddressCard} />
+                    </Link>
+                    <Link to="/form">
+                        <FontAwesomeIcon className='iconMenu' icon={faFolderPlus} />
                     </Link>
                     <hr />
                 </div>

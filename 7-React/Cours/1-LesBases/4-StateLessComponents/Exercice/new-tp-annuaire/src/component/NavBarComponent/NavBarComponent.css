@@ -23,5 +23,7 @@ a:hover {
 }
 
 .iconMenu {
+    color: black;
+    font-size: 25px;
     margin:0 15px;
 }

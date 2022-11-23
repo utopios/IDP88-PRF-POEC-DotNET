@@ -1,7 +1,9 @@
 import React from 'react';
 import './ArrayComponent.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faTrash } from '@fortawesome/free-solid-svg-icons'
 
-const ArrayComponent = ({ personList, updatePersonList }) => {
+const ArrayComponent = ({ personList, updatePersonList, deletePerson }) => {
     return (
         <div>
 
@@ -26,7 +28,9 @@ const ArrayComponent = ({ personList, updatePersonList }) => {
                                     <td>{person.prenom}</td>
                                     <td>{person.email}</td>
                                     <td>{person.telephone}</td>
-                                    <td><button className='btn btn-secondary'>Supprimer</button></td>
+                                    <td>
+                                        <FontAwesomeIcon icon={faTrash}  onClick={() => deletePerson(index)}/>
+                                    </td>
                                 </tr>
                             </React.Fragment>
                         ))
