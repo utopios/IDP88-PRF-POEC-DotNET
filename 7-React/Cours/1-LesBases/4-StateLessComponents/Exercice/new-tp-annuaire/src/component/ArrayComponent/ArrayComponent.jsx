@@ -31,9 +31,9 @@ const ArrayComponent = ({ personList, updatePersonList, deletePerson }) => {
                                     <td>{person.telephone}</td>
                                     <td>
                                         <NavLink to={"/form/" + index}>
-                                            <FontAwesomeIcon icon={faPenToSquare} />
+                                            <FontAwesomeIcon icon={faPenToSquare} className='fontIcon'/>
                                         </NavLink>
-                                        <FontAwesomeIcon icon={faTrash} onClick={() => deletePerson(index)} />
+                                        <FontAwesomeIcon icon={faTrash} onClick={() => deletePerson(index)}  className='fontIcon'/>
                                     </td>
                                 </tr>
                             </React.Fragment>
