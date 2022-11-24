@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTrash, faPenToSquare, faCheck } from '@fortawesome/free-solid-svg-icons'
 
-class ListTodoComponent extends Component {
+class ListTodoComponent extends PureComponent {
 
     constructor(props) {
         super(props)
@@ -15,7 +15,7 @@ class ListTodoComponent extends Component {
     changeStatus = () => {
         const status = this.props.todo.status === 'done' ? 'undone' : 'done';
         this.props.changeStatus(this.props.todo.id, status);
-
+        this.forceUpdate();
     }
 
     doneOrUndoneButton = () => {
@@ -39,7 +39,7 @@ class ListTodoComponent extends Component {
                 }}
                 style={{
                     fontWeight: 'bold',
-                    color: 'redf',
+                    color: 'red',
                     fontSize: '30px'
                 }}
             />
@@ -47,7 +47,7 @@ class ListTodoComponent extends Component {
 
     validEditTodo = (e) => {
         e.preventDefault();
-        this.props.EditTodo(this.props.todo.id, this.state.editTodoContent);
+        this.props.editTodo(this.props.todo.id, this.state.editTodoContent);
         this.setState({
             edit: false
         })
@@ -55,7 +55,7 @@ class ListTodoComponent extends Component {
 
     EditTodo = () => {
         return (
-            <form onSubmit={this.validEditTodo()} className='col-9'>
+            <form onSubmit={this.validEditTodo} className='col-9'>
                 <input
                     type="text"
                     className='form-control'
@@ -66,7 +66,6 @@ class ListTodoComponent extends Component {
                         })
                     }}
                 />
-
             </form>
         )
     }
@@ -77,7 +76,7 @@ class ListTodoComponent extends Component {
 
     renderContentTodo = () => {
         return(
-            <div onClick={this.changeStatus} className={(this.props.todo.status === 'done' ? 'btn col-9 text-success' : 'btn col-9 text-danger')}>
+            <div onClick={this.changeStatus} className={(this.props.todo.status === 'done') ? 'btn col-9 text-success' : 'btn col-9 text-danger'}>
                 {this.props.todo.content}
             </div>
         )

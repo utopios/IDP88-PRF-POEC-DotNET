@@ -1,0 +1,29 @@
+a {
+    color: white;
+    text-decoration: none;
+}
+
+a:hover {
+    color: white;
+    text-decoration: none;
+}
+
+.bouton {
+    background-color: rgb(40, 44, 52);
+    color: white;
+    border: 1px solid white;
+    border-radius: 10px;
+    padding: 10px 15px;
+    margin: 0 15px;
+    font-size: 20px;
+}
+
+#navbar {
+    padding-top: 15px;
+}
+
+.iconMenu {
+    color: black;
+    font-size: 25px;
+    margin:0 15px;
+}
