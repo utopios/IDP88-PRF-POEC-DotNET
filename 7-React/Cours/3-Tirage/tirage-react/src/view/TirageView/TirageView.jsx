@@ -7,25 +7,55 @@ class TirageView extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            listApprenants: Apprenants,
-            listGagnant:[]
+            listApprenants: "",
+            listGagnant: localStorage.getItem('ListTirage')? JSON.parse(localStorage.getItem('ListTirage')) : []
         }
     }
 
-    getRandomInt=(min, max) => {
+    getRandomInt = (min, max) => {
         return Math.floor(Math.random() * (max - min) + min);
-      }
+    }
 
     tirageAuSort = (list) => {
-        //console.log(list)
-        const randomNumber = this.getRandomInt(0,list.length);
-        //console.log(randomNumber);
-        const gagnant = list[randomNumber];
-        //console.log(gagnant);
+        let ok = false;
+        let tmp = [...this.state.listGagnant];
+        console.table(tmp);
+        // tant que la personne tirée est présente dans la liste des gagants
+        while (!ok) {
+            // Generation d'un new random int
+            let randomNumber = this.getRandomInt(0, list.length);
+            // Récupération, de la personne tirée
+            let gagnant = list[randomNumber];
+            // rechercher le gagnant correspondant dans la liste des gagnants
+            const checkGagnant = this.state.listGagnant.includes(gagnant);
+
+            if (!checkGagnant) {
+                if (window.confirm(`${gagnant} a été tiré \ Confirmer?`)) {
+                    tmp.push(gagnant);
+                    console.table(tmp);
+                    if (tmp.length === this.state.listApprenants.length)
+                        tmp = [];
+                    console.log(tmp);
+                    ok = true;
+                }
+            }
+        }
         this.setState({
-            listGagnant:[...this.state.listGagnant,gagnant]
+            listGagnant: tmp
         })
-        
+    }
+
+    componentDidMount(){
+        this.setState({
+            listApprenants: Apprenants
+        })
+    }
+
+    componentDidUpdate(prevState) {
+        // Typical usage (don't forget to compare props):
+        if (prevState.listGagnant !== this.state.listGagnant) {
+            localStorage.setItem('ListTirage', JSON.stringify(this.state.listGagnant))
+        }
     }
 
     render() {
