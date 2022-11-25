@@ -26,6 +26,8 @@ class NavBarComponent extends Component {
     }
 
     updatePersonList = (list) =>{
+        // console.log("Navbar : ")
+        // console.table(list);
         this.setState({
             personList :list
         })
