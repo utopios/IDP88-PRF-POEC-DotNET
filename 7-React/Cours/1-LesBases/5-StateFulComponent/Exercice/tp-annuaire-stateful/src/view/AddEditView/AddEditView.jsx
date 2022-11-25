@@ -4,27 +4,27 @@ import { useParams } from 'react-router-dom';
 import { useNavigate } from "react-router-dom"
 import './AddEditView.css';
 
-const AddEditView = ({ PersonList, updatePersonList }) => {
+const AddEditView = ({ personList, updatePersonList }) => {
     let { index } = useParams();
-
+    console.table(personList)
     let navigate = useNavigate();
     /**
      * Function     
      */
     function addPerson(nom, prenom, email, telephone) {
-        updatePersonList([...PersonList, { nom, prenom, email, telephone }])
+        updatePersonList([...personList, { nom, prenom, email, telephone }])
         alert(`${nom} ${prenom} a été ajouté!`);
         return navigate("/list");
     }
 
     function updatePerson(indexTab, nom, prenom, email, telephone) {
-        let listTmp = [...PersonList];
+        let listTmp = [...personList];
         //console.table(listTmp);
-        listTmp[indexTab] =  {
-                nom : nom,
-                prenom : prenom,
-                email : email,
-                telephone : telephone,
+        listTmp[indexTab] = {
+            nom: nom,
+            prenom: prenom,
+            email: email,
+            telephone: telephone,
         }
         //console.table(listTmp);
         updatePersonList(listTmp);
@@ -40,7 +40,7 @@ const AddEditView = ({ PersonList, updatePersonList }) => {
             <AddEditComponent
                 addPerson={addPerson}
                 updatePerson={updatePerson}
-                PersonList={PersonList}
+                personList={personList}
                 index={index}
             />
         </div>

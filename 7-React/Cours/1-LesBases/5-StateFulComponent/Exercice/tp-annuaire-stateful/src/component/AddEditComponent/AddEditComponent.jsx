@@ -8,11 +8,13 @@ class AddEditComponent extends Component {
             prenom: "",
             email: "",
             telephone: "",
+            index:-1
         }
     }
 
 
     componentDidMount(){
+        if(this.props.index !== -1)
         console.log(this.props.index)
         const getPerson = () => {
             if (this.props.index) {
@@ -27,9 +29,7 @@ class AddEditComponent extends Component {
         }
         getPerson();
     }
-    componentDidUpdate(){
 
-    }
 
     render() {
         return (
@@ -58,9 +58,9 @@ class AddEditComponent extends Component {
 
                             {
                             this.props.index === undefined ?
-                                <button className='btn btn-secondary form-contol' onClick={() => this.props.AddPerson(this.state.nom, this.state.prenom, this.state.email, this.state.telephone)}>Ajouter</button>
+                                <button className='btn btn-secondary form-contol' onClick={() => this.props.addPerson(this.state.nom, this.state.prenom, this.state.email, this.state.telephone)}>Ajouter</button>
                                 :
-                                <button className='btn btn-secondary form-contol' onClick={() => this.props.UpdatePerson(this.props.index, this.state.nom, this.state.prenom, this.state.email, this.state.telephone)}>Modifier</button>
+                                <button className='btn btn-secondary form-contol' onClick={() => this.props.updatePerson(this.props.index, this.state.nom, this.state.prenom, this.state.email, this.state.telephone)}>Modifier</button>
                         }
 
                         </div>
