@@ -14,8 +14,6 @@ class AddEditComponent extends Component {
 
 
     componentDidMount(){
-        if(this.props.index !== -1)
-        console.log(this.props.index)
         const getPerson = () => {
             if (this.props.index) {
                 let person = this.props.personList[this.props.index];
