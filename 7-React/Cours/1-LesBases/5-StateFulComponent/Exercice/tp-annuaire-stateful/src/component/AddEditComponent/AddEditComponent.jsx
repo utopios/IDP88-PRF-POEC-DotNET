@@ -12,11 +12,29 @@ class AddEditComponent extends Component {
     }
 
 
+    componentDidMount(){
+        console.log(this.props.index)
+        const getPerson = () => {
+            if (this.props.index) {
+                let person = this.props.personList[this.props.index];
+                this.setState({
+                    nom : person.nom,
+                    prenom : person.prenom,
+                    email: person.email,
+                    telephone:person.telephone
+                })
+            }
+        }
+        getPerson();
+    }
+    componentDidUpdate(){
+
+    }
 
     render() {
         return (
             <div>
-                <h1>Add Person</h1>
+                <h1>{this.props.index ? "Update" : "Add Person"}</h1>
                 <div className="card">
                     <form>
                         <div className="form-control formulaire">
@@ -38,7 +56,12 @@ class AddEditComponent extends Component {
                             </div>
 
 
-                            <button className='btn btn-secondary form-contol' onClick={() => this.props.AddPerson(this.state.nom, this.state.prenom, this.state.email, this.state.telephone)}>Ajouter</button>
+                            {
+                            this.props.index === undefined ?
+                                <button className='btn btn-secondary form-contol' onClick={() => this.props.AddPerson(this.state.nom, this.state.prenom, this.state.email, this.state.telephone)}>Ajouter</button>
+                                :
+                                <button className='btn btn-secondary form-contol' onClick={() => this.props.UpdatePerson(this.props.index, this.state.nom, this.state.prenom, this.state.email, this.state.telephone)}>Modifier</button>
+                        }
 
                         </div>
                     </form>
@@ -65,18 +88,7 @@ export default AddEditComponent;
 //     const [telephone, setTelephone] = useState('');
 
 
-//     useEffect(() => {
-//         const getPerson = () => {
-//             if (index) {
-//                 let person = personList[index];
-//                 setNom(person.nom);
-//                 setPrenom(person.prenom);
-//                 setEmail(person.email);
-//                 setTelephone(person.telephone);
-//             }
-//         }
-//         getPerson();
-//     }, [index,personList]);
+
 
 //     return (
 //         <>
@@ -101,12 +113,7 @@ export default AddEditComponent;
             //                 <input type="text" name="telephone" id="telephone" onChange={(e) => setTelephone(e.target.value)} className="form-control" value={telephone} />
             //             </div>
 
-            //             {
-            //                 index === undefined ?
-            //                     <button className='btn btn-secondary form-contol' onClick={() => AddPerson(nom, prenom, email, telephone)}>Ajouter</button>
-            //                     :
-            //                     <button className='btn btn-secondary form-contol' onClick={() => UpdatePerson(index, nom, prenom, email, telephone)}>Modifier</button>
-            //             }
+       
             //         </div>
             //     </form>
             // </div>
