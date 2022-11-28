@@ -8,7 +8,7 @@ const Stateless = () => {
     useEffect(() => {
         // Mettre à jour le titre du document en utilisant l'API du navigateur
         document.title = `Vous avez cliqué ${count} fois`;
-    });
+    },[count]);
 
     return (
         <div>
