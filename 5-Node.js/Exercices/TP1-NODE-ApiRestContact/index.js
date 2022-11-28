@@ -141,7 +141,7 @@ app.get('/api/contacts', (req, res) => {
 // POST => http://localhost:7777/api/contact
 app.post('/api/contact', (req, res) => {
     const nextId = getUniqueId(contactList);
-    //console.log(req.body);
+    console.log(req.body);
     console.log(nextId);
     //const contactCreated = { ...req.body, ...{ id: nextId, created: new Date() } };
     const contactCreated = new Contact(nextId, req.body.title, req.body.firstname, req.body.lastname, new Date(req.body.dateOfBirth), req.body.urlImg, req.body.phone, req.body.email);
