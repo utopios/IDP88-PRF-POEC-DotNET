@@ -1,0 +1,60 @@
+import React, { Component } from 'react';
+import ArrayContactComponent from '../../component/ArrayContactComponent/ArrayContactComponent';
+import { getContactApi, postContactApi, updateContactApi, deleteContactApi, postImage } from '../../ContactApiService'
+import './AnnnuaireView.css';
+
+class AnnuaireView extends Component {
+
+    constructor(props) {
+        super(props)
+        this.state = {
+            contacts: [],
+            //newContact: null,
+            //toggleForm: false
+        }
+    }
+
+    // Methode locale pour récuprer la reponse de l'api et set le state local contact
+    FetchContact = async () => {
+        let response = await getContactApi();
+        this.setState({
+            contacts: response.data.data
+        })
+    }
+
+    EditContact = async (editContact) => {
+        let response = await updateContactApi(editContact);
+        alert(response.data.message);
+        this.FetchContact();
+    }
+
+    DeleteContact = async (id) => {
+        if (window.confirm("Etes-vous sur de vouloir supprimer le contact N°" + id + " ?")) {
+            let response = await deleteContactApi(id);
+            alert(response.data.message)
+        }
+        this.FetchContact();
+    }
+
+    async componentDidMount() {
+        this.FetchContact();
+    }
+
+
+    render() {
+        return (
+            <div>
+                <h1>Tp Annuaire Node-Js =&gt; React</h1>
+
+
+                <ArrayContactComponent
+                    contacts={this.state.contacts}
+                    EditContact={this.EditContact}
+                    DeleteContact={this.DeleteContact}
+                />
+            </div>
+        );
+    }
+}
+
+export default AnnuaireView;

@@ -155,7 +155,7 @@ app.post('/api/contact', (req, res) => {
 // PUT => http://localhost:7777/api/contact/:id
 app.put('/api/contact/:id', (req, res) => {
     const Id = parseInt(req.params.id);
-    const contactUpdated = new Contact(req.body.id, req.body.title, req.body.firstname, req.body.lastname, new Date(req.body.dateOfBirth), req.body.urlImg, req.body.phone, req.body.email, req.body.created, new Date());
+    const contactUpdated = new Contact(Id, req.body.title, req.body.firstname, req.body.lastname, new Date(req.body.dateOfBirth), req.body.urlImg, req.body.phone, req.body.email, req.body.created, new Date());
     contactList = contactList.map(contact => {
         return contact.id === Id ? contactUpdated : contact
     });
