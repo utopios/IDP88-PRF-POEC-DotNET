@@ -8,11 +8,11 @@ export default function Counter() {
         ...state.CounterReducer,
         ...state.PriceReducer
     }));
+    const dispatch = useDispatch();
 
 
     const [price, setPrice] = useState(0);
 
-    const dispatch = useDispatch();
 
     const decrFunc = () => {
         dispatch({
