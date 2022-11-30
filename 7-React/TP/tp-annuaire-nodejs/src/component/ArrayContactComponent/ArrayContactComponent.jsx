@@ -11,6 +11,7 @@ class ArrayContactComponent extends Component {
                     <thead>
                         <tr>
                             <th scope='col'>ID</th>
+                            <th scope='col'>Image</th>
                             <th scope='col'>Titre</th>
                             <th scope='col'>Nom</th>
                             <th scope='col'>Prenom</th>
@@ -34,6 +35,7 @@ class ArrayContactComponent extends Component {
                                             contact={contact}
                                             EditContact={this.props.EditContact}
                                             DeleteContact={this.props.DeleteContact}
+                                            PostImage={this.props.PostImage}
                                         />
                                     )
                                 })

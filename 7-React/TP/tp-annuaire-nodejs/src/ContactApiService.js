@@ -25,13 +25,15 @@ export const postContactApi = (async (contact) => {
     bodyFormData.append('dateOfBirth', contact.dateOfBirth);
     bodyFormData.append('phone', contact.phone);
     bodyFormData.append('email', contact.email);
-    bodyFormData.append('img', ' ');
+    bodyFormData.append('img', contact.img);
 
     return await axios({
         method: "post",
         url: __BASE_URL + "/contact",
         data: bodyFormData,
-        headers: __HEADERS
+        headers: {
+            "Content-Type": "multipart/form-data"
+        }
     }).catch(err => {
         alert(err);
         console.log(err)

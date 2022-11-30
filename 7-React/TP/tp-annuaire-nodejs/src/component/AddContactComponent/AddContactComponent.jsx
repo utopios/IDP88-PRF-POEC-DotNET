@@ -19,8 +19,9 @@ class AddContactComponent extends Component {
         let dateOfBirth = e.target['dateOfBirth'].value;
         let email = e.target['email'].value;
         let phone = e.target['phone'].value;
+        let img = e.target['img'].files[0];
         if (title !== "" && lastname !== "" && firstname !== "" && dateOfBirth !== new Date() && email !== "" && phone !== "") {
-            const newPerson = { title, lastname, firstname, dateOfBirth, email, phone };
+            const newPerson = { title, lastname, firstname, dateOfBirth, img, email, phone };
             //console.table(newPerson);
             this.props.AddContact(newPerson);
             // alert("Le contact a bien été ajouté.");
@@ -62,6 +63,7 @@ class AddContactComponent extends Component {
                                 <input type="date" className="form-control m-1" name="dateOfBirth" id="dateOfBirth" defaultValue={new Date().toISOString().substring(0,10)}/>
                                 <input type="text" className="form-control m-1" placeholder='Téléphone' name="phone" id="phone" />
                                 <input type="mail" className="form-control m-1" placeholder='Email' name="email" id="email" />
+                                <input type="file" className="form-control m-1" name="img" id="img" />
                                 <button type="submit" className="btn btn-success form-control m-1">Valider</button>
                             </div>
                         </form>

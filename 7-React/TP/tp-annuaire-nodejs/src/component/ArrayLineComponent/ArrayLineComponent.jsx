@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faTrash, faPen, faCheck } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTrash, faPen, faCheck } from '@fortawesome/free-solid-svg-icons';
+import DisplayImageComponent from '../DisplayImageComponent/DisplayImageComponent';
 import './ArrayLineComponent.css';
 
 class ArrayLineComponent extends Component {
@@ -19,25 +20,32 @@ class ArrayLineComponent extends Component {
     validEdit = (e) => {
         e.preventDefault();
         if (window.confirm("Etes-vous sur de vouloir modifier le contact N°" + this.props.contact.id)) {
-          let id = this.props.contact.id;
-          let title = document.getElementById('title').value;
-          let firstname = document.getElementById('firstname').value;
-          let lastname = document.getElementById('lastname').value;
-          let dateOfBirth = document.getElementById('dateOfBirth').value;
-          let email = document.getElementById('email').value;
-          let phone = document.getElementById('phone').value;
-          let created = this.props.contact.created;
-          const editContact = { id, title, firstname, lastname, dateOfBirth, email, phone, created };
-          this.props.EditContact(editContact)
-          this.toggleEdit();
+            let id = this.props.contact.id;
+            let title = document.getElementById('title').value;
+            let firstname = document.getElementById('firstname').value;
+            let lastname = document.getElementById('lastname').value;
+            let dateOfBirth = document.getElementById('dateOfBirth').value;
+            let email = document.getElementById('email').value;
+            let phone = document.getElementById('phone').value;
+            let created = this.props.contact.created;
+            const editContact = { id, title, firstname, lastname, dateOfBirth, email, phone, created };
+            this.props.EditContact(editContact)
+            this.toggleEdit();
         }
-      }
+    }
 
     render() {
         return this.state.editContact === false ? (
             <React.Fragment>
                 <tr>
-                    <th>{this.props.contact.id}</th>                   
+                    <th>{this.props.contact.id}</th>
+                    <td>
+                        <DisplayImageComponent
+                            urlImg={"http://localhost:7777" + this.props.contact.urlImg}
+                            id={this.props.contact.id}
+                            PostImage={this.props.PostImage}
+                        />
+                    </td>
                     <td>{this.props.contact.title}</td>
                     <td>{this.props.contact.lastname}</td>
                     <td>{this.props.contact.firstname}</td>
@@ -56,6 +64,7 @@ class ArrayLineComponent extends Component {
             <React.Fragment>
                 <tr>
                     <th>{this.props.contact.id}</th>
+                    <td><img src={"http://localhost:7777" + this.props.contact.urlImg} alt="Contact Img" height="50px" /></td>
                     <td><input type="text" className="form-control" placeholder="Titre" name="title" id="title" defaultValue={this.props.contact.title} /></td>
                     <td><input type="text" className="form-control" placeholder="Nom" name="lastname" id="lastname" defaultValue={this.props.contact.lastname} /></td>
                     <td><input type="text" className="form-control" placeholder="Prénom" name="firstname" id="firstname" defaultValue={this.props.contact.firstname} /></td>

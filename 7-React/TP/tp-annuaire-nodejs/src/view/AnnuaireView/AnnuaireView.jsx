@@ -51,6 +51,14 @@ class AnnuaireView extends Component {
         this.FetchContact();
     }
 
+    
+    PostImage = async(id,image)=>{
+        let response = await postImage(id,image)
+        console.log(response.data.message);
+        alert(response.data.message)
+        this.FetchContact();
+    }
+
     async componentDidMount() {
         this.FetchContact();
     }
@@ -74,7 +82,8 @@ class AnnuaireView extends Component {
                     <ArrayContactComponent
                         contacts={this.state.contacts}
                         EditContact={this.EditContact}
-                        DeleteContact={this.DeleteContact}                        
+                        DeleteContact={this.DeleteContact}
+                        PostImage={this.PostImage}                        
                     />
                 </div>
             </div>

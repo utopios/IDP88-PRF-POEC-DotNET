@@ -139,17 +139,23 @@ app.get('/api/contacts', (req, res) => {
 
 
 // POST => http://localhost:7777/api/contact
-app.post('/api/contact', (req, res) => {
-    const nextId = getUniqueId(contactList);
-    console.log(req.body);
-    console.log(nextId);
-    //const contactCreated = { ...req.body, ...{ id: nextId, created: new Date() } };
-    const contactCreated = new Contact(nextId, req.body.title, req.body.firstname, req.body.lastname, new Date(req.body.dateOfBirth), req.body.urlImg, req.body.phone, req.body.email);
-    console.log(contactCreated);
-    contactList.push(contactCreated);
-    saveList();
-    let message = `Le contact n°${nextId} a été ajouté`;
-    res.json(success(message, contactCreated));
+app.post('/api/contact', upload.single('img'), async (req, res) => {
+    
+    try {
+        console.log("import: ", `\x1b[36m${req.file.originalname}\x1b[0m` + " => " + `\x1b[36m${req.file.filename}\x1b[0m` + " in " + `\x1b[36m${req.file.destination}\x1b[0m` + " Size: " + `\x1b[36m${req.file.size}\x1b[0m` + "ko");
+        let filename = "/img/" + req.file.filename;
+        const nextId = getUniqueId(contactList);
+        // console.log(req.body);
+        // console.log(nextId);
+        const contactCreated = new Contact(nextId, req.body.title, req.body.firstname, req.body.lastname, new Date(req.body.dateOfBirth), filename, req.body.phone, req.body.email);
+        console.log(contactCreated);
+        contactList.push(contactCreated);
+        saveList();
+        let message = `Le contact n°${nextId} a été ajouté`;
+        res.json(success(message, contactCreated));
+    } catch (error) {
+        res.sendStatus(400).send(error)
+    }
 });
 
 // PUT => http://localhost:7777/api/contact/:id
@@ -175,17 +181,24 @@ app.delete('/api/contact/:id', (req, res) => {
 });
 
 // UPLOAD IMG
-app.post('/upload', upload.single('img'), async (req, res) => {
+app.post('/api/contact/:id', upload.single('img'), async (req, res) => {
     // console.log(req);
     console.log(`UPLOAD : ${req.file.originalname} => ${req.file.filename} - Folder : ${req.file.destination} - Size = ${req.file.size}ko`)
 
     try {
         let filename = req.file.filename;
+        const Id = parseInt(req.params.id);
+        let contactUpdated = contactList.find((contact) => contact.id === Id)
+        contactUpdated.urlImg = "/img/" + filename;
+        contactList = contactList.map(contact => {
+            return contact.id === Id ? contactUpdated : contact
+        });
+        saveList();
         let message = "Upload OK"
         res.json(success(message, filename))
     }
     catch (e) {
-        res.send(400).send(e)
+        res.sendStatus(400).send(e)
     }
 })
 
