@@ -51,7 +51,7 @@ export const updateContactApi = (async (contact) => {
     bodyFormData.append('firstname', contact.firstname);
     bodyFormData.append('lastname', contact.lastname);
     bodyFormData.append('dateOfBirth', contact.dateOfBirth);
-    bodyFormData.append('urlImg', ' ');
+    bodyFormData.append('urlImg', contact.urlImg);
     bodyFormData.append('phone', contact.phone);
     bodyFormData.append('email', contact.email);
     bodyFormData.append('created', contact.created);

@@ -27,8 +27,9 @@ class ArrayLineComponent extends Component {
             let dateOfBirth = document.getElementById('dateOfBirth').value;
             let email = document.getElementById('email').value;
             let phone = document.getElementById('phone').value;
+            let urlImg = this.props.contact.urlImg;
             let created = this.props.contact.created;
-            const editContact = { id, title, firstname, lastname, dateOfBirth, email, phone, created };
+            const editContact = { id, title, firstname, lastname, dateOfBirth, urlImg, email, phone, created };
             this.props.EditContact(editContact)
             this.toggleEdit();
         }
