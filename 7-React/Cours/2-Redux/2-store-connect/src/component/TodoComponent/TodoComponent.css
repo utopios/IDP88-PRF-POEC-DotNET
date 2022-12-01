@@ -1,0 +1,16 @@
+.todo-item{
+    cursor: pointer;
+    font-size: 25px;
+    line-height: 1,5;
+}
+
+.todo-item-completed{
+    text-decoration: line-through;
+    color: rgb(169, 169, 169);
+}
+
+.center-block{
+    display: table; /* A la place de display Block */
+    margin-left: auto;
+    margin-right: auto;
+}

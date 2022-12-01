@@ -1,0 +1,9 @@
+.container-list {
+    width: 300px;
+    margin: 20px auto;
+}
+
+.todo-list {
+    text-align: left;
+    list-style: none;
+}

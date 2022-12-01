@@ -1,7 +1,9 @@
 import React from 'react';
 import TodoComponent from '../TodoComponent/TodoComponent'
 import { connect } from 'react-redux';
-import { getTodos } from '../../redux/selectors/todoSelector'
+// import { getTodos } from '../../redux/selectors/todoSelector';
+import { getTodosByVisibilityFilter } from '../../redux/selectors/todoSelector';
+
 import './TodoListComponent.css';
 
 const TodoListComponent = ({ todos }) => {
@@ -23,7 +25,9 @@ const TodoListComponent = ({ todos }) => {
 
 }
 const mapStateToProps = state => {
-    const todos = getTodos(state);
+    // const todos = getTodos(state);
+    const {visibilityFilter} = state
+    const todos = getTodosByVisibilityFilter(state,visibilityFilter);
     return { todos };
 }
 export default connect(mapStateToProps)(TodoListComponent)
