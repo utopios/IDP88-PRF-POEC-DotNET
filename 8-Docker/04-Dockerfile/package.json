@@ -1,0 +1,11 @@
+{
+  "name": "04-dockerfile",
+  "version": "1.0.0",
+  "description": "Api en NodeJs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Anthony Di Persio <anthony@utopios.net>",
+  "license": "ISC"
+}
