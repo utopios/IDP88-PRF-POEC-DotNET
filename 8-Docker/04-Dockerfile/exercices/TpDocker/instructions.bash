@@ -41,4 +41,8 @@ $ nano index.html
 ## Vérifier sur "http://localhost:8080/" que le message s'affiche bien
 http://localhost:8080/
 
+## Proceder à l'installation de git
+$ apt install git -y
 
+## Vérifier son installation avec la commande git --version
+$ git --version
