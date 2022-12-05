@@ -1,0 +1,22 @@
+version: '3.7'
+
+services:
+    back:
+          image: back-api-node
+          container_name : api_contact_back_container
+          restart: always
+          ports:
+            - 7777:7777
+          volumes:
+            - volume-api-contact:/home/web/public
+          
+    front:
+          image : front-api-react
+          container_name : api_contact_front_container
+          restart: always
+          ports : 
+            - 3000:3000
+          depends_on:
+            - back
+volumes:
+    volume-api-contact:
