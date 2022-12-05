@@ -107,7 +107,7 @@ function loadList() {
 }
 
 function saveList() {
-    const objectToJson = JSON.stringify(contactList);
+    const objectToJson = JSON.stringify(contactList,null,"\t");
     writeFileSync('./datas/savedList.json', objectToJson);
     console.log("Données sauvegardées...");
 }

@@ -14,10 +14,10 @@ WORKDIR /home/web
 COPY . .
 
 # Exposer le port 80 du conteneur
-EXPOSE 80
+EXPOSE 3000
 
 # Installation des dépendances
-RUN npm install express
+RUN npm install
 
 # Indiquer la commande de démarrage du container crée à partir de l'image
-CMD ["node","index.js"]
+CMD ["npm","start"]
