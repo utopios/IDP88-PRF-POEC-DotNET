@@ -57,13 +57,13 @@ const AxiosView = () => {
 
     }
 
-    async function updateContact(contact,id) {
+    async function updateContact(id, contact = null) {
 
         // Declaration d'un FormData (pour le body de la request)
         let bodyFormData = new FormData();
         // Ajout des elements au formulaire
         //bodyFormData.append('Key','Value')
-        bodyFormData.append('id', 6);
+        bodyFormData.append('id', id);
         bodyFormData.append('title', 'Mrs');
         bodyFormData.append('firstname', 'Zorros');
         bodyFormData.append('lastname', 'Legrands');
@@ -74,7 +74,7 @@ const AxiosView = () => {
 
         await axios({
             method: "put",
-            url: __baseUrl + "/api/contact/"+6,
+            url: __baseUrl + "/api/contact/" + id,
             data: bodyFormData,
             headers: {
                 "Content-Type": "application/json"
@@ -92,10 +92,10 @@ const AxiosView = () => {
 
     async function deleteContact(id) {
 
-        
+
         await axios({
             method: "delete",
-            url: __baseUrl + "/api/contact/"+3,
+            url: __baseUrl + "/api/contact/" + id,
             headers: {
                 "Content-Type": "application/json"
             }
@@ -116,8 +116,8 @@ const AxiosView = () => {
         <div>
             <h1>Utilisation de axios</h1>
             <button onClick={() => addContact()}>Add Contact</button>
-            <button onClick={() => updateContact()}>Update Contact N°6</button>
-            <button onClick={() => deleteContact()}>Delete Contact</button>
+            <button onClick={() => updateContact(6)}>Update Contact N°6</button>
+            <button onClick={() => deleteContact(3)}>Delete Contact N°3</button>
         </div>
     );
 }
