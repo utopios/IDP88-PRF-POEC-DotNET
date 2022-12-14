@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Exercice1", "Exercices\Exer
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LesVariables", "Cours\LesVariables\LesVariables.csproj", "{7E7E1C9D-2E97-41EC-9EB4-8BACF54C8D5F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LesOperateurs", "Cours\LesOperateurs\LesOperateurs.csproj", "{362FF78A-E81E-4886-BD3F-6D1E4C60F1ED}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -31,6 +33,10 @@ Global
 		{7E7E1C9D-2E97-41EC-9EB4-8BACF54C8D5F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7E7E1C9D-2E97-41EC-9EB4-8BACF54C8D5F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7E7E1C9D-2E97-41EC-9EB4-8BACF54C8D5F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{362FF78A-E81E-4886-BD3F-6D1E4C60F1ED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{362FF78A-E81E-4886-BD3F-6D1E4C60F1ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{362FF78A-E81E-4886-BD3F-6D1E4C60F1ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{362FF78A-E81E-4886-BD3F-6D1E4C60F1ED}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -39,6 +45,7 @@ Global
 		{217A1CB7-DE5A-4BBF-8F5F-A562F382243D} = {E3472F83-CC99-418D-82A1-5887E5921A25}
 		{C1536595-3401-4191-BD14-BC28F110AFBA} = {4BA1A60C-C371-4EEB-9EE2-1AE6F5810FB1}
 		{7E7E1C9D-2E97-41EC-9EB4-8BACF54C8D5F} = {E3472F83-CC99-418D-82A1-5887E5921A25}
+		{362FF78A-E81E-4886-BD3F-6D1E4C60F1ED} = {E3472F83-CC99-418D-82A1-5887E5921A25}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {54340418-BE26-4C9F-9555-58B880F5D25A}

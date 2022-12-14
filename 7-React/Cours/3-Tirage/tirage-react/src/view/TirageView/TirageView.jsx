@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import DisplayArrayComponent from '../../component/DisplayArray/DisplayArray';
 import { Apprenants } from '../../datas/Apprenants';
 import './TirageView.css';
 
@@ -30,7 +31,7 @@ class TirageView extends Component {
             const checkGagnant = this.state.listGagnant.includes(gagnant);
 
             if (!checkGagnant) {
-                if (window.confirm(`${gagnant} a été tiré \ Confirmer?`)) {
+                if (window.confirm(`${gagnant} a été tiré => Confirmer?`)) {
                     tmp.push(gagnant);
                     console.table(tmp);
                     if (tmp.length === this.state.listApprenants.length)
@@ -62,6 +63,7 @@ class TirageView extends Component {
         return (
             <div>
                 <button className='btn btn-danger' onClick={() => this.tirageAuSort(this.state.listApprenants)}>Tirer Au sort</button>
+                <DisplayArrayComponent listGagnant={this.state.listGagnant}/>
             </div>
         );
     }
