@@ -7,5 +7,6 @@
             int age = Convert.ToInt32(Console.ReadLine());
 
             Console.WriteLine("Bonjour " + prenom + " " + nom + ", vous avez " + age + " ans\n");
+
             Console.Write("Appuyez sur Enter pour fermer le programme...");
             Console.Read();
