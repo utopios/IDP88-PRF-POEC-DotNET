@@ -94,6 +94,7 @@ namespace DecouverteConsole
 
             Console.WriteLine("\n\nAppuyez sur Enter pour fermer le programme...");
             Console.Read();
+
         }
     }
 }

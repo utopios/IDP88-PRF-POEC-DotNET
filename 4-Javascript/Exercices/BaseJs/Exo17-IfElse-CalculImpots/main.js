@@ -40,16 +40,6 @@ else if (revenuImposable >= 160337)
     //montantImpot = Math.round((revenuImposable - 160336) * 0.45 + (160336 - 74545) * 0.41 + (74545 - 26070) * 0.3 + (26070 - 10226) * 0.11 ) ;
     montantImpot = (revenuImposable - 160336) * 0.45 + (160336 - 74545) * 0.41 + (74545 - 26070) * 0.3 + (26070 - 10226) * 0.11;
 
-// // Etablissement Structure If() pour calculer le montant de l'impôt
-// if (revenuImposable >= 10226 && revenuImposable <= 26070)
-//     montantImpot = Math.round((revenuImposable - 10225) * 0.11);
-// else if (revenuImposable >= 26071 && revenuImposable <= 74545)
-//     montantImpot = Math.round((revenuImposable - 26070) * 0.3 + (26070 - 10226) * 0.11);
-// else if (revenuImposable >= 74546 && revenuImposable <= 160336)
-//     montantImpot = Math.round((revenuImposable - 74545) * 0.41 + (74545 - 26070) * 0.3 + (26070 - 10226) * 0.11 );
-// else if (revenuImposable >= 160337)
-//     //montantImpot = Math.round((revenuImposable - 160336) * 0.45 + (160336 - 74545) * 0.41 + (74545 - 26070) * 0.3 + (26070 - 10226) * 0.11 ) ;
-//     montantImpot = Math.round((revenuImposable - 160336) * 0.45 + (160336 - 74545) * 0.41 + (74545 - 26070) * 0.3 + (26070 - 10226) * 0.11 ) ;
 
 // // Sugar Syntaxe
 // if (revenuImposable > 10225) {
