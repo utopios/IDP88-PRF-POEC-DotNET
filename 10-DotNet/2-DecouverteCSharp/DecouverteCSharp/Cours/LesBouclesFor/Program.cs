@@ -21,7 +21,7 @@ for (int i = 10; i >= 0; i--)
 }
 #endregion
 
-#region Intéraration de caractères
+#region Intération de caractères
 for (char c = 'A'; c <= 'Z'; c++)
 {
     Console.WriteLine(c);
