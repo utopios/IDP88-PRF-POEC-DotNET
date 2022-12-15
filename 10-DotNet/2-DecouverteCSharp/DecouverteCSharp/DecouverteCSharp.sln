@@ -31,7 +31,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Exercice08-CalculTVA", "Exe
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Exercice09-CalculInterets", "Exercices\Exercice9\Exercice09-CalculInterets.csproj", "{6D1B0489-AB25-4C47-B942-BB78731A05DE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InstructionsIfElse", "Cours\InstructionsIfElse\InstructionsIfElse.csproj", "{D53516B8-D084-4EC1-8584-8D5D0805673A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InstructionsIfElse", "Cours\InstructionsIfElse\InstructionsIfElse.csproj", "{D53516B8-D084-4EC1-8584-8D5D0805673A}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Exercice10-IfElseVoyelle", "Exercices\Exercice10\Exercice10-IfElseVoyelle.csproj", "{2DDF4539-BC8C-4464-9CB0-8975F9B80591}"
 EndProject
@@ -47,7 +47,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Exercice15-ElseIfPrimeLicen
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Exercice16-ElseIfCalculImpots", "Exercices\Exercice16\Exercice16-ElseIfCalculImpots.csproj", "{FB7971D2-75CB-45EF-8EE1-AD819C19BF21}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SwitchCase", "Cours\SwitchCase\SwitchCase.csproj", "{09EB36D7-65A2-4AEA-A2B1-7F63B7A2134A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SwitchCase", "Cours\SwitchCase\SwitchCase.csproj", "{09EB36D7-65A2-4AEA-A2B1-7F63B7A2134A}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Exercice14BIS-Switch-TailleVetements", "Exercices\Exercice14Bis\Exercice14BIS-Switch-TailleVetements.csproj", "{9A529873-5F01-47FF-8FAE-F1D45792E38C}"
 EndProject
@@ -56,6 +56,8 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Exercice18-SwitchQuelleCategorie", "Exercices\Exercice18\Exercice18-SwitchQuelleCategorie.csproj", "{03296D2C-22F3-473F-A739-902669CF1849}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Exercice19-SwitchImpots", "Exercices\Exercice19\Exercice19-SwitchImpots.csproj", "{F0F86F09-CE15-4856-B3A5-70A8D4B46690}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LesBouclesFor", "Cours\LesBouclesFor\LesBouclesFor.csproj", "{B85C3ECC-D7E8-4FDA-959F-A40C25E63EDF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -163,6 +165,10 @@ Global
 		{F0F86F09-CE15-4856-B3A5-70A8D4B46690}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F0F86F09-CE15-4856-B3A5-70A8D4B46690}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F0F86F09-CE15-4856-B3A5-70A8D4B46690}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B85C3ECC-D7E8-4FDA-959F-A40C25E63EDF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B85C3ECC-D7E8-4FDA-959F-A40C25E63EDF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B85C3ECC-D7E8-4FDA-959F-A40C25E63EDF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B85C3ECC-D7E8-4FDA-959F-A40C25E63EDF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -193,6 +199,7 @@ Global
 		{279C2748-7511-46BA-9D04-A6265990DE78} = {4BA1A60C-C371-4EEB-9EE2-1AE6F5810FB1}
 		{03296D2C-22F3-473F-A739-902669CF1849} = {4BA1A60C-C371-4EEB-9EE2-1AE6F5810FB1}
 		{F0F86F09-CE15-4856-B3A5-70A8D4B46690} = {4BA1A60C-C371-4EEB-9EE2-1AE6F5810FB1}
+		{B85C3ECC-D7E8-4FDA-959F-A40C25E63EDF} = {E3472F83-CC99-418D-82A1-5887E5921A25}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {54340418-BE26-4C9F-9555-58B880F5D25A}
