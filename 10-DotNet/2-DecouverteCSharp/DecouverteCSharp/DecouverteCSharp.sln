@@ -95,6 +95,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Exercice30-DoWhileQuestions
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Exercice31-DoWhile-GestionNoteMenu", "Exercices\Exercice31-DoWhile-GestionNoteMenu\Exercice31-DoWhile-GestionNoteMenu.csproj", "{99D7983D-190A-4391-B8A3-FFED588817B9}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "LesTableaux", "LesTableaux", "{1C47ECA5-46EB-4206-8BBF-1A1780881C32}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LesTableaux", "Cours\LesTableaux\LesTableaux.csproj", "{7D0815F5-5E7A-4189-9E2E-9E87464145BE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -265,6 +269,10 @@ Global
 		{99D7983D-190A-4391-B8A3-FFED588817B9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{99D7983D-190A-4391-B8A3-FFED588817B9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{99D7983D-190A-4391-B8A3-FFED588817B9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7D0815F5-5E7A-4189-9E2E-9E87464145BE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7D0815F5-5E7A-4189-9E2E-9E87464145BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7D0815F5-5E7A-4189-9E2E-9E87464145BE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7D0815F5-5E7A-4189-9E2E-9E87464145BE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -314,6 +322,8 @@ Global
 		{0310B54F-14D6-49F2-B212-89F1F1BCEDD1} = {0EC1A2A9-9F2E-4D53-8477-A8C077C097E6}
 		{093423E5-BE3D-4199-B7FA-9974FB82ABF5} = {4BA1A60C-C371-4EEB-9EE2-1AE6F5810FB1}
 		{99D7983D-190A-4391-B8A3-FFED588817B9} = {4BA1A60C-C371-4EEB-9EE2-1AE6F5810FB1}
+		{1C47ECA5-46EB-4206-8BBF-1A1780881C32} = {E3472F83-CC99-418D-82A1-5887E5921A25}
+		{7D0815F5-5E7A-4189-9E2E-9E87464145BE} = {1C47ECA5-46EB-4206-8BBF-1A1780881C32}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {54340418-BE26-4C9F-9555-58B880F5D25A}
