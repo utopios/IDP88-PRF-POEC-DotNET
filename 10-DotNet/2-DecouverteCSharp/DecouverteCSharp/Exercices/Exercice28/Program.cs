@@ -28,6 +28,9 @@ while (!trouve)
         Console.ForegroundColor = ConsoleColor.White;
     }
     nbCoups++;
+    Console.WriteLine("Appuyer sur 'Enter' pour continuer...");
+    Console.ReadLine();
+    Console.Clear();
 }
 #endregion
 
