@@ -3,7 +3,7 @@
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>net6.0</TargetFramework>
-    <RootNamespace>Exercice31_DoWhile_GestionNoteMenu</RootNamespace>
+    <RootNamespace>Exercice31_DoWhile_MenuGestionNotes</RootNamespace>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>disable</Nullable>
   </PropertyGroup>

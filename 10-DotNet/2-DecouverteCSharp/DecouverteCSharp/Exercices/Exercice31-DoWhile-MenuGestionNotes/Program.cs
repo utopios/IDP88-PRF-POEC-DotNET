@@ -56,7 +56,7 @@ do
                     nbNote = nbNote - 1;
                     break;
                 }
-                if (noteTmp > 20 || noteTmp < 0)
+                if (noteTmp > 20)
                 {
                     Console.ForegroundColor = ConsoleColor.Red;
                     Console.WriteLine("\t\tErreur de saisie, la note est sur 20 !");
