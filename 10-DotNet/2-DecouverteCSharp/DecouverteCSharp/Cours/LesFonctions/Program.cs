@@ -45,13 +45,11 @@ namespace LesFonctions
             string chaine = "Salut!";
             return chaine;
         }
-
-        // Fonction Avec Prams et sans Retour
+        // Fonction Avec Params et sans Retour
         static void AffichageBienvenue(string prenom, string langage)
         {
             Console.WriteLine($"\nBonjour {prenom}\n----------\nVous apprennez le {langage}!\n----------");
         }
-
         // Fonction Avec Prams et Avec Retour
         static double Additionner(double nb1, double nb2)
         {

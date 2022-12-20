@@ -143,7 +143,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LeBoxing", "Cours\LeBoxing\
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "LesFonctions", "LesFonctions", "{B8DAFA6D-0442-49A7-B96E-4F9235985C2E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LesFonctions", "Cours\LesFonctions\LesFonctions.csproj", "{2A07289E-6B2C-4777-95F9-778FB1BB5558}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LesFonctions", "Cours\LesFonctions\LesFonctions.csproj", "{2A07289E-6B2C-4777-95F9-778FB1BB5558}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Exercice40-Functions-TheGreatTP", "Exercices\Exercice40-Functions-TheGreatTP\Exercice40-Functions-TheGreatTP.csproj", "{63676F6F-6ABF-4897-B58B-2D8947CBAE18}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -403,6 +405,10 @@ Global
 		{2A07289E-6B2C-4777-95F9-778FB1BB5558}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2A07289E-6B2C-4777-95F9-778FB1BB5558}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2A07289E-6B2C-4777-95F9-778FB1BB5558}.Release|Any CPU.Build.0 = Release|Any CPU
+		{63676F6F-6ABF-4897-B58B-2D8947CBAE18}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{63676F6F-6ABF-4897-B58B-2D8947CBAE18}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{63676F6F-6ABF-4897-B58B-2D8947CBAE18}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{63676F6F-6ABF-4897-B58B-2D8947CBAE18}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -477,6 +483,7 @@ Global
 		{EC207073-812A-46A5-8636-4681811E2BE5} = {E9C162AC-D055-4F07-922C-0E61ED7263FE}
 		{B8DAFA6D-0442-49A7-B96E-4F9235985C2E} = {E3472F83-CC99-418D-82A1-5887E5921A25}
 		{2A07289E-6B2C-4777-95F9-778FB1BB5558} = {B8DAFA6D-0442-49A7-B96E-4F9235985C2E}
+		{63676F6F-6ABF-4897-B58B-2D8947CBAE18} = {4BA1A60C-C371-4EEB-9EE2-1AE6F5810FB1}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {54340418-BE26-4C9F-9555-58B880F5D25A}
