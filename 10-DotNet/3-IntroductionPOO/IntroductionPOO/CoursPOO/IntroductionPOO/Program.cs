@@ -1,13 +1,13 @@
 ﻿using IntroductionPOO.Classes;
 
-static void Afficher(Voiture v)
-{
-    Console.WriteLine($"La voiture est une {v.Model} de couleur {v.Couleur}, avec une autonomie de {v.Autonomie}km avec un réservoir de {v.Reservoir}L.");
-}
+//static void Afficher(Voiture v)
+//{
+//    Console.WriteLine($"La voiture est une {v.Model} de couleur {v.Couleur}, avec une autonomie de {v.Autonomie}km avec un réservoir de {v.Reservoir}L.");
+//}
 
 // Instanciation d'un objet voiture
 //Voiture voitureDeNicolas = new Voiture();
-Voiture voitureDeNicolas = new();
+Voiture voitureDeNicolas = new ();
 // Modifier les props de l'objet voitureDeNicolas
 voitureDeNicolas.Model = "Clio";
 voitureDeNicolas.Couleur = "Noir";
@@ -16,7 +16,20 @@ voitureDeNicolas.Autonomie = 900;
 
 Console.WriteLine(voitureDeNicolas);
 
-Afficher(voitureDeNicolas);
+//Afficher(voitureDeNicolas);
+
+voitureDeNicolas.Afficher();
+
+voitureDeNicolas.Demarrer();
+voitureDeNicolas.Demarrer();
+voitureDeNicolas.Demarrer();
+
+Voiture voitureDeJeanne = new Voiture("208", "Blanche", 800, 45);
+Console.WriteLine(voitureDeJeanne);
+
+//Afficher(voitureDeJeanne);
+
+voitureDeJeanne.Afficher();
 
 
 Console.WriteLine("Appuyez sur enter pour fermer le programme");
