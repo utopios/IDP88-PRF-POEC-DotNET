@@ -14,22 +14,47 @@ voitureDeNicolas.Couleur = "Noir";
 voitureDeNicolas.Reservoir = 50;
 voitureDeNicolas.Autonomie = 900;
 
-Console.WriteLine(voitureDeNicolas);
+//Console.WriteLine(voitureDeNicolas);
 
 //Afficher(voitureDeNicolas);
 
-voitureDeNicolas.Afficher();
+//voitureDeNicolas.Afficher();
 
-voitureDeNicolas.Demarrer();
-voitureDeNicolas.Demarrer();
-voitureDeNicolas.Demarrer();
 
 Voiture voitureDeJeanne = new Voiture("208", "Blanche", 800, 45);
-Console.WriteLine(voitureDeJeanne);
+//Console.WriteLine(voitureDeJeanne);
 
 //Afficher(voitureDeJeanne);
 
-voitureDeJeanne.Afficher();
+//voitureDeJeanne.Afficher();
+
+Voiture[] voitures = new Voiture[] { voitureDeJeanne, voitureDeNicolas };
+
+foreach (Voiture voiture in voitures)
+{
+    voiture.Afficher();
+    voiture.Klaxonner();
+    voiture.Demarrer();
+    //voiture.Demarrer();
+    voiture.Rouler();
+    voiture.Klaxonner();
+    voiture.Stoper();
+    voiture.Rouler();
+    voiture.Stoper();
+    voiture.Rouler();
+    voiture.Stoper();
+    voiture.Rouler();
+    voiture.Stoper();
+    voiture.Arreter();
+    voiture.Refueler(10);
+    voiture.Demarrer();
+    voiture.Rouler();
+    voiture.Stoper();
+    voiture.Arreter();
+    voiture.Arreter();
+    voiture.Klaxonner();
+
+}
 
 
 Console.WriteLine("Appuyez sur enter pour fermer le programme");
