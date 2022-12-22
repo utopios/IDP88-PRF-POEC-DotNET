@@ -36,20 +36,44 @@ namespace Tp_LePendu.Classes
         #region Methodes
         public bool TestChar(char c)
         {
-            // Developper un méthode permmettant de comparer le caractere saisi par l'utilisateur avec le mot a touver
+            bool found = false;
+            string masqueTmp = "";
+            for (int i = 0; i < motATrouver.Length; i++)
+            {
+                if (motATrouver[i] == c)
+                {
+                    found = true;
+                    masqueTmp += c;
+                }
+                else                
+                    masqueTmp += masque[i];
+            }
+            masque = masqueTmp;
 
-            return true;
+            if (!found)            
+                nbreEssais--;          
+
+            return found;
         }
 
         public bool TestWin()
         {
-            // Verifier si le motATouver a été trouvé
-            return true;
+            //if (MotATrouver == Masque && NbreEssais > 0)
+            //{
+            //    return true;
+            //}
+            //else
+            //{
+            //    return false;
+            //}
+            return MotATrouver == Masque && NbreEssais > 0;
         }
 
         public void GenererMasque()
         {
-            // Générer un masque depuis le mot à trouver et l'assigne à la props Masque
+            masque = "";
+            for (int i = 0; i < motATrouver.Length; i++)            
+                masque += "*";            
         }
         #endregion
     }
