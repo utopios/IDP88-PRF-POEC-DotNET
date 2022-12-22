@@ -89,7 +89,7 @@ foreach (EtreVivant e in tab)
 #region Boxing / Unboxing
 // Unboxing de EtreVivant => Chien
 Chien medor2 = (Chien)etre2;
-medor.Aboyer();
+medor2.Aboyer();
 
 // Convertion de type
 for (int i = 0; i < tab.Length; i++)

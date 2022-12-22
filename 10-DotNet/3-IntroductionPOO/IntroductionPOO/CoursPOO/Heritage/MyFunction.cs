@@ -28,6 +28,7 @@ namespace Heritage
             c.Expression();
             c.Oxigenation();
             c.Mort();
+            c.Aboyer();
         }
         public static void Afficher(Fleur f)
         {

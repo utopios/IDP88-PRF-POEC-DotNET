@@ -4,6 +4,7 @@ using System.Text;
 
 namespace Heritage.Classes
 {
+    // public abstract class EtreVivant (abstract = ne peut etre instancié)
     public class EtreVivant
     {
         bool vivant;
