@@ -8,5 +8,14 @@ namespace Tp_LePendu.Classes
 {
     internal class GenerateurMots
     {
+        private string[] mots = new string[] { "amazon", "google", "facebook", "microsoft", "macintosh", "instagram" };
+
+
+        public string Generer()
+        {
+            Random rnd = new();
+            int rndIndex= rnd.Next(mots.Length);
+            return mots[rndIndex];
+        }
     }
 }
