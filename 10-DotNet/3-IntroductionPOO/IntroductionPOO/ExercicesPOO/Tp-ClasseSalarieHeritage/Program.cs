@@ -1,2 +1,7 @@
-﻿// See https://aka.ms/new-console-template for more information
-Console.WriteLine("Hello, World!");
+﻿
+using Tp_ClasseSalarieHeritage.Classes;
+
+Console.OutputEncoding = System.Text.Encoding.UTF8;
+
+IHM ihm = new();
+ihm.Start();
