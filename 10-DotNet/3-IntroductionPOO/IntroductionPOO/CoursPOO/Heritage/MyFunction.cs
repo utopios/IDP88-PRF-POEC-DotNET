@@ -21,7 +21,7 @@ namespace Heritage
         }
         public static void Afficher(Chien c)
         {
-            Console.WriteLine("Mon nom est {0}", c.NomChien);
+            Console.WriteLine("MyFunction => Mon nom est {0}", c.NomChien);
             c.Naissance();
             c.Reproduction();
             c.Alimentation();
@@ -29,6 +29,7 @@ namespace Heritage
             c.Oxigenation();
             c.Mort();
             c.Aboyer();
+            Console.WriteLine(c.ToString());
         }
         public static void Afficher(Fleur f)
         {

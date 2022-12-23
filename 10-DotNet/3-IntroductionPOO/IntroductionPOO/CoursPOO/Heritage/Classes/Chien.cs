@@ -18,7 +18,7 @@ namespace Heritage.Classes
         public string NomChien { get => nomChien; set => nomChien = value; }
         public string TypeChien { get => typeChien; set => typeChien = value; }
 
-        public new void Alimentation()
+        public override void Alimentation()
         {
             base.Alimentation();
             Console.WriteLine("Je mange des croquettes pour chien!");
@@ -26,6 +26,11 @@ namespace Heritage.Classes
         public void Aboyer()
         {
             Console.WriteLine("Wouaf! Wouaf !");
+        }
+
+        public override string ToString()
+        {
+            return base.ToString() + " avec un truc en plus...";
         }
     }
 }

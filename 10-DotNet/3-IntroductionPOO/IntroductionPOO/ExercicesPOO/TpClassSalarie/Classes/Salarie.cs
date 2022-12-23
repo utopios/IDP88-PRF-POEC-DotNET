@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TpClassSalarie.Classes
 {
-    internal class Salarie
+    public class Salarie
     {
         private int id;
         private string matricule;
