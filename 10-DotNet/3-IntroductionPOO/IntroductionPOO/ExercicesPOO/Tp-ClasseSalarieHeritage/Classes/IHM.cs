@@ -30,5 +30,41 @@ namespace Tp_ClasseSalarieHeritage.Classes
                 }
             } while (choix != "0");
         }
+
+        private void MenuPrincipal()
+        {
+
+        } 
+        
+        private void MenuCreationEmployes()
+        {
+
+        }
+
+        private void ActionCreationEmployes()
+        {
+
+        }
+
+
+        private void ActionCreationSalarie()
+        {
+
+        }
+
+        private void ActionCreationCommercial()
+        {
+
+        }
+
+        private void ActionAfficherSalaries()
+        {
+        
+        }
+
+        private void ActionRechercherSalaries()
+        {
+
+        }
     }
 }
