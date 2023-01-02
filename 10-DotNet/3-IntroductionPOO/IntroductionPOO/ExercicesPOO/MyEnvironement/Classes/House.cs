@@ -31,6 +31,6 @@ namespace MyEnvironement.Classes
             Rooms = rooms;
         }
 
-        public int IdFlat { get => id; set => id = value; }
+        public int IdHouse { get => id; set => id = value; }
     }
 }
