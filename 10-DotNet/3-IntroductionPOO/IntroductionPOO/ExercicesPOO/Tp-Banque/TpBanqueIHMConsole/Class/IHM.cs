@@ -52,6 +52,50 @@ namespace TpBanqueIHMConsole.Class
 
         }
 
+        public void ActionNotificationADecouvert(decimal solde, int compte)
+        {
+            OnRed($"\n Le compte numéro {compte} est à découvert ! ");
+            Console.Write("\n\t\tVoici le nouveau solde : ");
+            OnRed($"{solde}€");
+        }
+
+        public void OnDarkCyan(string chaine)
+        {
+            Console.ForegroundColor = ConsoleColor.DarkCyan;
+            Console.WriteLine(chaine);
+            Console.ForegroundColor = ConsoleColor.White;
+        }
+        public void OnDarkCyanInput(string chaine)
+        {
+            Console.ForegroundColor = ConsoleColor.DarkCyan;
+            Console.Write(chaine);
+            Console.ForegroundColor = ConsoleColor.White;
+        }
+        public void OnCyanInput(string chaine)
+        {
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.Write(chaine);
+            Console.ForegroundColor = ConsoleColor.White;
+        }
+        public void OnRed(string chaine)
+        {
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine(chaine);
+            Console.ForegroundColor = ConsoleColor.White;
+        }
+        public void OnGrayInput(string chaine)
+        {
+            Console.ForegroundColor = ConsoleColor.DarkGray;
+            Console.Write(chaine);
+            Console.ForegroundColor = ConsoleColor.White;
+        }
+        public void OnGreen(string chaine)
+        {
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine(chaine);
+            Console.ForegroundColor = ConsoleColor.White;
+        }
+
         private void WaitAndClear()
         {
             Console.WriteLine("Appuyez sur ENTER pour continuer...");
