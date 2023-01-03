@@ -13,6 +13,12 @@ namespace TpBanqueIHMConsole.Class
         public IHM()
         {
             Init();
+        }       
+
+        private void Init()
+        {
+            banque = new();
+            banque.Injecter();
         }
 
         public void Start()
@@ -21,15 +27,7 @@ namespace TpBanqueIHMConsole.Class
             WaitAndClear();
         }
 
-        private void Init()
-        {
-            banque = new();
-            banque.Injecter();
-
-
-        }
-
-        public void WaitAndClear()
+        private void WaitAndClear()
         {
             Console.WriteLine("Appuyez sur ENTER pour continuer...");
             Console.ReadLine();
