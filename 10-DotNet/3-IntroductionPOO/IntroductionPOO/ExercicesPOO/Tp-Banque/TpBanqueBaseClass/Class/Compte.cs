@@ -8,5 +8,8 @@ namespace TpBanqueBaseClass.Class
 {
     public class Compte
     {
+        private int id;
+
+        public int Id { get => id; set => id = value; }
     }
 }
