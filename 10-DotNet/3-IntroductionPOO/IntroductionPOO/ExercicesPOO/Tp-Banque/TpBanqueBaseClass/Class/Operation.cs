@@ -8,5 +8,24 @@ namespace TpBanqueBaseClass.Class
 {
     public class Operation
     {
+        private int id;
+        private decimal montant;
+        private DateTime dateOperation;
+
+        public Operation(decimal montant)
+        {
+            Id = id;
+            Montant = montant;
+            DateOperation = DateTime.Now;
+        }
+
+        public int Id { get => id; set => id = value; }
+        public decimal Montant { get => montant; set => montant = value; }
+        public DateTime DateOperation { get => dateOperation; set => dateOperation = value; }
+
+        public override string ToString()
+        {
+            return $"Id:{(Id<10?"0"+Id:Id)}, Date:{DateOperation} - Montant: {Montant}€";
+        }
     }
 }

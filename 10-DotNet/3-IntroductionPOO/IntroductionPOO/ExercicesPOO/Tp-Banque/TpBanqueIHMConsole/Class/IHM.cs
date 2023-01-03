@@ -9,15 +9,22 @@ namespace TpBanqueIHMConsole.Class
 {
     internal class IHM
     {
+        private Bank banque;
         public IHM()
         {
-            Client c = new();
+            Init();
         }
 
         public void Start()
         {
 
             WaitAndClear();
+        }
+
+        private void Init()
+        {
+            banque = new();
+            Client c = new();
         }
 
         public void WaitAndClear()
