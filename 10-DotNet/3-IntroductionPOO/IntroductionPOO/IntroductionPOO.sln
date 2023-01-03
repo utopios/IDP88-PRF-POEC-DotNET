@@ -35,6 +35,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TpBanqueBaseClass", "Exerci
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TpBanqueIHMConsole", "ExercicesPOO\Tp-Banque\TpBanqueIHMConsole\TpBanqueIHMConsole.csproj", "{18AE302C-A513-4C78-9929-8A495DDEB6D9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExceptionRegex", "CoursPOO\ExceptionRegex\ExceptionRegex.csproj", "{982474E3-D918-4164-9E32-E3E50D094E61}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -93,6 +95,10 @@ Global
 		{18AE302C-A513-4C78-9929-8A495DDEB6D9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{18AE302C-A513-4C78-9929-8A495DDEB6D9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{18AE302C-A513-4C78-9929-8A495DDEB6D9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{982474E3-D918-4164-9E32-E3E50D094E61}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{982474E3-D918-4164-9E32-E3E50D094E61}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{982474E3-D918-4164-9E32-E3E50D094E61}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{982474E3-D918-4164-9E32-E3E50D094E61}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -112,6 +118,7 @@ Global
 		{77CBC87D-0848-4FBC-A68D-620DBE513563} = {17C52A39-3BFC-48C9-9ED2-A0608503007F}
 		{20DEC46C-CEBA-4897-ABF6-32F54585F74D} = {77CBC87D-0848-4FBC-A68D-620DBE513563}
 		{18AE302C-A513-4C78-9929-8A495DDEB6D9} = {77CBC87D-0848-4FBC-A68D-620DBE513563}
+		{982474E3-D918-4164-9E32-E3E50D094E61} = {1E4E3D5A-3B6B-41DE-B618-350140512606}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {43979156-8D22-4E83-A536-9B410607038D}

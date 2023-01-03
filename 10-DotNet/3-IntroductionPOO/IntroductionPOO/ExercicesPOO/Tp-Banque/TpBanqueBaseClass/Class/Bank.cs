@@ -16,5 +16,24 @@ namespace TpBanqueBaseClass.Class
         }
 
         public List<Compte> Comptes { get => comptes; set => comptes = value; }
+
+        public void Injecter()
+        {
+
+        } 
+
+        public bool AjouterCompte(Compte compte)
+        {
+            int nb1 = Comptes.Count;
+            Comptes.Add(compte);
+            int nb2 = Comptes.Count;
+            return nb2 - nb1 == 1;
+        }
+
+        public Compte RechercherCompte(int id)
+        {
+            return Comptes.Find(compte => compte.Id == id);
+        }
+
     }
 }
