@@ -24,7 +24,9 @@ namespace TpBanqueIHMConsole.Class
         private void Init()
         {
             banque = new();
-            Client c = new();
+            banque.Injecter();
+
+
         }
 
         public void WaitAndClear()
