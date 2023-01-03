@@ -6,6 +6,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using TpBanqueBaseClass.Class;
+using TpBanqueIHMConsole.Tools;
 
 namespace TpBanqueIHMConsole.Class
 {
@@ -15,7 +16,7 @@ namespace TpBanqueIHMConsole.Class
         public IHM()
         {
             Init();
-        }       
+        }
 
         private void Init()
         {
@@ -42,8 +43,8 @@ namespace TpBanqueIHMConsole.Class
                     default:
                         break;
                 }
-            } while (true);
-            
+            } while (choix != "0");
+
             WaitAndClear();
         }
 
@@ -52,53 +53,9 @@ namespace TpBanqueIHMConsole.Class
 
         }
 
-        public void ActionNotificationADecouvert(decimal solde, int compte)
-        {
-            OnRed($"\n Le compte numéro {compte} est à découvert ! ");
-            Console.Write("\n\t\tVoici le nouveau solde : ");
-            OnRed($"{solde}€");
-        }
-
-        public void OnDarkCyan(string chaine)
-        {
-            Console.ForegroundColor = ConsoleColor.DarkCyan;
-            Console.WriteLine(chaine);
-            Console.ForegroundColor = ConsoleColor.White;
-        }
-        public void OnDarkCyanInput(string chaine)
-        {
-            Console.ForegroundColor = ConsoleColor.DarkCyan;
-            Console.Write(chaine);
-            Console.ForegroundColor = ConsoleColor.White;
-        }
-        public void OnCyanInput(string chaine)
-        {
-            Console.ForegroundColor = ConsoleColor.Cyan;
-            Console.Write(chaine);
-            Console.ForegroundColor = ConsoleColor.White;
-        }
-        public void OnRed(string chaine)
-        {
-            Console.ForegroundColor = ConsoleColor.Red;
-            Console.WriteLine(chaine);
-            Console.ForegroundColor = ConsoleColor.White;
-        }
-        public void OnGrayInput(string chaine)
-        {
-            Console.ForegroundColor = ConsoleColor.DarkGray;
-            Console.Write(chaine);
-            Console.ForegroundColor = ConsoleColor.White;
-        }
-        public void OnGreen(string chaine)
-        {
-            Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine(chaine);
-            Console.ForegroundColor = ConsoleColor.White;
-        }
-
         private void WaitAndClear()
         {
-            Console.WriteLine("Appuyez sur ENTER pour continuer...");
+            MyConsoleColor.OnDarkCyanInput("Appuyez sur ENTER pour continuer...");
             Console.ReadLine();
             Console.Clear();
         }
