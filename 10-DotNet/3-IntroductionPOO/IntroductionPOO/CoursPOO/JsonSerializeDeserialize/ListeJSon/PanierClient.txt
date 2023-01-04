@@ -1,0 +1,35 @@
+[
+  {
+    "Quantity": 5,
+    "Product": {
+      "Nom": "Tomates",
+      "PrixHt": 3.29,
+      "Tva": 5.5,
+      "PrixTtc": 3.47,
+      "Quantite": 21,
+      "Unite": 3
+    }
+  },
+  {
+    "Quantity": 4,
+    "Product": {
+      "Nom": "Carottes",
+      "PrixHt": 2.19,
+      "Tva": 5.5,
+      "PrixTtc": 2.31,
+      "Quantite": 20,
+      "Unite": 3
+    }
+  },
+  {
+    "Quantity": 3,
+    "Product": {
+      "Nom": "Kiwi",
+      "PrixHt": 0.64,
+      "Tva": 5.5,
+      "PrixTtc": 0.68,
+      "Quantite": 15,
+      "Unite": 0
+    }
+  }
+]

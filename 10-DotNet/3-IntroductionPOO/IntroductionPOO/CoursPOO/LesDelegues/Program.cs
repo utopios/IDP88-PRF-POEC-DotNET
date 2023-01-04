@@ -14,6 +14,7 @@ c.Calcule(30,40, delegate (double a, double b) { return a - b; });
 c.Calcule(30, 40, (double a, double b) => { return a * b; });
 
 // Utilisation du delegate avec une méthode de division anonyme (expression Lambda)
+// Si il n'y qu'une seule instruction => les accolades sont facultative
 c.Calcule(30, 40, ( a, b) =>  a / b );
 
 #endregion

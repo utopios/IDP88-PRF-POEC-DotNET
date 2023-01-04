@@ -12,9 +12,11 @@ namespace TpBanqueBaseClass.Class
         private decimal solde;
         private Client client;
         private List<Operation> operations;
+        private static int counter = 0;
 
         public Compte(decimal solde, Client client)
         {
+            Id = ++counter;
             Solde = solde;
             Client = client;
             Operations = new List<Operation>();

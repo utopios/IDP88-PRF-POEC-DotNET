@@ -11,10 +11,11 @@ namespace TpBanqueBaseClass.Class
         private int id;
         private decimal montant;
         private DateTime dateOperation;
+        private static int counter = 0;
 
         public Operation(decimal montant)
         {
-            Id = id;
+            Id = ++counter;
             Montant = montant;
             DateOperation = DateTime.Now;
         }
