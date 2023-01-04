@@ -13,6 +13,7 @@ namespace TpBanqueBaseClass.Class
         private Client client;
         private List<Operation> operations;
         private static int counter = 0;
+        public event Action<decimal, int> ADecouvert;
 
         public Compte(decimal solde, Client client)
         {
@@ -47,7 +48,9 @@ namespace TpBanqueBaseClass.Class
                 Solde += operation.Montant;
                 if (Solde < 0)
                 {
-                    // Notification de découvert
+                    // Déclenchement de l'event ADecouvert
+                    if (ADecouvert != null)
+                        ADecouvert(solde, id);                    
                 }
                 return true;
             }

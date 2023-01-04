@@ -25,6 +25,7 @@ namespace TpBanqueBaseClass.Class
                 if (base.Depot(operation))
                 {
                     base.Retrait(new Operation(CoutOperation * -1));
+                    return true;
                 }
             }
             return false;
@@ -37,6 +38,7 @@ namespace TpBanqueBaseClass.Class
                 if (base.Retrait(operation))
                 {
                     base.Retrait(new Operation(CoutOperation * -1));
+                    return true;
                 }
             }
             return false;
