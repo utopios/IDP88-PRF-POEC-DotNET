@@ -8,10 +8,10 @@ namespace JsonSerializeDeserialize.Classes
 {
     class Shop
     {
-        //private string PathFileProduits = "listeProduits.txt";
-        //private string PathFileCart = "PanierClient.txt";
-        private string PathFileProduits = "listeProduits.json";
-        private string PathFileCart = "PanierClient.json";
+        private string PathFileProduits = "listeProduits.txt";
+        private string PathFileCart = "PanierClient.txt";
+        //private string PathFileProduits = "listeProduits.json";
+        //private string PathFileCart = "PanierClient.json";
         private List<Produit> produits;
         private Cart cart;
 

@@ -43,7 +43,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JsonSerializeDeserialize", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LesStructures", "CoursPOO\LesStructures\LesStructures.csproj", "{73A46700-763F-47B4-B41B-58724A640D09}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LesEvents", "CoursPOO\LesEvents\LesEvents.csproj", "{0CB5064B-6AA1-4820-9C85-2A38C87AD513}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LesEvents", "CoursPOO\LesEvents\LesEvents.csproj", "{0CB5064B-6AA1-4820-9C85-2A38C87AD513}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExtentionMethode", "CoursPOO\ExtentionMethode\ExtentionMethode.csproj", "{80931353-A83D-4221-A4C9-FFE576D00D93}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -123,6 +125,10 @@ Global
 		{0CB5064B-6AA1-4820-9C85-2A38C87AD513}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0CB5064B-6AA1-4820-9C85-2A38C87AD513}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0CB5064B-6AA1-4820-9C85-2A38C87AD513}.Release|Any CPU.Build.0 = Release|Any CPU
+		{80931353-A83D-4221-A4C9-FFE576D00D93}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{80931353-A83D-4221-A4C9-FFE576D00D93}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{80931353-A83D-4221-A4C9-FFE576D00D93}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{80931353-A83D-4221-A4C9-FFE576D00D93}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -147,6 +153,7 @@ Global
 		{FE0AAE3F-3077-48E9-9E15-7F693C18DA38} = {1E4E3D5A-3B6B-41DE-B618-350140512606}
 		{73A46700-763F-47B4-B41B-58724A640D09} = {1E4E3D5A-3B6B-41DE-B618-350140512606}
 		{0CB5064B-6AA1-4820-9C85-2A38C87AD513} = {1E4E3D5A-3B6B-41DE-B618-350140512606}
+		{80931353-A83D-4221-A4C9-FFE576D00D93} = {1E4E3D5A-3B6B-41DE-B618-350140512606}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {43979156-8D22-4E83-A536-9B410607038D}

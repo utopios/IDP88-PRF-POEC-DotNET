@@ -26,7 +26,7 @@ namespace TpBanqueBaseClass.Class
 
         public override string ToString()
         {
-            return $"Id:{(Id<10?"0"+Id:Id)}, Date:{DateOperation} - Montant: {Montant}€";
+            return $"Id:{(Id<10?"0"+Id:Id)}, Date:{DateOperation}";
         }
     }
 }
