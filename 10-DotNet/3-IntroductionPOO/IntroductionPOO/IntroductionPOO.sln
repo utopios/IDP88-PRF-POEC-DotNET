@@ -90,8 +90,14 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2-INSERT", "2-INSERT", "{DE
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3-UPDATE", "3-UPDATE", "{FCBCD534-AD4C-4F9C-9634-C7A966C30125}"
+	ProjectSection(SolutionItems) = preProject
+		1-UPDATE.sql = 1-UPDATE.sql
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4-DELETE", "4-DELETE", "{A3552BC5-6B69-4EB4-9356-24B31A6C1CA6}"
+	ProjectSection(SolutionItems) = preProject
+		1-DELETE.sql = 1-DELETE.sql
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "5-FONCTIONS", "5-FONCTIONS", "{F3A77DC8-0533-4534-8EC0-32E16038B453}"
 	ProjectSection(SolutionItems) = preProject
@@ -103,6 +109,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "5-FONCTIONS", "5-FONCTIONS"
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "6-JOINTURES", "6-JOINTURES", "{B2E83CB5-7F87-4326-AC6B-3CBA16E193DA}"
+	ProjectSection(SolutionItems) = preProject
+		1-INNER_JOIN.sql = 1-INNER_JOIN.sql
+		2-LEFT_JOIN.sql = 2-LEFT_JOIN.sql
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
