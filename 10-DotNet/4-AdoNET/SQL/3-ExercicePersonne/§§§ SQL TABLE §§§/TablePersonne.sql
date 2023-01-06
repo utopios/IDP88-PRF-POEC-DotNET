@@ -1,0 +1,14 @@
+﻿DROP TABLE PERSONNE
+/*
+ * Creation de la Table Personne
+ */
+ CREATE TABLE PERSONNE
+ (
+	[Id] INT IDENTITY(1,1) NOT NULL,
+	[titre] VARCHAR(5) NOT NULL,
+	[prenom] VARCHAR(50) NOT NULL,
+	[nom] VARCHAR(50) NOT NULL,
+	[email] VARCHAR(50) NOT NULL,
+	[telephone] VARCHAR(10) NOT NULL,
+	PRIMARY KEY CLUSTERED ([Id] ASC)
+ )
