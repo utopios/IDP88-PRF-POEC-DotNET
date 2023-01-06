@@ -77,10 +77,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1-SELECT", "1-SELECT", "{AE
 		..\..\4-AdoNET\SQL\04-SELECT_DISTINCT.sql = ..\..\4-AdoNET\SQL\04-SELECT_DISTINCT.sql
 		..\..\4-AdoNET\SQL\05-SELECT_WHERE.sql = ..\..\4-AdoNET\SQL\05-SELECT_WHERE.sql
 		..\..\4-AdoNET\SQL\06-SELECT_And_Or_Like.sql = ..\..\4-AdoNET\SQL\06-SELECT_And_Or_Like.sql
-		..\..\4-AdoNET\SQL\10-SELECT_GROUP_BY.sql = ..\..\4-AdoNET\SQL\10-SELECT_GROUP_BY.sql
-		..\..\4-AdoNET\SQL\09-SELECT_ORDER_BY.sql = ..\..\4-AdoNET\SQL\09-SELECT_ORDER_BY.sql
-		..\..\4-AdoNET\SQL\08-SELECT_BETWEEN.sql = ..\..\4-AdoNET\SQL\08-SELECT_BETWEEN.sql
 		..\..\4-AdoNET\SQL\07-SELECT_WHERE_IN.sql = ..\..\4-AdoNET\SQL\07-SELECT_WHERE_IN.sql
+		..\..\4-AdoNET\SQL\08-SELECT_BETWEEN.sql = ..\..\4-AdoNET\SQL\08-SELECT_BETWEEN.sql
+		..\..\4-AdoNET\SQL\09-SELECT_ORDER_BY.sql = ..\..\4-AdoNET\SQL\09-SELECT_ORDER_BY.sql
+		..\..\4-AdoNET\SQL\10-SELECT_GROUP_BY.sql = ..\..\4-AdoNET\SQL\10-SELECT_GROUP_BY.sql
 		..\..\4-AdoNET\SQL\11-SELECT_Having.sql = ..\..\4-AdoNET\SQL\11-SELECT_Having.sql
 		..\..\4-AdoNET\SQL\12-SELECT_LIMIT.sql = ..\..\4-AdoNET\SQL\12-SELECT_LIMIT.sql
 	EndProjectSection
@@ -125,6 +125,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "6-JOINTURES", "6-JOINTURES"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3-ExercicePersonne", "3-ExercicePersonne", "{BBE12892-F1D4-4596-B672-038E4A51EECB}"
 	ProjectSection(SolutionItems) = preProject
+		..\..\4-AdoNET\SQL\3-ExercicePersonne\Reponse1.sql = ..\..\4-AdoNET\SQL\3-ExercicePersonne\Reponse1.sql
+		..\..\4-AdoNET\SQL\3-ExercicePersonne\Reponse2.sql = ..\..\4-AdoNET\SQL\3-ExercicePersonne\Reponse2.sql
+		..\..\4-AdoNET\SQL\3-ExercicePersonne\Reponse3.sql = ..\..\4-AdoNET\SQL\3-ExercicePersonne\Reponse3.sql
+		..\..\4-AdoNET\SQL\3-ExercicePersonne\Reponse4.sql = ..\..\4-AdoNET\SQL\3-ExercicePersonne\Reponse4.sql
 		..\..\4-AdoNET\SQL\SQL_Exercice1.pdf = ..\..\4-AdoNET\SQL\SQL_Exercice1.pdf
 	EndProjectSection
 EndProject
@@ -132,6 +136,35 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "0-SupportCours", "0-Support
 	ProjectSection(SolutionItems) = preProject
 		..\..\4-AdoNET\SQL\FormationSQL.pdf = ..\..\4-AdoNET\SQL\FormationSQL.pdf
 	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "§§§ SQL §§§", "§§§ SQL §§§", "{08E80C68-A9DD-4B39-9718-C3C871BE07B8}"
+	ProjectSection(SolutionItems) = preProject
+		..\..\4-AdoNET\SQL\3-ExercicePersonne\§§§ SQL TABLE §§§\AjoutPersonne.sql = ..\..\4-AdoNET\SQL\3-ExercicePersonne\§§§ SQL TABLE §§§\AjoutPersonne.sql
+		..\..\4-AdoNET\SQL\3-ExercicePersonne\§§§ SQL TABLE §§§\TablePersonne.sql = ..\..\4-AdoNET\SQL\3-ExercicePersonne\§§§ SQL TABLE §§§\TablePersonne.sql
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4-ExerciceLivres", "4-ExerciceLivres", "{AFFDC461-0389-4B87-B2EC-1C12B73D599E}"
+	ProjectSection(SolutionItems) = preProject
+		..\..\4-AdoNET\SQL\4-ExerciceLivres\SQL_Exercice2.pdf = ..\..\4-AdoNET\SQL\4-ExerciceLivres\SQL_Exercice2.pdf
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "5-ExerciceVilleDepartement", "5-ExerciceVilleDepartement", "{6EA30A7A-25E5-472E-B551-EEF71F45E418}"
+	ProjectSection(SolutionItems) = preProject
+		..\..\4-AdoNET\SQL\5-ExerciceVilleDepartement\SQL_Exercice3.pdf = ..\..\4-AdoNET\SQL\5-ExerciceVilleDepartement\SQL_Exercice3.pdf
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "§§§ SQL §§§", "§§§ SQL §§§", "{F5241B48-88CB-4D4D-AC40-A952A86DF342}"
+	ProjectSection(SolutionItems) = preProject
+		..\..\4-AdoNET\SQL\5-ExerciceVilleDepartement\§§§ SQL §§§\departement.sql = ..\..\4-AdoNET\SQL\5-ExerciceVilleDepartement\§§§ SQL §§§\departement.sql
+		..\..\4-AdoNET\SQL\5-ExerciceVilleDepartement\§§§ SQL §§§\villes_france_sqlserver.sql = ..\..\4-AdoNET\SQL\5-ExerciceVilleDepartement\§§§ SQL §§§\villes_france_sqlserver.sql
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "§§§ SQL §§§", "§§§ SQL §§§", "{645E3C28-BC13-44E5-9331-9B7071E28DE0}"
+	ProjectSection(SolutionItems) = preProject
+		..\..\4-AdoNET\SQL\4-ExerciceLivres\§§§ SQL §§§\AjoutLivre.sql = ..\..\4-AdoNET\SQL\4-ExerciceLivres\§§§ SQL §§§\AjoutLivre.sql
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AdoNET", "AdoNET", "{E29E8974-E282-43A7-8092-42A70A4EF80E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -255,6 +288,12 @@ Global
 		{B2E83CB5-7F87-4326-AC6B-3CBA16E193DA} = {EF81D5A5-E7DC-4CC3-B1CD-150F5DE7B602}
 		{BBE12892-F1D4-4596-B672-038E4A51EECB} = {A8D958C0-F503-41A1-AC1F-D30EF7137D3C}
 		{B32CA6EB-D3DE-4FC9-BE37-3AF36CBB583A} = {A8D958C0-F503-41A1-AC1F-D30EF7137D3C}
+		{08E80C68-A9DD-4B39-9718-C3C871BE07B8} = {BBE12892-F1D4-4596-B672-038E4A51EECB}
+		{AFFDC461-0389-4B87-B2EC-1C12B73D599E} = {A8D958C0-F503-41A1-AC1F-D30EF7137D3C}
+		{6EA30A7A-25E5-472E-B551-EEF71F45E418} = {A8D958C0-F503-41A1-AC1F-D30EF7137D3C}
+		{F5241B48-88CB-4D4D-AC40-A952A86DF342} = {6EA30A7A-25E5-472E-B551-EEF71F45E418}
+		{645E3C28-BC13-44E5-9331-9B7071E28DE0} = {AFFDC461-0389-4B87-B2EC-1C12B73D599E}
+		{E29E8974-E282-43A7-8092-42A70A4EF80E} = {1E4496A5-03A4-4503-A4C6-A6B4177369E4}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {43979156-8D22-4E83-A536-9B410607038D}
