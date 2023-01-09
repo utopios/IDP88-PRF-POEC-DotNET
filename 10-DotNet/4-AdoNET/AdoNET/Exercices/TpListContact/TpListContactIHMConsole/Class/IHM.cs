@@ -12,9 +12,11 @@ namespace TpListContactIHMConsole.Class
     internal class IHM
     {
        List<Contact> contacts;
+        ContactDAO daoContact;
         public IHM()
         {
-            contacts = new();
+            daoContact = new ContactDAO();
+            contacts = daoContact.FindAll();
         }
 
         public void Start()

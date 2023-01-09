@@ -7,7 +7,7 @@ using TpListContactBaseClass.Class;
 
 namespace TpListContactBaseClass.DAO
 {
-    internal class AddressDAO : BaseDAO<Address>
+    public class AddressDAO : BaseDAO<Address>
     {
         public override int Create(Address element)
         {
