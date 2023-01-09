@@ -54,12 +54,12 @@ namespace TpListContactBaseClass.DAO
             throw new NotImplementedException();
         }
 
-        public override Person Find(int index)
+        public override (bool,Person) Find(int index)
         {
             throw new NotImplementedException();
         }
 
-        public override List<Person> Find(Func<Person, bool> criteria)
+        public override (bool,List<Person>) Find(Func<Person, bool> criteria)
         {
             throw new NotImplementedException();
         }

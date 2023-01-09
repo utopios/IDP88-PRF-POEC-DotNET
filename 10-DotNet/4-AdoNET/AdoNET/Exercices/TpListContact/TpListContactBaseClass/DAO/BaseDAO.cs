@@ -20,9 +20,9 @@ namespace TpListContactBaseClass.DAO
         public abstract bool Delete(T element);
         public abstract bool Update(T element);
 
-        public abstract T Find(int index);
+        public abstract (bool,T) Find(int index);
 
-        public abstract List<T> Find(Func<T,bool> criteria);
+        public abstract (bool,List<T>) Find(Func<T,bool> criteria);
         
         public abstract List<T> FindAll();
 

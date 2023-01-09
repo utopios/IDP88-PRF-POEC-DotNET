@@ -24,12 +24,12 @@ namespace TpListContactBaseClass.DAO
             throw new NotImplementedException();
         }
 
-        public override Contact Find(int index)
+        public override (bool,Contact) Find(int index)
         {
             throw new NotImplementedException();
         }
 
-        public override List<Contact> Find(Func<Contact, bool> criteria)
+        public override (bool,List<Contact>) Find(Func<Contact, bool> criteria)
         {
             throw new NotImplementedException();
         }
