@@ -51,26 +51,26 @@ SqlConnection connection = new SqlConnection(connectionString);
 
 #region SQL PARAMETERS
 
-//// Récupération saisies utilisateur
-//Console.Write("Veuillez saisir le Nom : ");
-//string nom = Console.ReadLine();
-//Console.Write("Veuillez saisir le Prénom : ");
-//string prenom = Console.ReadLine();
-//Console.Write("Veuillez saisir l'email : ");
-//string email = Console.ReadLine();
-//Console.Write("Veuillez saisir le téléphone : ");
-//string telephone = Console.ReadLine();
+// Récupération saisies utilisateur
+Console.Write("Veuillez saisir le Nom : ");
+string nom = Console.ReadLine();
+Console.Write("Veuillez saisir le Prénom : ");
+string prenom = Console.ReadLine();
+Console.Write("Veuillez saisir l'email : ");
+string email = Console.ReadLine();
+Console.Write("Veuillez saisir le téléphone : ");
+string telephone = Console.ReadLine();
 
 //// Rédaction de notre requete
-//string request = "INSERT INTO PERSON (nom, prenom, email, telephone) VALUES ( @Nom, @Prenom, @Email, @Telephone )";
+string request = "INSERT INTO PERSON (nom, prenom, email, telephone) VALUES ( @Nom, @Prenom, @Email, @Telephone )";
 //// Création d'une instance de SqlCommand
-//SqlCommand command= new SqlCommand(request, connection);
+SqlCommand command= new SqlCommand(request, connection);
 
 //// Ajout des params à notre request
-//command.Parameters.Add(new SqlParameter("@Nom", nom));
-//command.Parameters.Add(new SqlParameter("@Prenom", prenom));
-//command.Parameters.Add(new SqlParameter("@Email", email));
-//command.Parameters.Add(new SqlParameter("@Telephone", telephone));
+command.Parameters.Add(new SqlParameter("@Nom", nom));
+command.Parameters.Add(new SqlParameter("@Prenom", prenom));
+command.Parameters.Add(new SqlParameter("@Email", email));
+command.Parameters.Add(new SqlParameter("@Telephone", telephone));
 
 //// Execution de la commande
 //connection.Open();
@@ -88,9 +88,9 @@ string login = Console.ReadLine();
 Console.Write("Veuillez saisir le Password : ");
 string password = Console.ReadLine();
 
-Utilisateur u = new(login,password);
+Utilisateur u = new(login, password);
 
-(bool,int) result = u.Add();
+(bool, int) result = u.Add();
 
 if (result.Item1)
 {
