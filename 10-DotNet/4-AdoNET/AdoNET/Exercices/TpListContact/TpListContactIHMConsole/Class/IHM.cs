@@ -11,27 +11,15 @@ namespace TpListContactIHMConsole.Class
 {
     internal class IHM
     {
-        PersonDAO _daoPerson;
+       List<Contact> contacts;
         public IHM()
         {
-
+            contacts = new();
         }
 
         public void Start()
         {
-            _daoPerson = new();
-            int day = 0;
-            int month = 0;
-            int year = 0;
-            Person p = new();
-            TryRead("Veuillez saisir le nom : ", () => p.Lastname = Console.ReadLine());
-            TryRead("Veuillez saisir le prénom : ", () => p.Firstname = Console.ReadLine());
-            TryRead("Veuillez saisir le jour de naissance : ", () => day = Convert.ToInt32(Console.ReadLine()));
-            TryRead("Veuillez saisir le mois de naissance : ", () => month = Convert.ToInt32(Console.ReadLine()));
-            TryRead("Veuillez saisir l'année de naissance : ", () => year = Convert.ToInt32(Console.ReadLine()));
-            p.DateOfBirth = new DateTime(year, month, day);
-            p.PersonId = _daoPerson.Create(p);
-            Close();
+            
         }
 
         private void TryRead(string message, Action ReadElement)

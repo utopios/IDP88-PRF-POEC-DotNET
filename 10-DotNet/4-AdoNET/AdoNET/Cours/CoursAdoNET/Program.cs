@@ -15,27 +15,26 @@ SqlConnection connection = new SqlConnection(connectionString);
 // Préparation de la commande SQL
 //string request = "INSERT INTO PERSON (nom, prenom, email, telephone) VALUES ('Test1','Testy','test@testy.fr','+33 6 41 52 41 52')";
 //string request = "INSERT INTO PERSON (nom, prenom, email, telephone) OUTPUT INSERTED.ID VALUES ('Test2','Testy','test2@testy.fr','+33 6 41 52 41 99')";
-//string request = "SELECT Top 5 * FROM person";
+string request = "SELECT Top 5 * FROM person";
 
 
 // Préparation de l'objet commanbde avec les params
-//SqlCommand command = new SqlCommand(request, connection);
+SqlCommand command = new SqlCommand(request, connection);
 
 // ouverture de la connection
-//connection.Open();
+connection.Open();
 
 // 1ere méthode d'éxecution de la commande : ExecuteNonQuery() => Retourne le nombre de ligne(s) affecté(s) par la commande
 //int nbLigne = command.ExecuteNonQuery();
 // 2eme méthode d'éxecution de la commande : ExecuteScalar() => Retourne le champs indiqué dans la request
 //int Id = (int)command.ExecuteScalar();   
 // 3eme méthode d'éxecution d'une commande : ExecuteReader() => Retourne l'ensemble des résultats correspondant
-//SqlDataReader reader = command.ExecuteReader();
+SqlDataReader reader = command.ExecuteReader();
 
-//while (reader.Read())
-//{
-//    Console.WriteLine($"ID : {reader.GetInt32(0)}, Nom : {reader.GetString(1)} Prenom : {reader.GetString(2)} - Email : {reader.GetString(3)} - Téléphone : {reader.GetString(4)}");
-//}
-
+while (reader.Read())
+{
+    Console.WriteLine($"ID : {reader.GetInt32(0)}, Nom : {reader.GetString(1)} Prenom : {reader.GetString(2)} - Email : {reader.GetString(3)} - Téléphone : {reader.GetString(4)}");
+}
 
 //// Liberation de l'objet command
 //command.Dispose();
