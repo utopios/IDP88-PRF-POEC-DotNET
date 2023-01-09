@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TpListContactBaseClass.Class
 {
-    internal class Contact
+    public class Contact
     {
     }
 }
