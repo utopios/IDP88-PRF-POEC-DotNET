@@ -28,7 +28,9 @@ namespace TpListContactBaseClass.Class
     
 
         public int ContactId { get => id; set => id = value; }
+
         public Address ContactAddress { get => contactAddress; set => contactAddress = value; }
+
         public string Phone 
         {
             get => phone;
