@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TpListContactBaseClass.Tools;
 
 namespace TpListContactBaseClass.Class
 {
@@ -28,8 +29,29 @@ namespace TpListContactBaseClass.Class
 
         public int ContactId { get => id; set => id = value; }
         public Address ContactAddress { get => contactAddress; set => contactAddress = value; }
-        public string Phone { get => phone; set => phone = value; }
-        public string Email { get => email; set => email = value; }
+        public string Phone 
+        {
+            get => phone;
+            set
+            {
+                if (MyRegex.IsPhone(value))                
+                    phone = MyRegex.FormatPhone(value);
+                else
+                    throw new FormatException("Erreur format téléphone...");
+                
+            }
+        }
+        public string Email 
+        {
+            get => email;
+            set
+            {
+                if (MyRegex.IsEmail(value))
+                    email = value;
+                else 
+                    throw new FormatException("Erreur format email...");                
+            }
+        }
 
         public override string ToString()
         {

@@ -6,6 +6,7 @@ using System.Reflection.Emit;
 using System.Text;
 using System.Threading.Tasks;
 using System.Threading.Tasks.Dataflow;
+using TpListContactBaseClass.Tools;
 
 namespace TpListContactBaseClass.Class
 {
@@ -34,9 +35,33 @@ namespace TpListContactBaseClass.Class
         }
 
         public int PersonId { get => personId; set => personId = value; }
-        public string Firstname { get => firstname; set => firstname = value; }
-        public string Lastname { get => lastname; set => lastname = value; }
-        public DateTime DateOfBirth { get => dateOfBirth; set => dateOfBirth = value; }
+        public string Firstname 
+        { 
+            get => firstname; 
+            set 
+            {
+                if (MyRegex.IsName(value))
+                    firstname = value;
+                else
+                    throw new FormatException("Erreur format prénom...");
+            } 
+        }
+        public string Lastname 
+        { 
+            get => lastname;
+            set
+            {
+                if (MyRegex.IsName(value))
+                    lastname = value;
+                else
+                    throw new FormatException("Erreur format nom...");
+            }
+        }
+        public DateTime DateOfBirth 
+        { 
+            get => dateOfBirth; 
+            set => dateOfBirth = value; 
+        }
 
         public override string ToString()
         {
