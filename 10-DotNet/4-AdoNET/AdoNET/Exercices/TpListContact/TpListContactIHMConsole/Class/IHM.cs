@@ -21,20 +21,6 @@ namespace TpListContactIHMConsole.Class
 
         public void Start()
         {
-            //Address a = new Address(5,"rue de Paris", 59800, "Lille","France");
-            //a.AddressId = new AddressDAO().Create(a);
-            //Console.WriteLine(a);
-            //a.Number= 1;
-            //a.RoadName = "rue de la Liberté";
-            //a.ZipCode = 59801;
-            //a.City = "Lilles";
-            //a.Country = "Francia";
-            //bool result = new AddressDAO().Update(a);
-            //Console.WriteLine(result);
-            //bool result = new AddressDAO().Delete(1007);
-            (bool found,Address a) = new AddressDAO().Find(1008);
-            if (found)            
-                Console.WriteLine(a);
             
             Close();
         }

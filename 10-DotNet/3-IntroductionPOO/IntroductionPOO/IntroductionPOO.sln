@@ -174,9 +174,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CoursAdoNET", "..\..\4-AdoN
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "TpListContact(Annuaire)", "TpListContact(Annuaire)", "{E40FE7CA-290A-418A-AC07-8DB1843C13D5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TpListContactBaseClass", "..\..\4-AdoNET\AdoNET\Exercices\TpListContact\TpListContactBaseClass\TpListContactBaseClass.csproj", "{28D1F5D9-BD44-4C43-89B1-AC911E67AE3B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TpListContactBaseClass", "..\..\4-AdoNET\AdoNET\Exercices\TpListContact\TpListContactBaseClass\TpListContactBaseClass.csproj", "{28D1F5D9-BD44-4C43-89B1-AC911E67AE3B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TpListContactIHMConsole", "..\..\4-AdoNET\AdoNET\Exercices\TpListContact\TpListContactIHMConsole\TpListContactIHMConsole.csproj", "{D82FD677-7B5A-42D8-B93C-DF40C7679853}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TpListContactIHMConsole", "..\..\4-AdoNET\AdoNET\Exercices\TpListContact\TpListContactIHMConsole\TpListContactIHMConsole.csproj", "{D82FD677-7B5A-42D8-B93C-DF40C7679853}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LesInterfaces", "CoursPOO\LesInterfaces\LesInterfaces.csproj", "{684E2969-26E7-4FCA-8A53-6B7E7C26DAC7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -272,6 +274,10 @@ Global
 		{D82FD677-7B5A-42D8-B93C-DF40C7679853}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D82FD677-7B5A-42D8-B93C-DF40C7679853}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D82FD677-7B5A-42D8-B93C-DF40C7679853}.Release|Any CPU.Build.0 = Release|Any CPU
+		{684E2969-26E7-4FCA-8A53-6B7E7C26DAC7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{684E2969-26E7-4FCA-8A53-6B7E7C26DAC7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{684E2969-26E7-4FCA-8A53-6B7E7C26DAC7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{684E2969-26E7-4FCA-8A53-6B7E7C26DAC7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -324,6 +330,7 @@ Global
 		{E40FE7CA-290A-418A-AC07-8DB1843C13D5} = {AD2DEEEE-531A-4C08-87F9-78B22BA9D946}
 		{28D1F5D9-BD44-4C43-89B1-AC911E67AE3B} = {E40FE7CA-290A-418A-AC07-8DB1843C13D5}
 		{D82FD677-7B5A-42D8-B93C-DF40C7679853} = {E40FE7CA-290A-418A-AC07-8DB1843C13D5}
+		{684E2969-26E7-4FCA-8A53-6B7E7C26DAC7} = {1E4E3D5A-3B6B-41DE-B618-350140512606}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {43979156-8D22-4E83-A536-9B410607038D}
