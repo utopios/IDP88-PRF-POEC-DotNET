@@ -43,6 +43,10 @@ namespace TpListContactIHMConsole.Class
 
             Console.WriteLine(result);
 
+            result = new ContactDAO().Delete(11);
+
+            Console.WriteLine(result);
+
             Close();
         }
 
