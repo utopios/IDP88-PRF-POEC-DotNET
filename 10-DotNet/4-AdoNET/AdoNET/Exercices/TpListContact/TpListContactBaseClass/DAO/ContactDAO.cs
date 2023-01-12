@@ -5,6 +5,7 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 using TpListContactBaseClass.Class;
 using TpListContactBaseClass.Tools;
 
@@ -14,12 +15,91 @@ namespace TpListContactBaseClass.DAO
     {
         public override int Create(Contact element)
         {
-            throw new NotImplementedException();
+            // Création d'une instance de connection
+            _connection = Connection.New;
+            // Ajout de la personne en BDD
+            int personId = new PersonDAO().Create(element);
+            int addressId = new AddressDAO().Create(element.ContactAddress);
+
+            if (personId > 0 && addressId > 0)
+            {
+                // Prépartion de la commande
+                _request = "INSERT INTO CONTACT (email, phone, person_id, address_id) " +
+                    "OUTPUT INSERTED.ID VALUES (@Email, @PhoneNumber, @PersonId, @AddressId)";
+
+                // Préparation de la commande
+                _command = new SqlCommand(_request, _connection);
+
+                // Ajout des paramètres de la commande
+                _command.Parameters.Add(new SqlParameter("@Email", element.Email));
+                _command.Parameters.Add(new SqlParameter("@PhoneNumber", element.Phone));
+                _command.Parameters.Add(new SqlParameter("@PersonId", personId));
+                _command.Parameters.Add(new SqlParameter("@AddressId", addressId));
+
+                // Execution de la commande
+                _connection.Open();
+                int Id = (int)_command.ExecuteScalar();
+
+                // Libération de l'objet command
+                _command.Dispose();
+                // Fermeture de la connection
+                _connection.Close();
+
+                return Id;
+            }
+            else
+                return -1;
         }
 
         public override bool Delete(int id)
         {
-            throw new NotImplementedException();
+            bool deleted = false;
+            (bool found, Contact c) = Find(id);
+            if (found)
+            {
+                try
+                {
+                    deleted = new AddressDAO().Delete(c.ContactAddress.AddressId);
+                    if (deleted)
+                        deleted = new PersonDAO().Delete(c.PersonId);
+                }
+                catch (Exception)
+                {
+                    return false;
+                }
+            }
+            if (deleted)
+            {
+                try
+                {
+                    // Création d'une instance de connection
+                    _connection = Connection.New;
+                    // Redaction de la requete
+                    _request = "DELETE FROM CONTACT WHERE Id = @Id";
+                    // Préparation de la commande
+                    _command = new SqlCommand(_request, _connection);
+                    // Ajout des paramètres de la commande
+                    _command.Parameters.Add(new SqlParameter("@Id", c.ContactId));
+
+                    // Execution de la commande
+                    _connection.Open();
+                    int NbLigne = _command.ExecuteNonQuery();
+
+                    // Libération de l'objet command
+                    _command.Dispose();
+                    // Fermeture de la connection
+                    _connection.Close();
+
+                }
+                catch (Exception)
+                {
+                    return false;
+                }
+
+                deleted = NbLigne > 0;
+            }
+
+            return deleted;
         }
 
         public override bool Delete(Contact element)
@@ -27,7 +107,7 @@ namespace TpListContactBaseClass.DAO
             throw new NotImplementedException();
         }
 
-        public override (bool,Contact) Find(int index)
+        public override (bool, Contact) Find(int index)
         {
             // Préparation des variable de retour
             Contact contact = null;
@@ -42,10 +122,10 @@ namespace TpListContactBaseClass.DAO
                 "FROM CONTACT As ctc " +
                 "INNER JOIN PERSON As psn ON ctc.Person_Id = psn.Person_Id" +
                 "INNER JOIN ADDRESS As adr ON ctc.Address_Id = adr.Address_Id" +
-                "WHERE ctc.Id = @Id" ;
+                "WHERE ctc.Id = @Id";
 
             // Préparation de notre objet command
-            _command = new SqlCommand(_request,_connection);
+            _command = new SqlCommand(_request, _connection);
 
             // Ajout des Params
             _command.Parameters.Add(new SqlParameter("@Id", index));
@@ -54,31 +134,31 @@ namespace TpListContactBaseClass.DAO
             _connection.Open();
 
             // Execution de la commande via le reader
-            _reader= _command.ExecuteReader();
+            _reader = _command.ExecuteReader();
 
-            if( _reader.Read())
+            if (_reader.Read())
             {
                 contact = new Contact()
                 {
-                    ContactId = _reader.GetInt32(0), 
-                    Email= _reader.GetString(1),
-                    Phone= _reader.GetString(2),
-                    PersonId= _reader.GetInt32(3),
-                    Firstname= _reader.GetString(4),
-                    Lastname= _reader.GetString(5),
+                    ContactId = _reader.GetInt32(0),
+                    Email = _reader.GetString(1),
+                    Phone = _reader.GetString(2),
+                    PersonId = _reader.GetInt32(3),
+                    Firstname = _reader.GetString(4),
+                    Lastname = _reader.GetString(5),
                     DateOfBirth = (DateTime)_reader[6],
                     ContactAddress = new()
                     {
-                        AddressId= _reader.GetInt32(7),
-                        Number= _reader.GetInt32(8),
-                        RoadName= _reader.GetString(9),
+                        AddressId = _reader.GetInt32(7),
+                        Number = _reader.GetInt32(8),
+                        RoadName = _reader.GetString(9),
                         ZipCode = _reader.GetInt32(10),
                         City = _reader.GetString(11),
                         Country = _reader.GetString(12),
                     }
-                    
+
                 };
-                found= true;
+                found = true;
             }
             // fermeture du reader
             _reader.Close();
@@ -89,10 +169,10 @@ namespace TpListContactBaseClass.DAO
             // Fermeture de la connection
             _connection.Close();
 
-            return (found,contact);
+            return (found, contact);
         }
 
-        public override (bool,List<Contact>) Find(Func<Contact, bool> criteria)
+        public override (bool, List<Contact>) Find(Func<Contact, bool> criteria)
         {
             throw new NotImplementedException();
         }
@@ -101,7 +181,7 @@ namespace TpListContactBaseClass.DAO
         {
             // Préparation des variable de retour
             List<Contact> contacts = new();
-    
+
 
             // Instance de connection
             _connection = Connection.New;
@@ -161,7 +241,42 @@ namespace TpListContactBaseClass.DAO
 
         public override bool Update(Contact element)
         {
-            throw new NotImplementedException();
+            bool updated = false;
+
+            // Instance de connection
+            _connection = Connection.New;
+
+            // Préparation de la commande
+            _request = "UPDATE CONTACT SET EMAIL = @EMAIL , PHONE = @PHONE WHERE ID=@Id ";
+
+            // Préparation de notre objet command
+            _command = new SqlCommand(_request, _connection);
+
+            // Ajout des paramètres de la commande
+            _command.Parameters.Add(new SqlParameter("@EMAIL", element.Email));
+            _command.Parameters.Add(new SqlParameter("@PHONE", element.Phone));
+            _command.Parameters.Add(new SqlParameter("@Id", element.ContactId));
+
+
+            // ouverture de la connection
+            _connection.Open();
+
+            // Execution de la commande
+            int NbLigne = _command.ExecuteNonQuery();
+
+            // Libération de l'objet command
+            _command.Dispose();
+            // Fermeture de la connection
+            _connection.Close();
+
+            if (NbLigne>0)
+            {
+                updated = new PersonDAO().Update(element);
+                if (updated)
+                    updated = new AddressDAO().Update(element.ContactAddress);
+            }
+
+            return updated;
         }
     }
 }
