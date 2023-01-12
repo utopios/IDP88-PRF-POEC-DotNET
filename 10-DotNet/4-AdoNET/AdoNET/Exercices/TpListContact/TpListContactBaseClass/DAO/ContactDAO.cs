@@ -90,13 +90,15 @@ namespace TpListContactBaseClass.DAO
                     // Fermeture de la connection
                     _connection.Close();
 
+                    deleted = NbLigne > 0;
+
                 }
                 catch (Exception)
                 {
                     return false;
                 }
 
-                deleted = NbLigne > 0;
+               
             }
 
             return deleted;
@@ -117,11 +119,11 @@ namespace TpListContactBaseClass.DAO
             _connection = Connection.New;
 
             // Préparation de la commande
-            _request = "SELECT ctc.id, ctc.email, ctc.phone, psn.person_Id, psn.firstname, psn.lastname," +
-                "psn.dateOfBirth, adr.address_Id, adr.number, adr.road_name, adr.zip_code, adr.city, adr.country " +
+            _request = "SELECT ctc.id, ctc.email, ctc.phone, psn.person_Id, psn.firstname, psn.lastname, psn.dateOfBirth," +
+                " adr.address_Id, adr.number, adr.road_name, adr.zip_code, adr.city, adr.country " +
                 "FROM CONTACT As ctc " +
-                "INNER JOIN PERSON As psn ON ctc.Person_Id = psn.Person_Id" +
-                "INNER JOIN ADDRESS As adr ON ctc.Address_Id = adr.Address_Id" +
+                "INNER JOIN PERSON As psn ON ctc.Person_Id = psn.Person_Id " +
+                "INNER JOIN ADDRESS As adr ON ctc.Address_Id = adr.Address_Id " +
                 "WHERE ctc.Id = @Id";
 
             // Préparation de notre objet command
