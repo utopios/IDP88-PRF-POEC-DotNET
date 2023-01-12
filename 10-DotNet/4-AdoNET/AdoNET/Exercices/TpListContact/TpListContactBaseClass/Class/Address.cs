@@ -70,7 +70,7 @@ namespace TpListContactBaseClass.Class
             set
             {
                 if (MyRegex.IsAlphabetic(value))
-                    city = value;
+                    country = value;
                 else
                     throw new FormatException("Erreur format nom pays...");
             }
