@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace TpListContactBaseClass.Tools
 {
-    internal class MyRegex
+    public class MyRegex
     {
         public static bool IsName(string name)
         {
