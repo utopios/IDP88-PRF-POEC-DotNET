@@ -8,6 +8,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.Data.SqlClient" Version="5.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\..\..\..\..\3-IntroductionPOO\IntroductionPOO\ExercicesPOO\Tp-Banque\TpBanqueBaseClass\TpBanqueBaseClass.csproj" />
   </ItemGroup>
 

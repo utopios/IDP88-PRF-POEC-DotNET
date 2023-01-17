@@ -15,6 +15,11 @@ namespace TpBanqueBaseClass.Class
         private static int counter = 0;
         public event Action<decimal, int> ADecouvert;
 
+        public Compte()
+        {
+
+        }
+
         public Compte(decimal solde, Client client)
         {
             Id = ++counter;

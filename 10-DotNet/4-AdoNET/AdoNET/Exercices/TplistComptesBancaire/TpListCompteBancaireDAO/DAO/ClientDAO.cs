@@ -7,9 +7,9 @@ using TpBanqueBaseClass.Class;
 
 namespace TpListCompteBancaireDAO.DAO
 {
-    internal class CompteDAO : BaseDAO<Compte>
+    internal class ClientDAO : BaseDAO<Client>
     {
-        public override int Create(Compte element)
+        public override int Create(Client element)
         {
             throw new NotImplementedException();
         }
@@ -19,34 +19,27 @@ namespace TpListCompteBancaireDAO.DAO
             throw new NotImplementedException();
         }
 
-        public override bool Delete(Compte element)
+        public override bool Delete(Client element)
         {
             throw new NotImplementedException();
         }
 
-        public override (bool, Compte) Find(int index)
-        {
-            Compte c = new ();
-            (bool found, List<Operation> liste) = new OperationDAO().Find(o => o.IdCompte == c.Id);
-            if (found)
-            {
-                c.Operations = liste;
-            }
-            return (found,c);
-        }
-
-        public override (bool, List<Compte>) Find(Func<Compte, bool> criteria)
-        {
-            throw new NotImplementedException();
-        }
-        
-
-        public override List<Compte> FindAll()
+        public override (bool, Client) Find(int index)
         {
             throw new NotImplementedException();
         }
 
-        public override bool Update(Compte element)
+        public override (bool, List<Client>) Find(Func<Client, bool> criteria)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override List<Client> FindAll()
+        {
+            throw new NotImplementedException();
+        }
+
+        public override bool Update(Client element)
         {
             throw new NotImplementedException();
         }
