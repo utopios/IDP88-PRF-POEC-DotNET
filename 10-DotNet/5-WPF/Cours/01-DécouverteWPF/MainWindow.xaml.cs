@@ -33,20 +33,33 @@ namespace _01_DécouverteWPF
             {
                 Content = "Click Me!!!",
                 Foreground = Brushes.Black,
-                Background= Brushes.OrangeRed,
+                Background = Brushes.OrangeRed,
             };
-            b.Click += Button_Click;
+            b.Click += Button1_Click;
             grid.Children.Add(b);
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Ca marche");
+            MessageBoxResult Result = MessageBox.Show("Etes-vous sur?", "Question", MessageBoxButton.YesNoCancel, MessageBoxImage.Question);
+
+            switch (Result)
+            {
+                case MessageBoxResult.Yes:
+                    ResultatMessageBoxTbc.Text = "Vous avez répondu OUI !";
+                    break;
+                case MessageBoxResult.No:
+                    ResultatMessageBoxTbc.Text = "Vous avez répondu NON !";
+                    break;
+                case MessageBoxResult.Cancel:
+                    ResultatMessageBoxTbc.Text = "Vous avez annulé !";
+                    break;
+            }
         }
 
         private void Button1_Click(object sender, RoutedEventArgs e)
         {
-
+            MessageBox.Show("Ca marche");
         }
 
         private void MenuItem_Click(object sender, RoutedEventArgs e)
@@ -63,7 +76,7 @@ namespace _01_DécouverteWPF
 
         private void MenuItem_Click_About(object sender, RoutedEventArgs e)
         {
-
+            MessageBox.Show("Application développée par Anthony Di Persio @2023", "About this application...", MessageBoxButton.OKCancel, MessageBoxImage.Exclamation);
         }
 
         private void Ajouter_Click_Btn(object sender, RoutedEventArgs e)
@@ -78,7 +91,7 @@ namespace _01_DécouverteWPF
             }
             if (p != null)
             {
-               ResultatTbc.Text = p.ToString();
+                ResultatTbc.Text = p.ToString();
             }
         }
     }

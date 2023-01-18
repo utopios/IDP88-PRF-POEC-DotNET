@@ -23,6 +23,9 @@
             <StackPanel Orientation="Horizontal">
                 <TextBlock HorizontalAlignment="left" VerticalAlignment="Top" TextWrapping="Wrap" Text="Decouverte WPF" Background="Green" Foreground="#FF791313" Height="100" Width="300" TextAlignment="Center" FontSize="22"  Cursor="Arrow"/>
                 <Button x:Name="Button1" Content="Valider" HorizontalAlignment="Left" VerticalAlignment="Top" Height="50" Width="136" Click="Button_Click" />
+                <GroupBox Header="Résultat" Width="450">
+                    <TextBlock x:Name="ResultatMessageBoxTbc" Text="Ca marche!"/>
+                </GroupBox>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
                 <GroupBox Header="Formulaire" Width="450">

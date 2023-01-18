@@ -1,4 +1,5 @@
-﻿using System;
+﻿using _01_DécouverteWPF.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -29,6 +30,22 @@ namespace _01_DécouverteWPF
             MainWindow m = new MainWindow();
             m.Show();
             Close();
+        }
+
+        private void Ajouter_Click_Btn(object sender, RoutedEventArgs e)
+        {
+            Personne p = null;
+            string nom = NomTbx.Text;
+            string prenom = PrenomTbx.Text;
+            int age = Convert.ToInt32(AgeTbx.Text);
+            if (nom != "" && prenom != "" && age != 0)
+            {
+                p = new(nom, prenom, age);
+            }
+            if (p != null)
+            {
+                ResultatTbc.Text = p.ToString();
+            }
         }
     }
 }
