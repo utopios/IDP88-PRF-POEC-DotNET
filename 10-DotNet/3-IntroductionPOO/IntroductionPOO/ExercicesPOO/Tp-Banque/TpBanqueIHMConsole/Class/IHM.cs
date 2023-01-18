@@ -228,7 +228,7 @@ namespace TpBanqueIHMConsole.Class
                 {
                     foreach (Operation o in compte.Operations)
                     {
-                        MyConsoleColor.OnGrayInput($"{o.ToString()} - Montant : ");
+                        MyConsoleColor.OnGrayInput($"Montant : ");
                         if (o.Montant >= 0)
                             MyConsoleColor.OnGreen($"{Math.Abs(o.Montant)}€");
                         else

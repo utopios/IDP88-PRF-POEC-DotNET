@@ -10,6 +10,16 @@ namespace TpBanqueBaseClass.Class
     {
         private decimal taux;
 
+        public CompteEpargne()
+        {
+
+        }
+
+        public CompteEpargne(decimal taux) 
+        {
+            Taux = taux;
+        }
+
         public CompteEpargne(decimal solde, Client client, decimal taux) : base(solde, client)
         {
             Taux = taux;

@@ -14,10 +14,19 @@ namespace TpBanqueBaseClass.Class
         private DateTime dateOperation;
         private static int counter = 0;
 
+
         public Operation(decimal montant)
         {
             Id = ++counter;
+            Montant = montant;            
+            DateOperation = DateTime.Now;
+        }
+
+        public Operation(decimal montant, int idCompte)
+        {
+            Id = ++counter;
             Montant = montant;
+            IdCompte= idCompte;
             DateOperation = DateTime.Now;
         }
 

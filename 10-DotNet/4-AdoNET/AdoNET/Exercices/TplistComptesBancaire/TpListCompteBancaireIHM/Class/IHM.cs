@@ -5,6 +5,8 @@ using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using TpBanqueBaseClass.Class;
+using TpListCompteBancaireDAO.DAO;
 using TpListCompteBancaireIHM.Class;
 using TpListCompteBancaireIHM.Tools;
 
@@ -12,7 +14,7 @@ namespace TpListCompteBancaireIHM.Class
 {
     internal class IHM
     {
-        private Bank banque;
+        List<Compte> comptes;
         public IHM()
         {
             Init();
@@ -20,10 +22,7 @@ namespace TpListCompteBancaireIHM.Class
 
         private void Init()
         {
-            banque = new();
-            banque.Injecter();
-            for (int i = 0; i < banque.Comptes.Count; i++)
-                banque.Comptes[i].ADecouvert += ActionNotificationADecouvert;
+            comptes = new CompteDAO().FindAll();
         }
 
         public void Start()
@@ -111,6 +110,12 @@ namespace TpListCompteBancaireIHM.Class
             TryRead("\nVeuillez saisir le prénom : ", () => client.Prenom = Console.ReadLine());
             TryRead("\nVeuillez saisir le téléphone : ", () => client.Telephone = Console.ReadLine());
 
+            new ClientDAO().Create(client);
+
+            // Console.WriteLine(client.Id);
+
+
+
             decimal solde = 0;
             MyConsoleColor.OnDarkCyan("\n ----------- Création du Compte -----------");
             TryRead("\nVeuillez saisir le solde à l'ouverture du compte : ", () => solde = Convert.ToDecimal(Console.ReadLine()));
@@ -150,7 +155,14 @@ namespace TpListCompteBancaireIHM.Class
             {
                 compte.ADecouvert += ActionNotificationADecouvert;
 
-                if (banque.AjouterCompte(compte))
+                if (compte is CompteEpargne ce)
+                    new CompteEpargneDAO().Create(ce);
+                else if (compte is ComptePayant cp)
+                    new ComptePayantDAO().Create(cp);
+                else
+                    new CompteDAO().Create(compte);
+
+                if (compte.Id > 0)
                     MyConsoleColor.OnGreen($"\n\nCompte ajoutée avec le numéro {compte.Id}");
                 else
                     MyConsoleColor.OnRed($"\nErreur lors de l'ajout du compte...");
@@ -169,16 +181,46 @@ namespace TpListCompteBancaireIHM.Class
             {
                 decimal montant = 0;
                 TryRead("\n Merci de saisir le montant du dépôt => ", () => montant = Convert.ToDecimal(Console.ReadLine()));
-                Operation operation = new(montant);
+                Operation operation = new(montant, compte.Id);
+
+
                 if (compte.Depot(operation))
-                    MyConsoleColor.OnGreen("\n\n Dépôt Effectué !");
+                {
+                    if (new OperationDAO().Create(operation) == 1)
+                    {
+                        MyConsoleColor.OnGreen("\n\n Opération ajoutée !");
+
+                        if (new CompteDAO().Update(compte))
+                            MyConsoleColor.OnGreen("\n\n Le Dépot a été effectué !");
+
+                        if (compte is ComptePayant cp)
+                        {
+                            Operation coutOperation = new(-cp.CoutOperation, compte.Id);
+
+                            if (compte.Retrait(coutOperation))
+                            {
+                                if (new OperationDAO().Create(coutOperation) == 1)
+                                {
+                                    MyConsoleColor.OnGreen("\n\n Les frais ont étés facturés !");
+                                    if (new CompteDAO().Update(compte))
+                                        MyConsoleColor.OnGreen("\n\n Le Dépot est terminé !");
+                                }
+                            }
+
+                        }
+
+                    }
+                }
                 else
                     MyConsoleColor.OnRed("\n\n Erreur lors du Dépôt !");
-
-                WaitAndClear();
             }
+            else
+                MyConsoleColor.OnRed("\n\n Erreur lors du Dépôt !");
 
+            WaitAndClear();
         }
+
+
         private void ActionRetrait()
         {
             MyConsoleColor.OnDarkCyan("\n--------------------------     Retrait     --------------------------");
@@ -189,16 +231,43 @@ namespace TpListCompteBancaireIHM.Class
             {
                 decimal montant = 0;
                 TryRead("\n Merci de saisir le montant du retrait => ", () => montant = Convert.ToDecimal(Console.ReadLine()) * -1);
-                Operation operation = new(montant);
+
+                Operation operation = new(montant, compte.Id);
+
+
                 if (compte.Retrait(operation))
-                    MyConsoleColor.OnGreen("\n\n Retrait Effectué !");
-                else
-                    MyConsoleColor.OnRed("\n\n Erreur lors du Retrait !");
+                {
+                    if (new OperationDAO().Create(operation) == 1)
+                    {
+                        MyConsoleColor.OnGreen("\n\n Opération ajoutée !");
+                        if (new CompteDAO().Update(compte))
+                            MyConsoleColor.OnGreen("\n\n Le Retrait a été effectué !");
 
-                WaitAndClear();
+                        if (compte is ComptePayant cp)
+                        {
+                            Operation coutOperation = new(-cp.CoutOperation, compte.Id);
+
+                            if (compte.Retrait(coutOperation))
+                            {
+                                if (new OperationDAO().Create(coutOperation) == 1)
+                                {
+                                    MyConsoleColor.OnGreen("\n\n Les frais ont étés facturés !");
+                                    if (new CompteDAO().Update(compte))
+                                        MyConsoleColor.OnGreen("\n\n Le Dépot est terminé !");
+                                }
+                            }
+
+                        }
+                        else
+                            MyConsoleColor.OnRed("\n\n Erreur lors du Retrait !");
+                    }
+                    else
+                        MyConsoleColor.OnRed("\n\n Erreur lors du Retrait !");
+
+                    WaitAndClear();
+                }
+
             }
-
-
         }
 
         private void ActionAffichageCompte()
@@ -252,8 +321,13 @@ namespace TpListCompteBancaireIHM.Class
             Compte compte = ActionRechercheCompte();
             if (compte != null && compte is CompteEpargne compteEpargne)
             {
+                Operation o = new Operation(Math.Round(compteEpargne.Solde * compteEpargne.Taux / 100, 2),compte.Id);
                 if (compteEpargne.CalculInterets())
-                    MyConsoleColor.OnGreen("\n\n Interêts ajoutés...");
+                    if (new OperationDAO().Create(o) == 1)                    
+                        if (new CompteDAO().Update(compte))
+                            MyConsoleColor.OnGreen("\n\n Les intérêts ont été ajoutés !");                    
+                    else
+                        MyConsoleColor.OnRed("\n\n Erreur lors de l'ajout des interêts...");
                 else
                     MyConsoleColor.OnRed("\n\n Erreur lors de l'ajout des interêts...");
             }
@@ -267,10 +341,15 @@ namespace TpListCompteBancaireIHM.Class
         private Compte ActionRechercheCompte()
         {
             int numeroCompte = -1;
+            Compte compte = null;
             TryRead("\n Veuillez saisir le numéro du compte => ", () => numeroCompte = Convert.ToInt32(Console.ReadLine()));
-            Compte compte = banque.RechercherCompte(numeroCompte);
+            (bool found, Compte c) = new CompteDAO().Find(numeroCompte);
+            if (found)
+                compte = c;
+
             if (compte == null)
                 MyConsoleColor.OnRed("Aucun compte avec ce numéro!");
+
             return compte;
         }
 

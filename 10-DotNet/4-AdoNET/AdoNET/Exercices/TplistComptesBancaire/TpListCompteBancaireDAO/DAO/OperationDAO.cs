@@ -9,11 +9,20 @@ using TpListCompteBancaireDAO.Tools;
 
 namespace TpListCompteBancaireDAO.DAO
 {
-    internal class OperationDAO : BaseDAO<Operation>
+    public class OperationDAO : BaseDAO<Operation>
     {
         public override int Create(Operation element)
         {
-            throw new NotImplementedException();
+            _connection = Connection.New;
+            _command = new SqlCommand("INSERT INTO operation (compte_id,dateOperation, montant) VALUES (@IdCompte, @DateOperation, @Montant)", _connection);
+            _command.Parameters.Add(new SqlParameter("@IdCompte", element.IdCompte));
+            _command.Parameters.Add(new SqlParameter("@DateOperation", element.DateOperation));
+            _command.Parameters.Add(new SqlParameter("@Montant", element.Montant));
+            _connection.Open();
+            int nbLigne = _command.ExecuteNonQuery();
+            _command.Dispose();
+            _connection.Close();
+            return nbLigne;
         }
 
         public override bool Delete(int id)

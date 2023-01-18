@@ -17,15 +17,19 @@ namespace TpBanqueBaseClass.Class
 
         public Compte()
         {
-
+            Operations = new List<Operation>();
         }
 
-        public Compte(decimal solde, Client client)
+        public Compte(decimal solde) : this()
+        {            
+            Solde = solde;              
+        }
+
+        public Compte(decimal solde, Client client): this()
         {
             Id = ++counter;
             Solde = solde;
-            Client = client;
-            Operations = new List<Operation>();
+            Client = client;            
         }
 
         public int Id { get => id; set => id = value; }
