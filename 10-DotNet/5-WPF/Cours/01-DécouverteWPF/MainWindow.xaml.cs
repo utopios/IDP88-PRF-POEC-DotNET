@@ -56,7 +56,9 @@ namespace _01_DécouverteWPF
 
         private void MenuItem_Click_Grid(object sender, RoutedEventArgs e)
         {
-
+            GridWindow g = new GridWindow();
+            g.Show();
+            this.Close();
         }
 
         private void MenuItem_Click_About(object sender, RoutedEventArgs e)
