@@ -1,0 +1,19 @@
+﻿<Window x:Class="_01_DécouverteWPF.ImagesWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:_01_DécouverteWPF"
+        mc:Ignorable="d"
+        Title="ImagesWindow" Height="450" Width="800">
+    <Grid>
+        <DockPanel x:Name="ImagesDkp" VerticalAlignment="Top" >
+            <Image x:Name="Img0" Source="https://pngquant.org/Ducati_side_shadow-fs8.png" Visibility="Visible"/>
+            <Image x:Name="Img1" Source="https://i.pinimg.com/736x/8f/bb/12/8fbb126cbee9856d6af9ecf65ca58c6c.jpg" Visibility="Collapsed"/>
+            <Image x:Name="Img2" Source="https://besthqwallpapers.com/Uploads/5-12-2020/148667/thumb2-mount-fuji-4k-two-swans-autumn-stratovolcano.jpg" Visibility="Collapsed"/>
+        </DockPanel>
+        <StackPanel>
+            <Button Height="40" Content="Changer Image" FontSize="15" FontWeight="Bold" FontFamily="Consolas" Click="Button_Click" />
+        </StackPanel>
+    </Grid>
+</Window>
