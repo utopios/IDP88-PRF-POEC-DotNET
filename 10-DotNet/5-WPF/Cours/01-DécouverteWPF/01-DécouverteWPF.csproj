@@ -1,16 +1,22 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <OutputType>WinExe</OutputType>
-    <TargetFramework>net6.0-windows</TargetFramework>
-    <RootNamespace>_01_DécouverteWPF</RootNamespace>
-    <Nullable>enable</Nullable>
-    <UseWPF>true</UseWPF>
-  </PropertyGroup>
+	<PropertyGroup>
+		<OutputType>WinExe</OutputType>
+		<TargetFramework>net6.0-windows</TargetFramework>
+		<RootNamespace>_01_DécouverteWPF</RootNamespace>
+		<Nullable>enable</Nullable>
+		<UseWPF>true</UseWPF>
+	</PropertyGroup>
 
 
 	<ItemGroup>
 		<Resource Include="img\BanniereM2i.png" />
+		<Resource Include="img\LogoM2i_400x400.jpg" />
+	</ItemGroup>
+
+
+	<ItemGroup>
+		<Folder Include="img\" />
 	</ItemGroup>
 
 </Project>

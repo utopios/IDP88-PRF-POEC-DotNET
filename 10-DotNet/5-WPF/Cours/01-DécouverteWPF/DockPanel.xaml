@@ -19,7 +19,10 @@
         <TextBlock DockPanel.Dock="Bottom" HorizontalAlignment="Center" VerticalAlignment="Center" Height="80px" Background="red" Width="800">Footer</TextBlock>
         <TextBlock DockPanel.Dock="Right" HorizontalAlignment="Center" Width="100px" Background="BlanchedAlmond">Menu Droit</TextBlock>
         <TextBlock DockPanel.Dock="Left" HorizontalAlignment="Center" Width="100px" Background="BlanchedAlmond">Menu Gauche</TextBlock>
-        <TextBlock DockPanel.Dock="Bottom" >Contenu Central</TextBlock>
+        <TextBlock DockPanel.Dock="Bottom">
+            Contenu Central
+            <Image Source="/img/LogoM2i_400x400.jpg" Height="100"/>
+        </TextBlock>
 
 
 
