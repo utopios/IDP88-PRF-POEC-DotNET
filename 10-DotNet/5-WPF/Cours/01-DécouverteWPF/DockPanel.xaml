@@ -6,13 +6,13 @@
         xmlns:local="clr-namespace:_01_DécouverteWPF"
         mc:Ignorable="d"
         Title="DockPanel" Height="450" Width="800" WindowStartupLocation="CenterScreen" ResizeMode="CanMinimize">
-    <Window.Resources>
+    <!--<Window.Resources>
         <BitmapImage x:Key="M2iLogo"  UriSource="/img/BanniereM2i.png"/>
-    </Window.Resources>
+    </Window.Resources>-->
     
     <DockPanel>
         <StackPanel DockPanel.Dock="Top" HorizontalAlignment="Left">
-            <Image Source="{StaticResource ResourceKey=M2iLogo}" Height="100px"/>
+            <Image Source="/img/BanniereM2i.png" Height="100px"/>
         </StackPanel>
 
 
