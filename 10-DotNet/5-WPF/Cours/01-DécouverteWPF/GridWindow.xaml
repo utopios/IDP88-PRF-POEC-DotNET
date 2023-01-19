@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:_01_DécouverteWPF"
         mc:Ignorable="d"
-        Title="GridWindow" Height="450" Width="900" WindowStartupLocation="CenterScreen" >
+        Title="Toto" Height="450" Width="900" WindowStartupLocation="CenterScreen" >
     <Grid x:Name="Body" ShowGridLines="True">
         <!--<Grid.ColumnDefinitions>
             <ColumnDefinition Width="300"/>
