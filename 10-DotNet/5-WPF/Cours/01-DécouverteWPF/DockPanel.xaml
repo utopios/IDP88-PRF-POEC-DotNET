@@ -1,0 +1,27 @@
+﻿<Window x:Class="_01_DécouverteWPF.DockPanel"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:_01_DécouverteWPF"
+        mc:Ignorable="d"
+        Title="DockPanel" Height="450" Width="800" WindowStartupLocation="CenterScreen" ResizeMode="CanMinimize">
+    <Window.Resources>
+        <BitmapImage x:Key="M2iLogo"  UriSource="/img/BanniereM2i.png"/>
+    </Window.Resources>
+    
+    <DockPanel>
+        <StackPanel DockPanel.Dock="Top" HorizontalAlignment="Left">
+            <Image Source="{StaticResource ResourceKey=M2iLogo}" Height="100px"/>
+        </StackPanel>
+
+
+        <TextBlock DockPanel.Dock="Bottom" HorizontalAlignment="Center" VerticalAlignment="Center" Height="80px" Background="red" Width="800">Footer</TextBlock>
+        <TextBlock DockPanel.Dock="Right" HorizontalAlignment="Center" Width="100px" Background="BlanchedAlmond">Menu Droit</TextBlock>
+        <TextBlock DockPanel.Dock="Left" HorizontalAlignment="Center" Width="100px" Background="BlanchedAlmond">Menu Gauche</TextBlock>
+        <TextBlock DockPanel.Dock="Bottom" >Contenu Central</TextBlock>
+
+
+
+    </DockPanel>
+</Window>
