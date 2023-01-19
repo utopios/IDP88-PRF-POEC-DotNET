@@ -11,7 +11,7 @@ namespace TpNbMystere.models
         private Random aleatoire;
         private int nbMystere;
         private int nbCoups;
-        private bool trouve;
+        private bool gagne;
 
         public NombreMystere()
         {
@@ -21,14 +21,14 @@ namespace TpNbMystere.models
         public Random Aleatoire { get => aleatoire; set => aleatoire = value; }
         public int NbMystere { get => nbMystere; set => nbMystere = value; }
         public int NbCoups { get => nbCoups; set => nbCoups = value; }
-        public bool Trouve { get => trouve; set => trouve = value; }
+        public bool Gagne { get => gagne; set => gagne = value; }
 
         public void Start()
         {
             aleatoire = new Random();
             NbMystere = aleatoire.Next(1, 51);
             NbCoups = 0;
-            Trouve = false;
+            Gagne = false;
         }
 
         public string TestNumber(int number)
@@ -44,13 +44,13 @@ namespace TpNbMystere.models
                     response = $"C'est moins que {number}...";
                     break;
                 case int tmp when tmp == NbMystere:
-                    trouve = true;
+                    gagne = true;
                     response = $"Bravo!!!Vous avez trouvé en {nbCoups}.";
                     break;
                 default:
                     break;
             }
-            return "";
+            return response;
         }
 
     }
