@@ -32,7 +32,16 @@ namespace TpNbMystere
         //}  
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
+            MessageBox.Show("Je suis initialisée");
+        }
+        private void ValiderBtn_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Je valide");
+        }
 
+        private void NouvellePartieBtn_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Nouvelle Partie");
         }
     }
 }

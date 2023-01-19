@@ -15,9 +15,9 @@
             <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,20,0,0">
                 <TextBlock x:Name="NbCoupsTbc" TextAlignment="Center" Margin="0,10,20,10" FontSize="25" Text="Nombre d'essais : 3" Foreground="White"/>
                 <TextBox x:Name="UserNumTbx" MinWidth="150" HorizontalAlignment="Right" Margin="0,0,20,0" />
-                <Button x:Name="ValiderBtn" Content="Valider" Width="100px" FontFamily="Tw Cen MT Condensed" FontSize="35px"/>
+                <Button x:Name="ValiderBtn" Content="Valider" Width="100px" FontFamily="Tw Cen MT Condensed" FontSize="35px" Click="ValiderBtn_Click"/>
             </StackPanel>
-            <Button x:Name="NouvellePartieBtn" Content="Nouvelle Partie" FontFamily="Tw Cen MT Condensed" FontSize="35px" Padding="10" Margin="20,20,20,0" />
+            <Button x:Name="NouvellePartieBtn" Content="Nouvelle Partie" FontFamily="Tw Cen MT Condensed" FontSize="35px" Padding="10" Margin="20,20,20,0" Click="NouvellePartieBtn_Click" />
         </StackPanel>
 
 
