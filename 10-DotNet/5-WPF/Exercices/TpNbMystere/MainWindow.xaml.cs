@@ -35,6 +35,8 @@ namespace TpNbMystere
             UpdateNbCoups();
             UserNumTbx.Text = "";
             ValiderBtn.IsEnabled = true;
+            UserNumTbx.KeyDown += UserNumTbx_KeyDown;
+            UserNumTbx.Focus();
         }
         private void UpdateNbCoups()
         {
@@ -72,16 +74,20 @@ namespace TpNbMystere
         {
             Ligne2Tbc.Text = $"Le nombre mystère était {_jeu.NbMystere}";
             ValiderBtn.IsEnabled= false;
+            UserNumTbx.KeyDown -= UserNumTbx_KeyDown;
         }
 
         private void NouvellePartieBtn_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Nouvelle Partie");
+            StartGame();
         }
 
-        private void UserNumTbx_TextChanged(object sender, TextChangedEventArgs e)
+        private void UserNumTbx_KeyDown(object sender, KeyEventArgs e)
         {
-            StartGame();
+            if (e.Key == Key.Return)
+            {
+                ValiderBtn_Click(sender,e);
+            }
         }
     }
 }
