@@ -8,12 +8,9 @@
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
-	<!--<ItemGroup>
-		<None Remove="img\BanniereM2i.png" />
-	</ItemGroup>
 
 	<ItemGroup>
 		<Resource Include="img\BanniereM2i.png" />
-	</ItemGroup>-->
+	</ItemGroup>
 
 </Project>
