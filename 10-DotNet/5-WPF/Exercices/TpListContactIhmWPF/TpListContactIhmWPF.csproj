@@ -7,4 +7,8 @@
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\4-AdoNET\AdoNET\Exercices\TpListContact\TpListContactBaseClass\TpListContactBaseClass.csproj" />
+  </ItemGroup>
+
 </Project>

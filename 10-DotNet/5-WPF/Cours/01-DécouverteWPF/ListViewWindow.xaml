@@ -6,15 +6,23 @@
         xmlns:local="clr-namespace:_01_DécouverteWPF"
         mc:Ignorable="d"
         Title="ListViewWindow" Height="450" Width="800" WindowStartupLocation="CenterScreen" ResizeMode="CanMinimize">
-    <Grid>
+    <UniformGrid Columns="2">
         <ListView x:Name="ListeBoxPersonne" ScrollViewer.VerticalScrollBarVisibility="Visible" >
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Width="400" Header="Nom" DisplayMemberBinding="{Binding Nom}"/>
-                    <GridViewColumn Width="200" Header="Prénom" DisplayMemberBinding="{Binding Prenom}"/>
-                    <GridViewColumn Width="195" Header="Age" DisplayMemberBinding="{Binding Age}"/>
+                    <GridViewColumn Width="150" Header="Nom" DisplayMemberBinding="{Binding Nom}"/>
+                    <GridViewColumn Width="150" Header="Prénom" DisplayMemberBinding="{Binding Prenom}"/>
+                    <GridViewColumn Width="50" Header="Age" DisplayMemberBinding="{Binding Age}"/>
                 </GridView>
             </ListView.View>
         </ListView>
-    </Grid>
+        <StackPanel>
+            <GroupBox Header="Selected Item">
+                <StackPanel>
+                    <Button x:Name="AfficherBtn" Content="Afficher" Click="AfficherBtn_Click"/>
+                    <TextBlock x:Name="AfficherTbc" FontSize="15"/>
+                </StackPanel>
+            </GroupBox>
+        </StackPanel>
+    </UniformGrid>
 </Window>

@@ -54,5 +54,11 @@ namespace _01_DécouverteWPF
         {
             ListeBoxPersonne.ItemsSource = _personnes;
         }
+
+        private void AfficherBtn_Click(object sender, RoutedEventArgs e)
+        {
+            if (ListeBoxPersonne.SelectedItem is Personne p)            
+                AfficherTbc.Text = p.ToString();                    
+        }
     }
 }
