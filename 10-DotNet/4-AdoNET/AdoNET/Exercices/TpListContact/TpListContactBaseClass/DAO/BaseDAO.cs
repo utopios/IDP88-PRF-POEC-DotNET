@@ -1,6 +1,7 @@
 ﻿using Microsoft.Data.SqlClient;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
@@ -22,9 +23,11 @@ namespace TpListContactBaseClass.DAO
 
         public abstract (bool,T) Find(int index);
 
-        public abstract (bool,List<T>) Find(Func<T,bool> criteria);
+        //public abstract (bool,List<T>) Find(Func<T,bool> criteria);
+        public abstract (bool, ObservableCollection<T>) Find(Func<T,bool> criteria);
         
-        public abstract List<T> FindAll();
+        //public abstract List<T> FindAll();
+        public abstract ObservableCollection<T> FindAll();
 
     }
 }

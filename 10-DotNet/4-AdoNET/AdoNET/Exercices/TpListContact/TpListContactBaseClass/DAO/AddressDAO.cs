@@ -7,6 +7,7 @@ using TpListContactBaseClass.Class;
 using TpListContactBaseClass.Tools;
 using Microsoft.Data.SqlClient;
 using System.Xml.Linq;
+using System.Collections.ObjectModel;
 
 namespace TpListContactBaseClass.DAO
 {
@@ -99,12 +100,14 @@ namespace TpListContactBaseClass.DAO
             return (found,address);
         }
 
-        public override (bool,List<Address>) Find(Func<Address, bool> criteria)
+        // public override (bool,List<Address>) Find(Func<Address, bool> criteria)
+        public override (bool, ObservableCollection<Address>) Find(Func<Address, bool> criteria)
         {
             throw new NotImplementedException();
         }
 
-        public override List<Address> FindAll()
+        //public override List<Address> FindAll()
+        public override ObservableCollection<Address> FindAll()
         {
             throw new NotImplementedException();
         }

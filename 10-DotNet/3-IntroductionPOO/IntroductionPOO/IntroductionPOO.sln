@@ -194,7 +194,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Exercices", "Exercices", "{
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "01-DécouverteWPF", "..\..\5-WPF\Cours\01-DécouverteWPF\01-DécouverteWPF.csproj", "{8BFCBD18-71F2-4C90-901D-272620B786B8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TpNbMystere", "..\..\5-WPF\Exercices\TpNbMystere\TpNbMystere.csproj", "{32A8F4A6-88A3-4529-831D-69F31641CBE8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TpNbMystere", "..\..\5-WPF\Exercices\TpNbMystere\TpNbMystere.csproj", "{32A8F4A6-88A3-4529-831D-69F31641CBE8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TpListContactIhmWPF", "..\..\5-WPF\Exercices\TpListContactIhmWPF\TpListContactIhmWPF.csproj", "{02616E97-F3F3-4A79-8E5C-C68DB44B93C3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -310,6 +312,10 @@ Global
 		{32A8F4A6-88A3-4529-831D-69F31641CBE8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{32A8F4A6-88A3-4529-831D-69F31641CBE8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{32A8F4A6-88A3-4529-831D-69F31641CBE8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{02616E97-F3F3-4A79-8E5C-C68DB44B93C3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{02616E97-F3F3-4A79-8E5C-C68DB44B93C3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{02616E97-F3F3-4A79-8E5C-C68DB44B93C3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{02616E97-F3F3-4A79-8E5C-C68DB44B93C3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -370,6 +376,7 @@ Global
 		{237D9CEA-C765-4E2D-87D5-6795DCA84FD5} = {2D447674-CB2C-4C7B-BC6E-376638553CA6}
 		{8BFCBD18-71F2-4C90-901D-272620B786B8} = {85C7DA83-FD52-4588-8750-4FC39B414F63}
 		{32A8F4A6-88A3-4529-831D-69F31641CBE8} = {237D9CEA-C765-4E2D-87D5-6795DCA84FD5}
+		{02616E97-F3F3-4A79-8E5C-C68DB44B93C3} = {237D9CEA-C765-4E2D-87D5-6795DCA84FD5}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {43979156-8D22-4E83-A536-9B410607038D}

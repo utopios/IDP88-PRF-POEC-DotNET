@@ -1,6 +1,7 @@
 ﻿using Microsoft.Data.SqlClient;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -112,12 +113,14 @@ namespace TpListContactBaseClass.DAO
             return (person != null, person);
         }
 
-        public override (bool,List<Person>) Find(Func<Person, bool> criteria)
+        //public override (bool,List<Person>) Find(Func<Person, bool> criteria)
+        public override (bool, ObservableCollection<Person>) Find(Func<Person, bool> criteria)
         {
             throw new NotImplementedException();
         }
 
-        public override List<Person> FindAll()
+        //public override List<Person> FindAll()
+        public override ObservableCollection<Person> FindAll()
         {
             throw new NotImplementedException();
         }
