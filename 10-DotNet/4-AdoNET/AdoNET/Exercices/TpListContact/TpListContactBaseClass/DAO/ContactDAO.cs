@@ -3,10 +3,12 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Numerics;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
+using TpBanqueBaseClass.Class;
 using TpListContactBaseClass.Class;
 using TpListContactBaseClass.Tools;
 
@@ -177,7 +179,18 @@ namespace TpListContactBaseClass.DAO
 
         public override (bool, ObservableCollection<Contact>) Find(Func<Contact, bool> criteria)
         {
-            throw new NotImplementedException();
+            ObservableCollection<Contact> Contacts = FindAll();
+            ObservableCollection<Contact> FiltreredContacts = new ObservableCollection<Contact>();
+            bool ok = false;
+            foreach (Contact contact in Contacts)
+            {
+                if (criteria(contact))
+                {
+                    ok = true;
+                    FiltreredContacts.Add(contact);
+                }
+            }          
+            return (ok, FiltreredContacts);
         }
 
         public override ObservableCollection<Contact> FindAll()
