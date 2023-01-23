@@ -101,7 +101,7 @@ namespace TpListContactBaseClass.DAO
                     return false;
                 }
 
-               
+
             }
 
             return deleted;
@@ -109,7 +109,54 @@ namespace TpListContactBaseClass.DAO
 
         public override bool Delete(Contact element)
         {
-            throw new NotImplementedException();
+            bool deleted = false;
+
+            try
+            {
+                deleted = new AddressDAO().Delete(element.ContactAddress.AddressId);
+                if (deleted)
+                    deleted = new PersonDAO().Delete(element.PersonId);
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+
+
+            if (deleted)
+            {
+                try
+                {
+                    // Création d'une instance de connection
+                    _connection = Connection.New;
+                    // Redaction de la requete
+                    _request = "DELETE FROM CONTACT WHERE Id = @Id";
+                    // Préparation de la commande
+                    _command = new SqlCommand(_request, _connection);
+                    // Ajout des paramètres de la commande
+                    _command.Parameters.Add(new SqlParameter("@Id", element.ContactId));
+
+                    // Execution de la commande
+                    _connection.Open();
+                    int NbLigne = _command.ExecuteNonQuery();
+
+                    // Libération de l'objet command
+                    _command.Dispose();
+                    // Fermeture de la connection
+                    _connection.Close();
+
+                    deleted = NbLigne > 0;
+
+                }
+                catch (Exception)
+                {
+                    return false;
+                }
+
+
+            }
+
+            return deleted;
         }
 
         public override (bool, Contact) Find(int index)
@@ -189,7 +236,7 @@ namespace TpListContactBaseClass.DAO
                     ok = true;
                     FiltreredContacts.Add(contact);
                 }
-            }          
+            }
             return (ok, FiltreredContacts);
         }
 
@@ -285,7 +332,7 @@ namespace TpListContactBaseClass.DAO
             // Fermeture de la connection
             _connection.Close();
 
-            if (NbLigne>0)
+            if (NbLigne > 0)
             {
                 updated = new PersonDAO().Update(element);
                 if (updated)
