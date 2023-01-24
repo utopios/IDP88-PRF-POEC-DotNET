@@ -1,0 +1,50 @@
+﻿<Window x:Class="TpCompteBancaireHeritageWPF.AjouterCompteWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TpCompteBancaireHeritageWPF"
+        mc:Ignorable="d"
+        Title="AjouterCompteWindow" Height="390" Width="580" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
+    <Grid Background="Orange">
+        <GroupBox Header="Création d'un Compte">
+            <StackPanel>
+                <GroupBox Header="Création du Client">
+                    <StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="5">
+                            <Label Content="Nom : " Margin="0,0,28,0" />
+                            <TextBox x:Name="TbxNom" Width="200" VerticalContentAlignment="Center"/>
+                            <Label Content="Prénom : "/>
+                            <TextBox x:Name="TbxPrenom" Width="200" VerticalContentAlignment="Center"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="5">
+                            <Label Content="Téléphone : " />
+                            <TextBox x:Name="TbxTelephone" Width="200" VerticalContentAlignment="Center"/>
+                            <Label Content="Id Client : " Margin="50,0,0,0" VerticalContentAlignment="Center"/>
+                            <TextBlock x:Name="TbIdClient" Width="50" VerticalAlignment="Center"/>
+                        </StackPanel>
+                        <Button x:Name="AddUser" Content="Ajouter Client" Margin="5" Click="AddUser_Click" />
+                    </StackPanel>
+                </GroupBox>
+                <GroupBox Header="Création du Compte">
+                    <StackPanel>
+                        <StackPanel x:Name="CreationCompte" Orientation="Horizontal" Margin="0,10,0,0">
+                            <Label Content="Solde : " Margin="0,0,73,0"/>
+                            <TextBox x:Name="TbxSolde" Width="200" VerticalContentAlignment="Center"/>                            
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
+                            <Label Content="Taux : " Margin="0,0,80,0"/>
+                            <TextBox x:Name="TbxTaux" Width="200" VerticalContentAlignment="Center" />
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="0,10,0,10">
+                            <Label Content="Montant opération : " Margin="0,0,3,0"/>
+                            <TextBox x:Name="TbxMontantOperation" Width="200" VerticalContentAlignment="Center"/>
+                        </StackPanel>
+                    </StackPanel>
+                </GroupBox>
+                <Button x:Name="AjouterCompte" Content="Ajouter Compte" Margin="0,10,0,5" Click="AjouterCompte_Click" />
+                <Button x:Name="Fermer" Content="Fermer" Margin="0 5" Click="Fermer_Click" />
+            </StackPanel>
+        </GroupBox>
+    </Grid>
+</Window>

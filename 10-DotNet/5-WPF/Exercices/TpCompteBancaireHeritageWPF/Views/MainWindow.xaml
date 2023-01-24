@@ -1,0 +1,67 @@
+﻿<Window x:Class="TpCompteBancaireHeritageWPF.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TpCompteBancaireHeritageWPF"
+        mc:Ignorable="d"
+         Title="Gestion Compte Bancaire WPF" Height="580" Width="820" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
+    <Grid Background="Orange">
+        <StackPanel>
+            <Menu>
+                <MenuItem Header="Info Compte"/>
+                <MenuItem Header="Création Compte" Click="MenuNouveauCompte_Click" />
+            </Menu>
+            <GroupBox Header="Info Compte" Margin="10">
+                <StackPanel>
+                    <GroupBox Header="Recherche" Padding="5">
+                        <StackPanel Orientation="Horizontal">
+                            <Label Content="Id Compte : "/>
+                            <TextBox x:Name="TbxIdCompte" Width="400" VerticalAlignment="Center"/>
+                            <Button Name="RechercherCompte" Content="Rechercher Compte" Margin="150,0,0,0" Padding="5" Click="RechercherCompte_Click" />
+                        </StackPanel>
+                    </GroupBox>
+                    <GroupBox Header="Client">
+                        <StackPanel Orientation="Horizontal">
+                            <Label Content="Nom : "/>
+                            <TextBlock x:Name="Nom" Width="150" Foreground="RED" VerticalAlignment="Center"/>
+                            <Label Content="Prénom : "/>
+                            <TextBlock x:Name="Prenom" Width="150" Foreground="RED" VerticalAlignment="Center"/>
+                            <Label Content="Téléphone : "/>
+                            <TextBlock x:Name="Telephone" Width="150" Foreground="RED" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </GroupBox>
+                    <GroupBox Header="Compte" Padding="5">
+                        <StackPanel>
+                            <StackPanel Orientation="Horizontal" Margin="5">
+                                <Label Content="Id du Compte : "/>
+                                <TextBlock x:Name="TbIdCompte" VerticalAlignment="Center" Foreground="RED"/>
+                                <Label Content="Type de compte : " Margin="100,0,0,0"/>
+                                <TextBlock x:Name="TbTypeCompte" VerticalAlignment="Center" Foreground="RED"/>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Margin="5">
+                                <Label Content="Solde Compte : "/>
+                                <TextBlock x:Name="TbSoldeCompte" Width="200" VerticalAlignment="Center" Foreground="RED"/>
+                                <Button x:Name="CalculInteret" Content="Calculer les intérêts" Click="CalculInteret_Click" Margin="330,0,0,0" Padding="5" IsEnabled="false"/>
+                            </StackPanel>
+                            <TextBlock Text="Liste des opérations" HorizontalAlignment="Center" FontSize="15px" Margin="5"/>
+                            <ListView x:Name="ListeViewOperations" Height="200" ScrollViewer.VerticalScrollBarVisibility="Visible">
+                                <ListView.View>
+                                    <GridView>
+                                        <GridViewColumn Header="Id" Width="50" DisplayMemberBinding="{Binding Id}"/>
+                                        <GridViewColumn Header="Date Opération" Width="550" DisplayMemberBinding="{Binding Date}"/>
+                                        <GridViewColumn Header="Montant" Width="150" DisplayMemberBinding="{Binding Montant}"/>
+                                    </GridView>
+                                </ListView.View>
+                            </ListView>
+                        </StackPanel>
+                    </GroupBox>
+                    <StackPanel Orientation="Horizontal">
+                        <Button Name="FaireDepot" Content="Faire un Dépôt" Width="370" Margin="5" Click="FaireDepot_Click" />
+                        <Button Name="FaireRetrait" Content="Faire un Retrait" Width="370" Margin="5" Click="FaireRetrait_Click" />
+                    </StackPanel>
+                </StackPanel>
+            </GroupBox>
+        </StackPanel>
+    </Grid>
+</Window>

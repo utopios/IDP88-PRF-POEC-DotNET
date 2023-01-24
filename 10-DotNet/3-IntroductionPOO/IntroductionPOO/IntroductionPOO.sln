@@ -196,7 +196,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "01-DécouverteWPF", "..\..\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TpNbMystere", "..\..\5-WPF\Exercices\TpNbMystere\TpNbMystere.csproj", "{32A8F4A6-88A3-4529-831D-69F31641CBE8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TpListContactIhmWPF", "..\..\5-WPF\Exercices\TpListContactIhmWPF\TpListContactIhmWPF.csproj", "{02616E97-F3F3-4A79-8E5C-C68DB44B93C3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TpListContactIhmWPF", "..\..\5-WPF\Exercices\TpListContactIhmWPF\TpListContactIhmWPF.csproj", "{02616E97-F3F3-4A79-8E5C-C68DB44B93C3}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TpCompteBancaireHeritageWPF", "..\..\5-WPF\Exercices\TpCompteBancaireHeritageWPF\TpCompteBancaireHeritageWPF.csproj", "{DA6ED626-1FF2-4AAC-AA40-7CA56715E789}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -316,6 +318,10 @@ Global
 		{02616E97-F3F3-4A79-8E5C-C68DB44B93C3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{02616E97-F3F3-4A79-8E5C-C68DB44B93C3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{02616E97-F3F3-4A79-8E5C-C68DB44B93C3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DA6ED626-1FF2-4AAC-AA40-7CA56715E789}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DA6ED626-1FF2-4AAC-AA40-7CA56715E789}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DA6ED626-1FF2-4AAC-AA40-7CA56715E789}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DA6ED626-1FF2-4AAC-AA40-7CA56715E789}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -377,6 +383,7 @@ Global
 		{8BFCBD18-71F2-4C90-901D-272620B786B8} = {85C7DA83-FD52-4588-8750-4FC39B414F63}
 		{32A8F4A6-88A3-4529-831D-69F31641CBE8} = {237D9CEA-C765-4E2D-87D5-6795DCA84FD5}
 		{02616E97-F3F3-4A79-8E5C-C68DB44B93C3} = {237D9CEA-C765-4E2D-87D5-6795DCA84FD5}
+		{DA6ED626-1FF2-4AAC-AA40-7CA56715E789} = {237D9CEA-C765-4E2D-87D5-6795DCA84FD5}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {43979156-8D22-4E83-A536-9B410607038D}

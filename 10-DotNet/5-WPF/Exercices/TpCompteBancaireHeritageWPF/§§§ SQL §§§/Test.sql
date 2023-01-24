@@ -1,0 +1,1 @@
+﻿SELECT c.solde,c.taux,c.coutOperation,c.client_id,cl.nom,cl.prenom,cl.telephone FROM compte as c INNER JOIN client as cl ON c.client_id = cl.id where c.id = 2

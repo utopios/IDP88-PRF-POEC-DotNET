@@ -1,0 +1,25 @@
+﻿<Window x:Class="TpCompteBancaireHeritageWPF.DepotOperationWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TpCompteBancaireHeritageWPF"
+        mc:Ignorable="d"
+        Title="DepotOperationWindow" Height="220" Width="350" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
+    <Grid Background="Orange">
+        <GroupBox Header="Déposer des fonds" Margin="5 10 5 10" Padding="5">
+            <StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Label Content="Id Compte : " VerticalAlignment="Center"/>
+                    <TextBlock x:Name="TbIdCompte" VerticalAlignment="Center" Foreground="Red"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="0 5">
+                    <Label Content="Montant de l'opération : " VerticalAlignment="Center"/>
+                    <TextBox x:Name="TbxMontant" VerticalAlignment="Center" Foreground="Red" Width="160"/>
+                </StackPanel>
+                <Button Name="Valider" Content="Valider" Margin="0 10 0 5" Click="Valider_Click"/>
+                <Button Name="Annuler" Content="Annuler" Margin="0 5" Click="Annuler_Click"/>
+            </StackPanel>            
+        </GroupBox>
+    </Grid>
+</Window>

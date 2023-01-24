@@ -59,18 +59,13 @@ namespace TpListCompteBancaireDAO.DAO
 
             if (_reader.Read())
             {
-                if (_reader.GetDecimal(5) > 0)
-                {
-                    compte = new CompteEpargne(_reader.GetDecimal(5));
-                }
-                else if (_reader.GetDecimal(6) > 0)
-                {
-                    compte = new ComptePayant(_reader.GetDecimal(6));
-                }
-                else
-                {
-                    compte = new Compte();
-                }
+                if (_reader.GetDecimal(5) > 0)                
+                    compte = new CompteEpargne(_reader.GetDecimal(5));                
+                else if (_reader.GetDecimal(6) > 0)                
+                    compte = new ComptePayant(_reader.GetDecimal(6));                
+                else                
+                    compte = new Compte();  
+                
                 if (compte != null)
                 {
                     ok = true;
