@@ -1,0 +1,35 @@
+﻿<Window x:Class="CoursMVVM.Views.PersonView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CoursMVVM.Views"
+        mc:Ignorable="d"
+        Title="PersonView" Height="250" Width="450">
+    <Grid Background="Orange">
+        <GroupBox Header="Personne" Margin="5,5,5,5">
+            <StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="0,5,0,5">
+                    <Label Content="Nom : " MinWidth="100"/>
+                    <TextBox Text="{Binding Lastname}" VerticalAlignment="Center" MinWidth="300"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal"  Margin="0,5,0,5">
+                    <Label Content="Prénom : " MinWidth="100  "/>
+                    <TextBox Text="{Binding Firstname}" VerticalAlignment="Center" MinWidth="300"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="0,5,0,5">
+                    <Label Content="Genre : " MinWidth="100  "/>
+                    <RadioButton IsChecked="{Binding IsM}" Content="Homme"  VerticalAlignment="Center" Margin="5,0,20,0"/>
+                    <RadioButton IsChecked="{Binding IsF}" Content="Femme"  VerticalAlignment="Center" />
+                </StackPanel>
+                <StackPanel Orientation="Horizontal"  Margin="0,5,0,5">
+                    <Label Content="Nom Complet : "/>
+                    <Label Content="{Binding Gender}"/>
+                    <Label Content="{Binding Lastname}"/>
+                    <Label Content="{Binding Firstname}"/>
+                </StackPanel>
+                <Button Content="Valider" Command="{Binding ValidCommand}" Margin="10,10,10,0"/>
+            </StackPanel>
+        </GroupBox>
+    </Grid>
+</Window>
