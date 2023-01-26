@@ -18,13 +18,11 @@ namespace CoursMVVM.ViewModels
         Person person;
         #endregion
 
-
         #region Props
         // Implémentation de INotifyPropertyChanged => Impose d'avoir une props de type PropertyChangedEventHandler
         public event PropertyChangedEventHandler PropertyChanged;
 
-        // Création d'une props de Type Icommand
-        public ICommand ValidCommand { get; set; }
+ 
 
         public string Firstname
         {
@@ -77,6 +75,19 @@ namespace CoursMVVM.ViewModels
         }
         #endregion
 
+        #region Constructeur
+        public PersonViewModel()
+        {
+            person = new();
+            ValidCommand = new RelayCommand(ActionValidCommand);
+        }
+        #endregion
+
+        #region Command
+        // Création d'une props de Type Icommand
+        public ICommand ValidCommand { get; set; }
+
+        #endregion
 
         #region Méthodes
         private void RaisePropertyChange(string propertyName)
@@ -87,22 +98,11 @@ namespace CoursMVVM.ViewModels
             }
 
         }
-        #endregion
 
-        #region Constructeur
-        public PersonViewModel()
-        {
-            person = new();
-            ValidCommand = new RelayCommand(ActionValidCommand);
-        }
-        #endregion
-
-        #region Command
         private void ActionValidCommand()
         {
             MessageBox.Show(Gender + " " + Lastname + " " + Firstname);
         }
-
         #endregion
     }
 }

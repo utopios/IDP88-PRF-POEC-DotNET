@@ -1,0 +1,92 @@
+﻿<Window x:Class="TpListContactIHM_WPF_MVVM.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TpListContactIHM_WPF_MVVM"
+        mc:Ignorable="d"
+         Title="MainWindow" Height="480" Width="900" WindowStartupLocation="CenterScreen" ResizeMode="CanMinimize">
+    <Grid Background="DarkOrange">
+        <GroupBox Header="{Binding FormName}" Width="245" Height="410" Margin="10,10,620,21" FontWeight="Bold">
+            <StackPanel HorizontalAlignment="Left"  VerticalAlignment="Top" Height="432" Width="230">
+
+                <TextBlock x:Name="BlockId" Visibility="Collapsed"/>
+                <GroupBox Header="Personne">
+                    <StackPanel>
+
+                        <TextBlock Visibility="Collapsed"/>
+                        <StackPanel Orientation="Horizontal" Margin="0,5,0,5">
+                            <Label Content="Nom : "/>
+                            <TextBox Text="{Binding FirstName}" TextWrapping="Wrap" Width="159" Height="26" Margin="35,0,0,0"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="0,0,0,5">
+                            <Label Content="Prénom : "/>
+                            <TextBox Text="{Binding LastName}" TextWrapping="Wrap" Width="159" Height="26" Margin="20,0,0,0"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="0,5,0,5">
+                            <Label Content="Naissance : " Width="80"/>
+                            <DatePicker SelectedDate="{Binding DateBirth}" Margin="0,0,0,0" Width="127"/>
+                        </StackPanel>
+                    </StackPanel>
+                </GroupBox>
+                <GroupBox Header="Contact">
+                    <StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="0,5,0,5">
+                            <Label Content="Téléphone : "/>
+                            <TextBox Text="{Binding PhoneNumber}" TextWrapping="Wrap" Width="160" Height="26" Margin="7,0,0,0"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="0,0,0,5">
+                            <Label Content="Email : "/>
+                            <TextBox Text="{Binding EmailContact}" TextWrapping="Wrap" Width="159" Height="26" Margin="33,0,0,0"/>
+                        </StackPanel>
+                    </StackPanel>
+                </GroupBox>
+                <GroupBox Header="Adresse">
+                    <StackPanel>
+                        <TextBlock Visibility="Collapsed"/>
+                        <StackPanel Orientation="Horizontal" Margin="0,5,0,5" VerticalAlignment="Center" HorizontalAlignment="Center">
+                            <TextBox Text="{Binding AddressContact.Number}" TextWrapping="Wrap" Width="35" Height="26" Margin="10,0,0,0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+                            <TextBox Text="{Binding AddressContact.RoadName}" TextWrapping="Wrap" Width="180" Height="26" Margin="10,0,0,0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="0,5,0,5" VerticalAlignment="Center" HorizontalAlignment="Center">
+                            <TextBox Text="{Binding AddressContact.ZipCode}" TextWrapping="Wrap" Width="70" Height="26" Margin="10,0,0,0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+                            <TextBox Text="{Binding AddressContact.City}" TextWrapping="Wrap" Width="145" Height="26" Margin="10,0,0,0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="0,5,0,5" VerticalAlignment="Center" HorizontalAlignment="Center">
+                            <TextBox Text="{Binding AddressContact.Country}" TextWrapping="Wrap" Width="225" Height="26" Margin="10,0,0,0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+                        </StackPanel>
+                    </StackPanel>
+                </GroupBox>
+                <Button Content="{Binding ButtonName}" Command="{Binding ConfirmCommand}" HorizontalAlignment="Left" Margin="0,10,0,0" Height="30" Width="230"/>
+            </StackPanel>
+        </GroupBox>
+
+        <Separator Height="20" Width="346" RenderTransformOrigin="0.5,0.5" Margin="100,173,454,179">
+            <Separator.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="-90.013"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Separator.RenderTransform>
+        </Separator>
+
+        <TextBlock Text="Liste des contacts" HorizontalAlignment="Center" Margin="283,5,0,0" VerticalAlignment="Top" FontSize="25"/>
+        <ListView ItemsSource="{Binding Contacts}" SelectedItem="{Binding SelectedContact}" Margin="283,80,10,80">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Nom" Width="130" DisplayMemberBinding="{Binding Lastname}"/>
+                    <GridViewColumn Header="Prénom" Width="130" DisplayMemberBinding="{Binding Firstname}"/>
+                    <GridViewColumn Header="Téléphone" Width="130" DisplayMemberBinding="{Binding Phone}"/>
+                    <GridViewColumn Header="Email" Width="200" DisplayMemberBinding="{Binding Email}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <TextBox Text="{Binding SearchString}" HorizontalAlignment="Left" Margin="283,46,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="497" Height="18"/>
+        <Button Command="{Binding SearchCommand}"  Content="Rechercher" HorizontalAlignment="Left" Margin="790,45,0,0" VerticalAlignment="Top" Height="19" Width="84"/>
+        <Button Command="{Binding EditCommand}"  Content="Modifier" HorizontalAlignment="Left" Margin="320,389,0,0" VerticalAlignment="Top" Height="28" Width="130"/>
+        <Button Command="{Binding DeleteCommand}"  Content="Supprimer" HorizontalAlignment="Left" Margin="518,389,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.076,-0.349" Height="28" Width="138"/>
+        <Button Command="{Binding DetailsCommand}"  Content="Detail" HorizontalAlignment="Left" Margin="731,389,0,0" VerticalAlignment="Top" Height="28" Width="117"/>
+    </Grid>
+</Window>
