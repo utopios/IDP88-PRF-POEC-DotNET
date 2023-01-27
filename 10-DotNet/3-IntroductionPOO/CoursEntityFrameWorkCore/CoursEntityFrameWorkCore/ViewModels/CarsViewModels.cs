@@ -4,6 +4,7 @@ using CoursEntityFrameWorkCore.Models;
 using CoursEntityFrameWorkCore.Tools;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,6 +18,8 @@ namespace CoursEntityFrameWorkCore.ViewModels
         private Car car;
         private DataDbContext dbContext;
 
+        public ObservableCollection<Car> Cars { get; set; }
+
         public string Name { get => car.Name; set => car.Name = value; }
 
         public string Description { get => car.Description; set => car.Description = value; }
@@ -28,6 +31,7 @@ namespace CoursEntityFrameWorkCore.ViewModels
         public CarsViewModels()
         {
             dbContext = new DataDbContext();
+            Cars= new ObservableCollection<Car>(dbContext.Cars);
             car  = new Car();
             ValidCommand = new RelayCommand(ValidCommandAction);
         }
@@ -38,6 +42,8 @@ namespace CoursEntityFrameWorkCore.ViewModels
             if(dbContext.SaveChanges() > 0)
             {
                 Message = "Voiture ajoutée avec l'id " + car.Id;
+                //On ajoute dans la collection à afficher dans la listeview
+                Cars.Add(car);
                 car = new Car();
                 OnPropertyChanged(nameof(Name));
                 OnPropertyChanged(nameof(Description));
