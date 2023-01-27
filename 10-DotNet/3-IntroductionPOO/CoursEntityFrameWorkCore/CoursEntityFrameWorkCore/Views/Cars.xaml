@@ -16,14 +16,14 @@
                 <StackPanel>
                     <StackPanel>
                         <Label Content="Nom : "></Label>
-                        <TextBox></TextBox>
+                        <TextBox Text="{Binding Name}"></TextBox>
                     </StackPanel>
                     <StackPanel>
                         <Label Content="Description :"></Label>
-                        <TextBox></TextBox>
+                        <TextBox Text="{Binding Description}"></TextBox>
                     </StackPanel>
                     <StackPanel>
-                        <Button Content="Valider"></Button>
+                        <Button Command="{Binding ValidCommand}" Content="Valider"></Button>
                     </StackPanel>
                 </StackPanel>
             </GroupBox>
