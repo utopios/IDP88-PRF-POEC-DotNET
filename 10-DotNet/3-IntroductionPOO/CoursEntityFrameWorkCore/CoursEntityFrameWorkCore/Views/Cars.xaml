@@ -43,8 +43,9 @@
                             </GridView>
                         </ListView.View>
                     </ListView>
-                    <StackPanel>
+                    <StackPanel Orientation="Horizontal">
                         <Button Content="Supprimer" Command="{Binding DeleteCommand}"></Button>
+                        <Button Content="Modifier" Command="{Binding EditCommand}"></Button>
                     </StackPanel>
                 </StackPanel>
             </GroupBox>

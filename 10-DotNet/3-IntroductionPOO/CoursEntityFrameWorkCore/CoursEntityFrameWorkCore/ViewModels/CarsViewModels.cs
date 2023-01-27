@@ -32,6 +32,8 @@ namespace CoursEntityFrameWorkCore.ViewModels
 
         public ICommand DeleteCommand { get; set; }
 
+        public ICommand EditCommand{ get; set; }
+
         public CarsViewModels()
         {
             dbContext = new DataDbContext();
@@ -39,24 +41,40 @@ namespace CoursEntityFrameWorkCore.ViewModels
             car  = new Car();
             ValidCommand = new RelayCommand(ValidCommandAction);
             DeleteCommand = new RelayCommand(DeleteCommandAction);  
+            EditCommand = new RelayCommand(EditCommandAction);
         }
 
         private void ValidCommandAction()
         {
-            dbContext.Cars.Add(car);
-            if(dbContext.SaveChanges() > 0)
+            if(SelectedCar == null)
             {
-                Message = "Voiture ajoutée avec l'id " + car.Id;
-                //On ajoute dans la collection à afficher dans la listeview
-                Cars.Add(car);
-                car = new Car();
-                OnPropertyChanged(nameof(Name));
-                OnPropertyChanged(nameof(Description));
+                dbContext.Cars.Add(car);
+                if (dbContext.SaveChanges() > 0)
+                {
+                    Message = "Voiture ajoutée avec l'id " + car.Id;
+                    //On ajoute dans la collection à afficher dans la listeview
+                    Cars.Add(car);
+                    car = new Car();
+                    OnPropertyChanged(nameof(Name));
+                    OnPropertyChanged(nameof(Description));
+                }
+                else
+                {
+                    Message = "Erreur d'ajout dans la base de données";
+                }
             }
             else
             {
-                Message = "Erreur d'ajout dans la base de données";
+                if(dbContext.SaveChanges() > 0)
+                {
+                    Message = "Voiture modifiée";
+                    SelectedCar = null;
+                    car = new Car();
+                    OnPropertyChanged(nameof(Name));
+                    OnPropertyChanged(nameof(Description));
+                }
             }
+            
             OnPropertyChanged(nameof(Message));
         }
 
@@ -70,6 +88,13 @@ namespace CoursEntityFrameWorkCore.ViewModels
                 Cars.Remove(SelectedCar);
                 SelectedCar = null;
             }
+        }
+
+        private void EditCommandAction()
+        {
+            car = SelectedCar;
+            OnPropertyChanged(nameof(Name));
+            OnPropertyChanged(nameof(Description));
         }
     }
 }
