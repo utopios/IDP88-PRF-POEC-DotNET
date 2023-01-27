@@ -1,4 +1,5 @@
-﻿using CommunityToolkit.Mvvm.Input;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
 using CoursEntityFrameWorkCore.Models;
 using CoursEntityFrameWorkCore.Tools;
 using System;
@@ -11,7 +12,7 @@ using System.Windows.Input;
 
 namespace CoursEntityFrameWorkCore.ViewModels
 {
-    public class CarsViewModels
+    public class CarsViewModels : ObservableObject
     {
         private Car car;
         private DataDbContext dbContext;
@@ -19,6 +20,8 @@ namespace CoursEntityFrameWorkCore.ViewModels
         public string Name { get => car.Name; set => car.Name = value; }
 
         public string Description { get => car.Description; set => car.Description = value; }
+
+        public string Message { get; set; }
 
         public ICommand ValidCommand { get; set; }
 
@@ -34,8 +37,16 @@ namespace CoursEntityFrameWorkCore.ViewModels
             dbContext.Cars.Add(car);
             if(dbContext.SaveChanges() > 0)
             {
-                MessageBox.Show(car.Id.ToString());
+                Message = "Voiture ajoutée avec l'id " + car.Id;
+                car = new Car();
+                OnPropertyChanged(nameof(Name));
+                OnPropertyChanged(nameof(Description));
             }
+            else
+            {
+                Message = "Erreur d'ajout dans la base de données";
+            }
+            OnPropertyChanged(nameof(Message));
         }
     }
 }

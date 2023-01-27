@@ -25,6 +25,9 @@
                     <StackPanel>
                         <Button Command="{Binding ValidCommand}" Content="Valider"></Button>
                     </StackPanel>
+                    <StackPanel>
+                        <TextBlock Text="{Binding Message}"></TextBlock>
+                    </StackPanel>
                 </StackPanel>
             </GroupBox>
         </StackPanel>
