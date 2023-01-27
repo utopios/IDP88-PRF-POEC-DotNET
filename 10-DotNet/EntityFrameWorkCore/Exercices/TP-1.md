@@ -7,6 +7,8 @@ La caisse permet de :
 
 - Ajouter des produits.
 - Afficher la totalité des produits.
+- La possibilité de supprimer et de modifier un produit.
+- Rechercher un produit par son titre.
 
 
 ***Un produit possède un id, titre, stock, prix, description***
