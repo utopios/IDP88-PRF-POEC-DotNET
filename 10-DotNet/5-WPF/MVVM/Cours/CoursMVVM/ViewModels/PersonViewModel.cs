@@ -1,5 +1,7 @@
-﻿using CommunityToolkit.Mvvm.Input;
+﻿//using CommunityToolkit.Mvvm.Input;
+using CommunityToolkit.Mvvm.Input;
 using CoursMVVM.Models;
+using GalaSoft.MvvmLight;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -11,7 +13,7 @@ using System.Windows.Input;
 
 namespace CoursMVVM.ViewModels
 {
-    class PersonViewModel : INotifyPropertyChanged
+    class PersonViewModel : ViewModelBase
     {
         #region Attributes
         // Déclaration d'une personne dont les props seront bindé à la vue
@@ -30,7 +32,7 @@ namespace CoursMVVM.ViewModels
             set
             {
                 person.Firstname = value;
-                RaisePropertyChange("Firstname");
+                RaisePropertyChanged("Firstname");
             }
         }
         public string Lastname
@@ -39,7 +41,7 @@ namespace CoursMVVM.ViewModels
             set
             {
                 person.Lastname = value;
-                RaisePropertyChange("Lastname");
+                RaisePropertyChanged("Lastname");
             }
         }
         public bool IsM
@@ -48,7 +50,7 @@ namespace CoursMVVM.ViewModels
             set
             {
                 person.IsM = value;
-                RaisePropertyChange("Gender");
+                RaisePropertyChanged("Gender");
             }
         }
         public bool IsF
@@ -57,7 +59,7 @@ namespace CoursMVVM.ViewModels
             set
             {
                 person.IsF = value;
-                RaisePropertyChange("Gender");
+                RaisePropertyChanged("Gender");
             }
         }
         public string Gender
@@ -90,14 +92,14 @@ namespace CoursMVVM.ViewModels
         #endregion
 
         #region Méthodes
-        private void RaisePropertyChange(string propertyName)
-        {
-            if (PropertyChanged != null)
-            {
-                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-            }
+        //private void RaisePropertyChange(string propertyName)
+        //{
+        //    if (PropertyChanged != null)
+        //    {
+        //        PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+        //    }
 
-        }
+        //}
 
         private void ActionValidCommand()
         {

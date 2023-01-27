@@ -1,0 +1,33 @@
+﻿<Window x:Class="CoursEntityFrameWorkCore.Views.Cars"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CoursEntityFrameWorkCore.Views"
+        mc:Ignorable="d"
+        Title="Cars" Height="450" Width="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <StackPanel Grid.Column="0">
+            <GroupBox Header="Formulaire">
+                <StackPanel>
+                    <StackPanel>
+                        <Label Content="Nom : "></Label>
+                        <TextBox></TextBox>
+                    </StackPanel>
+                    <StackPanel>
+                        <Label Content="Description :"></Label>
+                        <TextBox></TextBox>
+                    </StackPanel>
+                    <StackPanel>
+                        <Button Content="Valider"></Button>
+                    </StackPanel>
+                </StackPanel>
+            </GroupBox>
+        </StackPanel>
+    </Grid>
+   
+</Window>
