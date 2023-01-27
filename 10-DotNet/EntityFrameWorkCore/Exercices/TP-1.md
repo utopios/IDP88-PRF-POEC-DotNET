@@ -9,4 +9,4 @@ La caisse permet de :
 - Afficher la totalité des produits.
 
 
-***Un produit possède un id, titre, stock, description***
+***Un produit possède un id, titre, stock, prix, description***
