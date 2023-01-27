@@ -20,6 +20,8 @@ namespace CoursEntityFrameWorkCore.ViewModels
 
         public ObservableCollection<Car> Cars { get; set; }
 
+        public Car SelectedCar { get; set; }
+
         public string Name { get => car.Name; set => car.Name = value; }
 
         public string Description { get => car.Description; set => car.Description = value; }
@@ -28,12 +30,15 @@ namespace CoursEntityFrameWorkCore.ViewModels
 
         public ICommand ValidCommand { get; set; }
 
+        public ICommand DeleteCommand { get; set; }
+
         public CarsViewModels()
         {
             dbContext = new DataDbContext();
             Cars= new ObservableCollection<Car>(dbContext.Cars);
             car  = new Car();
             ValidCommand = new RelayCommand(ValidCommandAction);
+            DeleteCommand = new RelayCommand(DeleteCommandAction);  
         }
 
         private void ValidCommandAction()
@@ -53,6 +58,18 @@ namespace CoursEntityFrameWorkCore.ViewModels
                 Message = "Erreur d'ajout dans la base de données";
             }
             OnPropertyChanged(nameof(Message));
+        }
+
+        private void DeleteCommandAction()
+        {
+            dbContext.Cars.Remove(SelectedCar);
+            if(dbContext.SaveChanges() > 0)
+            {
+                Message = "Voiture supprimée";
+                OnPropertyChanged(nameof(Message));
+                Cars.Remove(SelectedCar);
+                SelectedCar = null;
+            }
         }
     }
 }
