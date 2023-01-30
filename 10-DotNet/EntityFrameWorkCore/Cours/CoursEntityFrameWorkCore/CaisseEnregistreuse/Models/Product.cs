@@ -17,6 +17,8 @@ namespace CaisseEnregistreuse.Models
         private decimal price;
         private int stock;
 
+
+
         public int Id
         {
             get => id;
@@ -61,5 +63,12 @@ namespace CaisseEnregistreuse.Models
                 OnPropertyChanged();
             }
         }
+
+        
+        [Column("category_id")]
+        public int? CategoryId { get; set; }
+
+        [ForeignKey(nameof(CategoryId))]
+        public Category? Category { get; set; }
     }
 }

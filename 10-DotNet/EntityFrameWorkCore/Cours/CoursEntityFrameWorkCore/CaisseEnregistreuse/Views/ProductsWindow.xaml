@@ -30,6 +30,14 @@
                         <Label Content="Description :"></Label>
                         <TextBox Text="{Binding Description}"></TextBox>
                     </StackPanel>
+
+                    <StackPanel>
+                        <Label Content="Categorie :"></Label>
+                        <StackPanel Orientation="Horizontal">
+                            <ListBox Width="200" ItemsSource="{Binding Categories}" SelectedItem="{Binding SelectedCategory}"></ListBox>
+                            <Button Command="{Binding AddCategoryCommand}" Content="Ajouter une catégorie"></Button>
+                        </StackPanel>
+                    </StackPanel>
                     <StackPanel>
                         <Button Command="{Binding ValidCommand}" Content="Valider"></Button>
                     </StackPanel>

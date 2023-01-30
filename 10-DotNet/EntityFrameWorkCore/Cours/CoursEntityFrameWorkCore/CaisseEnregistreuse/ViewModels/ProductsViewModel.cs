@@ -1,5 +1,6 @@
 ﻿using CaisseEnregistreuse.Models;
 using CaisseEnregistreuse.Tools;
+using CaisseEnregistreuse.Views;
 using Microsoft.Toolkit.Mvvm.ComponentModel;
 using Microsoft.Toolkit.Mvvm.Input;
 using System;
@@ -36,19 +37,29 @@ namespace CaisseEnregistreuse.ViewModels
 
         public ICommand SearchCommand { get; set; }
 
+        public ICommand AddCategoryCommand { get; set; }
+
         public Product SelectedProduct { get; set; }
 
+        public Category SelectedCategory { get => product.Category; set => product.Category = value; }
+
         public ObservableCollection<Product> Products { get; set; }
+
+        public ObservableCollection<Category> Categories { get; set; }
 
         public ProductsViewModel()
         {
             dataDbContext = new DataDbContext();
             product = new Product();
             Products = new ObservableCollection<Product>(dataDbContext.Products);
+
+            Categories = new ObservableCollection<Category>(dataDbContext.Categories);
+
             ValidCommand = new RelayCommand(ValidCommandAction);
             DeleteCommand = new RelayCommand(DeleteCommandAction);
             EditCommand = new RelayCommand(EditCommandAction);
             SearchCommand = new RelayCommand(SearchCommandAction);
+            AddCategoryCommand = new RelayCommand(AddCategoryCommandAction);
         }
         
         private void ValidCommandAction()
@@ -133,6 +144,12 @@ namespace CaisseEnregistreuse.ViewModels
 
             }
             OnPropertyChanged(nameof(Products));
+        }
+
+        private void AddCategoryCommandAction()
+        {
+            CategoryWindow window= new CategoryWindow(Categories, dataDbContext);
+            window.Show();
         }
     }
 }
