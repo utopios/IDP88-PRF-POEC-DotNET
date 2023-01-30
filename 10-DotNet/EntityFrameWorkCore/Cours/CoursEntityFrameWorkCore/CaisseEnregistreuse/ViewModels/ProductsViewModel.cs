@@ -28,6 +28,12 @@ namespace CaisseEnregistreuse.ViewModels
 
         public ICommand ValidCommand { get; set; }
 
+        public ICommand DeleteCommand { get; set; }
+
+        public ICommand EditCommand { get; set; }
+
+        public Product SelectedProduct { get; set; }
+
         public ObservableCollection<Product> Products { get; set; }
 
         public ProductsViewModel()
@@ -36,6 +42,7 @@ namespace CaisseEnregistreuse.ViewModels
             product = new Product();
             Products = new ObservableCollection<Product>(dataDbContext.Products);
             ValidCommand = new RelayCommand(ValidCommandAction);
+            DeleteCommand = new RelayCommand(DeleteCommandAction);
         }
         
         private void ValidCommandAction()
@@ -54,6 +61,25 @@ namespace CaisseEnregistreuse.ViewModels
             else
             {
                 MessageBox.Show("Erreur d'ajout dans la base de données");
+            }
+        }
+
+        private void DeleteCommandAction()
+        {
+            if(SelectedProduct!= null)
+            {
+                dataDbContext.Products.Remove(SelectedProduct);
+                if(dataDbContext.SaveChanges() > 0)
+                {
+                    MessageBox.Show("Produit supprimé");
+                    Products.Remove(SelectedProduct);
+                    SelectedProduct = null;
+                    OnPropertyChanged(nameof(SelectedProduct));
+                }
+            }
+            else
+            {
+                MessageBox.Show("Merci de choisir un produit");
             }
         }
     }

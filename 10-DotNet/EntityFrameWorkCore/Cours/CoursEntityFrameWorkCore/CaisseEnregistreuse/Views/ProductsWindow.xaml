@@ -39,17 +39,24 @@
         </StackPanel>
         <StackPanel Grid.Column="1">
             <GroupBox Header="Liste Produits">
-                <ListView ItemsSource="{Binding Products}">
-                    <ListView.View>
-                        <GridView>
-                            <GridViewColumn Header="Id" Width="50" DisplayMemberBinding="{Binding Id}"></GridViewColumn>
-                            <GridViewColumn Header="Titre" Width="100" DisplayMemberBinding="{Binding Title}"></GridViewColumn>
-                            <GridViewColumn Header="Prix" Width="50" DisplayMemberBinding="{Binding Price}"></GridViewColumn>
-                            <GridViewColumn Header="Stock" Width="50" DisplayMemberBinding="{Binding Stock}"></GridViewColumn>
-                            <GridViewColumn Header="Description" Width="100" DisplayMemberBinding="{Binding Description}"></GridViewColumn>
-                        </GridView>
-                    </ListView.View>
-                </ListView>
+                <StackPanel>
+                    <ListView SelectedItem="{Binding SelectedProduct}" ItemsSource="{Binding Products}">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn Header="Id" Width="50" DisplayMemberBinding="{Binding Id}"></GridViewColumn>
+                                <GridViewColumn Header="Titre" Width="100" DisplayMemberBinding="{Binding Title}"></GridViewColumn>
+                                <GridViewColumn Header="Prix" Width="50" DisplayMemberBinding="{Binding Price}"></GridViewColumn>
+                                <GridViewColumn Header="Stock" Width="50" DisplayMemberBinding="{Binding Stock}"></GridViewColumn>
+                                <GridViewColumn Header="Description" Width="100" DisplayMemberBinding="{Binding Description}"></GridViewColumn>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                    <StackPanel Orientation="Horizontal">
+                        <Button Content="Supprimer" Command="{Binding DeleteCommand}"></Button>
+                        <Button Content="Modifier" Command="{ Binding EditCommand}"></Button>
+                    </StackPanel>
+                </StackPanel>
+                
             </GroupBox>
         </StackPanel>
     </Grid>

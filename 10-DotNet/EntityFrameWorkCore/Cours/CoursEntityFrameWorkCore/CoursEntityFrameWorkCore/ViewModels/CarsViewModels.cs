@@ -70,7 +70,7 @@ namespace CoursEntityFrameWorkCore.ViewModels
                     Message = "Voiture modifiée";
                     SelectedCar = null;
                     car = new Car();
-                    OnPropertyChanged(nameof(Name));
+                    OnPropertyChanged(nameof(Name)); 
                     OnPropertyChanged(nameof(Description));
                 }
             }
