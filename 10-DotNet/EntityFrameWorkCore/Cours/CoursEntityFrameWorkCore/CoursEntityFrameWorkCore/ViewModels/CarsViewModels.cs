@@ -2,6 +2,7 @@
 using CommunityToolkit.Mvvm.Input;
 using CoursEntityFrameWorkCore.Models;
 using CoursEntityFrameWorkCore.Tools;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -34,6 +35,8 @@ namespace CoursEntityFrameWorkCore.ViewModels
 
         public ICommand EditCommand{ get; set; }
         public ICommand AddCommentCommand { get; set; }
+
+        public ICommand DisplayCommentCommand { get; set; }
         public CarsViewModels()
         {
             dbContext = new DataDbContext();
@@ -44,6 +47,7 @@ namespace CoursEntityFrameWorkCore.ViewModels
             EditCommand = new RelayCommand(EditCommandAction);
 
             AddCommentCommand = new RelayCommand(AddCommentCommandAction);
+            DisplayCommentCommand = new RelayCommand(DisplayCommentCommandAction);
         }
 
         private void ValidCommandAction()
@@ -111,6 +115,12 @@ namespace CoursEntityFrameWorkCore.ViewModels
                     OnPropertyChanged(nameof(Message));
                 }
             }
+        }
+
+        private void DisplayCommentCommandAction()
+        {
+            SelectedCar = dbContext.Cars.Include(c => c.Comments).First(c => c.Id == SelectedCar.Id);
+            OnPropertyChanged(nameof(SelectedCar));
         }
     }
 }

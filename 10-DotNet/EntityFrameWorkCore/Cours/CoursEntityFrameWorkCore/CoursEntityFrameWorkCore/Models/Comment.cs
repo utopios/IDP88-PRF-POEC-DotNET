@@ -21,5 +21,10 @@ namespace CoursEntityFrameWorkCore.Models
 
         [ForeignKey("CarId")]
         public Car Car { get; set; }
+
+        public override string ToString()
+        {
+            return Content;
+        }
     }
 }
