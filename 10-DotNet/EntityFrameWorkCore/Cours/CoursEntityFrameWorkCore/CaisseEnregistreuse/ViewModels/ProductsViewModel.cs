@@ -43,25 +43,41 @@ namespace CaisseEnregistreuse.ViewModels
             Products = new ObservableCollection<Product>(dataDbContext.Products);
             ValidCommand = new RelayCommand(ValidCommandAction);
             DeleteCommand = new RelayCommand(DeleteCommandAction);
+            EditCommand = new RelayCommand(EditCommandAction);
         }
         
         private void ValidCommandAction()
         {
-            dataDbContext.Products.Add(product);
-            if(dataDbContext.SaveChanges() > 0)
+            if(product.Id > 0)
             {
-                MessageBox.Show("Produit ajouté avec l'id " + product.Id);
-                Products.Add(product);
-                product = new Product();
-                OnPropertyChanged(nameof(Title));
-                OnPropertyChanged(nameof(Stock));
-                OnPropertyChanged(nameof(Description));
-                OnPropertyChanged(nameof(Price));
+                if(dataDbContext.SaveChanges() > 0)
+                {
+                    product = new Product();
+                    OnPropertyChanged(nameof(Title));
+                    OnPropertyChanged(nameof(Stock));
+                    OnPropertyChanged(nameof(Description));
+                    OnPropertyChanged(nameof(Price));
+                }
             }
             else
             {
-                MessageBox.Show("Erreur d'ajout dans la base de données");
+                dataDbContext.Products.Add(product);
+                if (dataDbContext.SaveChanges() > 0)
+                {
+                    MessageBox.Show("Produit ajouté avec l'id " + product.Id);
+                    Products.Add(product);
+                    product = new Product();
+                    OnPropertyChanged(nameof(Title));
+                    OnPropertyChanged(nameof(Stock));
+                    OnPropertyChanged(nameof(Description));
+                    OnPropertyChanged(nameof(Price));
+                }
+                else
+                {
+                    MessageBox.Show("Erreur d'ajout dans la base de données");
+                }
             }
+            
         }
 
         private void DeleteCommandAction()
@@ -76,6 +92,22 @@ namespace CaisseEnregistreuse.ViewModels
                     SelectedProduct = null;
                     OnPropertyChanged(nameof(SelectedProduct));
                 }
+            }
+            else
+            {
+                MessageBox.Show("Merci de choisir un produit");
+            }
+        }
+
+        private void EditCommandAction()
+        {
+            if(SelectedProduct!= null)
+            {
+                product = SelectedProduct;
+                OnPropertyChanged(nameof(Title));
+                OnPropertyChanged(nameof(Price));
+                OnPropertyChanged(nameof(Stock));
+                OnPropertyChanged(nameof(Description));
             }
             else
             {

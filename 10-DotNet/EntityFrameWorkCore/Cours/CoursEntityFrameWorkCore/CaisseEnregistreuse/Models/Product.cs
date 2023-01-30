@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Toolkit.Mvvm.ComponentModel;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 namespace CaisseEnregistreuse.Models
 {
     [Table("product")]
-    public class Product
+    public class Product : ObservableObject
     {
         private int id;
         private string title;
@@ -16,10 +17,49 @@ namespace CaisseEnregistreuse.Models
         private decimal price;
         private int stock;
 
-        public int Id { get => id; set => id = value; }
-        public string Title { get => title; set => title = value; }
-        public string Description { get => description; set => description = value; }
-        public decimal Price { get => price; set => price = value; }
-        public int Stock { get => stock; set => stock = value; }
+        public int Id
+        {
+            get => id;
+            set
+            {
+                id = value;
+                OnPropertyChanged();
+            }
+        }
+        public string Title
+        {
+            get => title;
+            set
+            {
+                title = value;
+                OnPropertyChanged();
+            }
+        }
+        public string Description
+        {
+            get => description; set
+            {
+                description = value;
+                OnPropertyChanged();
+            }
+        }
+        public decimal Price
+        {
+            get => price;
+            set
+            {
+                price = value;
+                OnPropertyChanged();
+            }
+        }
+        public int Stock
+        {
+            get => stock; 
+            set
+            {
+                stock = value;
+                OnPropertyChanged();
+            }
+        }
     }
 }
