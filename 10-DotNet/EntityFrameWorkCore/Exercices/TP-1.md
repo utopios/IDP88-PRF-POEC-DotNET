@@ -16,6 +16,11 @@ Modifiez notre application pour pouvoir
 - Ajouter les catégories.
 - Associer la catégorie du produit au moment de l'ajout
 
+On souhaite ajouter à notre application une fenetre pour réaliser des ventes.
+
+
 ***Un produit possède un id, titre, stock, prix, description***
 
 ***Une catégorie peut avoir plusieurs produits, elle a également un id et un titre***
+
+***Une vente possède un id, un total, une liste de produit avec qty***
