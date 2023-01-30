@@ -18,6 +18,8 @@ namespace CaisseEnregistreuse.ViewModels
         private Product product;
         private DataDbContext dataDbContext;
 
+        public string SearchText { get; set; }
+
         public string Title { get => product.Title; set => product.Title = value; }
 
         public decimal Price { get => product.Price; set => product.Price = value; }
@@ -32,6 +34,8 @@ namespace CaisseEnregistreuse.ViewModels
 
         public ICommand EditCommand { get; set; }
 
+        public ICommand SearchCommand { get; set; }
+
         public Product SelectedProduct { get; set; }
 
         public ObservableCollection<Product> Products { get; set; }
@@ -44,6 +48,7 @@ namespace CaisseEnregistreuse.ViewModels
             ValidCommand = new RelayCommand(ValidCommandAction);
             DeleteCommand = new RelayCommand(DeleteCommandAction);
             EditCommand = new RelayCommand(EditCommandAction);
+            SearchCommand = new RelayCommand(SearchCommandAction);
         }
         
         private void ValidCommandAction()
@@ -113,6 +118,21 @@ namespace CaisseEnregistreuse.ViewModels
             {
                 MessageBox.Show("Merci de choisir un produit");
             }
+        }
+
+        private void SearchCommandAction()
+        {
+            if(SearchText !=null)
+            {
+                List<Product> searchProducts = dataDbContext.Products.Where(p => p.Title.Contains(SearchText)).ToList();
+                Products = new ObservableCollection<Product>(searchProducts);
+                
+            }else
+            {
+                Products= new ObservableCollection<Product>(dataDbContext.Products);
+
+            }
+            OnPropertyChanged(nameof(Products));
         }
     }
 }

@@ -40,6 +40,10 @@
         <StackPanel Grid.Column="1">
             <GroupBox Header="Liste Produits">
                 <StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBox Text="{Binding SearchText}" Width="200"></TextBox>
+                        <Button Command="{Binding SearchCommand}" Content="Rechercher"></Button>
+                    </StackPanel>
                     <ListView SelectedItem="{Binding SelectedProduct}" ItemsSource="{Binding Products}">
                         <ListView.View>
                             <GridView>
