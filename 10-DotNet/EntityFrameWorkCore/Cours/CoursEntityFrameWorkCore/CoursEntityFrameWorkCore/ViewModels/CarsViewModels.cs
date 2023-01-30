@@ -23,7 +23,7 @@ namespace CoursEntityFrameWorkCore.ViewModels
         public Car SelectedCar { get; set; }
 
         public string Name { get => car.Name; set => car.Name = value; }
-
+        public string Comment { get; set; }
         public string Description { get => car.Description; set => car.Description = value; }
 
         public string Message { get; set; }
@@ -33,7 +33,7 @@ namespace CoursEntityFrameWorkCore.ViewModels
         public ICommand DeleteCommand { get; set; }
 
         public ICommand EditCommand{ get; set; }
-
+        public ICommand AddCommentCommand { get; set; }
         public CarsViewModels()
         {
             dbContext = new DataDbContext();
@@ -42,6 +42,8 @@ namespace CoursEntityFrameWorkCore.ViewModels
             ValidCommand = new RelayCommand(ValidCommandAction);
             DeleteCommand = new RelayCommand(DeleteCommandAction);  
             EditCommand = new RelayCommand(EditCommandAction);
+
+            AddCommentCommand = new RelayCommand(AddCommentCommandAction);
         }
 
         private void ValidCommandAction()
@@ -95,6 +97,20 @@ namespace CoursEntityFrameWorkCore.ViewModels
             car = SelectedCar;
             OnPropertyChanged(nameof(Name));
             OnPropertyChanged(nameof(Description));
+        }
+
+        private void AddCommentCommandAction()
+        {
+            if(SelectedCar!= null)
+            {
+                Comment comment = new Comment() { Content = Comment };
+                SelectedCar.Comments.Add(comment);
+                if(dbContext.SaveChanges() > 0)
+                {
+                    Message = "Commentaire ajouté";
+                    OnPropertyChanged(nameof(Message));
+                }
+            }
         }
     }
 }

@@ -12,24 +12,38 @@
             <ColumnDefinition Width="*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
         <StackPanel Grid.Column="0">
-            <GroupBox Header="Formulaire">
-                <StackPanel>
+            <StackPanel>
+                <GroupBox Header="Formulaire">
                     <StackPanel>
-                        <Label Content="Nom : "></Label>
-                        <TextBox Text="{Binding Name}"></TextBox>
+                        <StackPanel>
+                            <Label Content="Nom : "></Label>
+                            <TextBox Text="{Binding Name}"></TextBox>
+                        </StackPanel>
+                        <StackPanel>
+                            <Label Content="Description :"></Label>
+                            <TextBox Text="{Binding Description}"></TextBox>
+                        </StackPanel>
+                        <StackPanel>
+                            <Button Command="{Binding ValidCommand}" Content="Valider"></Button>
+                        </StackPanel>
+                        <StackPanel>
+                            <TextBlock Text="{Binding Message}"></TextBlock>
+                        </StackPanel>
                     </StackPanel>
+                </GroupBox>
+                <GroupBox Header="Commentaire">
                     <StackPanel>
-                        <Label Content="Description :"></Label>
-                        <TextBox Text="{Binding Description}"></TextBox>
+                        <StackPanel>
+                            <Label Content="Commentaire :"></Label>
+                            <TextBox Text="{Binding Comment}"></TextBox>
+                        </StackPanel>
+                        <StackPanel>
+                            <Button Command="{Binding AddCommentCommand}" Content="Ajouter commentaire"></Button>
+                        </StackPanel>
                     </StackPanel>
-                    <StackPanel>
-                        <Button Command="{Binding ValidCommand}" Content="Valider"></Button>
-                    </StackPanel>
-                    <StackPanel>
-                        <TextBlock Text="{Binding Message}"></TextBlock>
-                    </StackPanel>
-                </StackPanel>
-            </GroupBox>
+                </GroupBox>
+            </StackPanel>
+            
         </StackPanel>
         <StackPanel Grid.Column="1">
             <GroupBox Header="Liste voitures">

@@ -27,5 +27,11 @@ namespace CoursEntityFrameWorkCore.Models
         [Column("description")]
        
         public string Description { get => description; set => description = value; }
+
+        public List<Comment> Comments { get; set; }
+
+        public Car() { 
+            Comments= new List<Comment>();
+        }
     }
 }
