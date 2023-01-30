@@ -3,6 +3,7 @@ using CoursEntityFrameWorkCore.Tools;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CoursEntityFrameWorkCore.Migrations
 {
     [DbContext(typeof(DataDbContext))]
-    partial class DataDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230130144533_accessory")]
+    partial class accessory
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -20,6 +23,21 @@ namespace CoursEntityFrameWorkCore.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
+
+            modelBuilder.Entity("AccessoryCar", b =>
+                {
+                    b.Property<int>("AccessoriesId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("CarsId")
+                        .HasColumnType("int");
+
+                    b.HasKey("AccessoriesId", "CarsId");
+
+                    b.HasIndex("CarsId");
+
+                    b.ToTable("AccessoryCar");
+                });
 
             modelBuilder.Entity("CoursEntityFrameWorkCore.Models.Accessory", b =>
                 {
@@ -36,33 +54,6 @@ namespace CoursEntityFrameWorkCore.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Accessory");
-                });
-
-            modelBuilder.Entity("CoursEntityFrameWorkCore.Models.AccessoryCar", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<int>("AccessoryId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("CarId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Color")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("AccessoryId");
-
-                    b.HasIndex("CarId");
-
-                    b.ToTable("AccessoryCar");
                 });
 
             modelBuilder.Entity("CoursEntityFrameWorkCore.Models.Car", b =>
@@ -115,23 +106,19 @@ namespace CoursEntityFrameWorkCore.Migrations
                     b.ToTable("comment");
                 });
 
-            modelBuilder.Entity("CoursEntityFrameWorkCore.Models.AccessoryCar", b =>
+            modelBuilder.Entity("AccessoryCar", b =>
                 {
-                    b.HasOne("CoursEntityFrameWorkCore.Models.Accessory", "Accessory")
-                        .WithMany("Cars")
-                        .HasForeignKey("AccessoryId")
+                    b.HasOne("CoursEntityFrameWorkCore.Models.Accessory", null)
+                        .WithMany()
+                        .HasForeignKey("AccessoriesId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("CoursEntityFrameWorkCore.Models.Car", "Car")
-                        .WithMany("Accessories")
-                        .HasForeignKey("CarId")
+                    b.HasOne("CoursEntityFrameWorkCore.Models.Car", null)
+                        .WithMany()
+                        .HasForeignKey("CarsId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.Navigation("Accessory");
-
-                    b.Navigation("Car");
                 });
 
             modelBuilder.Entity("CoursEntityFrameWorkCore.Models.Comment", b =>
@@ -145,15 +132,8 @@ namespace CoursEntityFrameWorkCore.Migrations
                     b.Navigation("Car");
                 });
 
-            modelBuilder.Entity("CoursEntityFrameWorkCore.Models.Accessory", b =>
-                {
-                    b.Navigation("Cars");
-                });
-
             modelBuilder.Entity("CoursEntityFrameWorkCore.Models.Car", b =>
                 {
-                    b.Navigation("Accessories");
-
                     b.Navigation("Comments");
                 });
 #pragma warning restore 612, 618

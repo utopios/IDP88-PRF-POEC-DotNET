@@ -30,6 +30,8 @@ namespace CoursEntityFrameWorkCore.Models
 
         public List<Comment> Comments { get; set; }
 
+        public List<AccessoryCar > Accessories { get; set; }
+
         public Car() { 
             Comments= new List<Comment>();
         }

@@ -25,7 +25,7 @@ namespace CaisseEnregistreuse.ViewModels
         public CategoryViewModel(ObservableCollection<Category> categories, DataDbContext dataDbContext) {
             _categories = categories;
             category = new Category();
-            _dataDbContext= new DataDbContext();
+            _dataDbContext= dataDbContext;
             AddCategoryCommand = new RelayCommand(AddCategoryCommandAction);
         }
 
