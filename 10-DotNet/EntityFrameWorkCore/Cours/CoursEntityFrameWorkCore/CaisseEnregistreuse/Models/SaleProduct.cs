@@ -20,5 +20,17 @@ namespace CaisseEnregistreuse.Models
 
         [ForeignKey(nameof(ProductId))]
         public Product Product { get; set; }
+
+        //demo
+
+        /*public static void Test()
+        {
+            List<SaleProduct> list = new List<SaleProduct>(); 
+            Product p = new Product();
+            Sale s =new Sale();
+            SaleProduct saleProduct = new SaleProduct() { Qty = 1, Product = p, Sale = s };
+            list.Add(saleProduct);
+            
+        }*/
     }
 }
