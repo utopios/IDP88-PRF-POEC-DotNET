@@ -23,4 +23,4 @@ On souhaite ajouter à notre application une fenetre pour réaliser des ventes.
 
 ***Une catégorie peut avoir plusieurs produits, elle a également un id et un titre***
 
-***Une vente possède un id, un total, une liste de produit avec qty***
+***Une vente possède un id, un total, une liste de produits avec qty***
