@@ -70,5 +70,7 @@ namespace CaisseEnregistreuse.Models
 
         [ForeignKey(nameof(CategoryId))]
         public Category? Category { get; set; }
+
+        public List<SaleProduct> Sales { get; set; }
     }
 }
