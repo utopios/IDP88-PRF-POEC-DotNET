@@ -22,7 +22,16 @@ namespace CaisseEnregistreuse.ViewModels
         public SaleProduct SaleProduct { get; set; }
 
         public ObservableCollection<SaleProduct> SaleProducts { get; set; }
-        public decimal Total { get => Sale.Total; }
+        public decimal Total { 
+            get { 
+                decimal total = 0;
+                SaleProducts.ToList().ForEach(p =>
+                {
+                    total += p.Qty * p.Product.Price;
+                });
+                return total;
+            } 
+        }
 
         public ICommand SearchCommand { get; set; }
 
