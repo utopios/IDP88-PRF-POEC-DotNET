@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Toolkit.Mvvm.ComponentModel;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
@@ -7,10 +8,25 @@ using System.Threading.Tasks;
 
 namespace CaisseEnregistreuse.Models
 {
-    public class SaleProduct
+    public class SaleProduct : ObservableObject
     {
+        private int qty;
         public int Id { get; set; }
-        public int Qty { get; set; }
+        public int Qty
+        {
+            get
+            {
+                return qty;
+            }
+            set
+            {
+                qty = value;
+                OnPropertyChanged();
+                OnPropertyChanged(nameof(TotalLine));
+            }
+        }
+
+        public decimal TotalLine { get => Qty * Product.Price; }
 
         public int ProductId { get; set; }
         public int SaleId { get; set; }

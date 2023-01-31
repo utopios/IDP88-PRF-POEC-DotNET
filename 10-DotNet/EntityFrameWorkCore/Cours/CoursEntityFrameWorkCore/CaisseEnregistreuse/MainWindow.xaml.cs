@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CaisseEnregistreuse.Views;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,18 @@ namespace CaisseEnregistreuse
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            ProductsWindow w = new ProductsWindow();
+            w.Show();
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            SaleWindow w = new SaleWindow();
+            w.Show();
         }
     }
 }

@@ -1,0 +1,39 @@
+﻿<Window x:Class="CaisseEnregistreuse.Views.SaleWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CaisseEnregistreuse.Views"
+        mc:Ignorable="d"
+        Title="SaleWindow" Height="450" Width="800">
+    <Grid>
+        <TextBox HorizontalAlignment="Left" Margin="144,12,0,0" TextWrapping="Wrap" Text="{Binding Search}" VerticalAlignment="Top" Width="228" Height="24"/>
+        <Label Content="Recherche Produit" HorizontalAlignment="Left" Margin="20,10,0,0" VerticalAlignment="Top"/>
+        <Button Content="Rechercher" Command="{Binding SearchCommand}" HorizontalAlignment="Left" Margin="391,13,0,0" VerticalAlignment="Top" Height="23" Width="121"/>
+        <GridSplitter HorizontalAlignment="Center" Height="784" Margin="0,-340,0,0" VerticalAlignment="Top" Width="6" RenderTransformOrigin="0.5,0.5">
+            <GridSplitter.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="90.185"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </GridSplitter.RenderTransform>
+        </GridSplitter>
+        <ListView SelectedItem="{Binding SaleProduct}" ItemsSource="{Binding SaleProducts}" Margin="10,63,10,73">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Titre" Width="300" DisplayMemberBinding="{Binding Product.Title}"/>
+                    <GridViewColumn Header="Price" Width="100" DisplayMemberBinding="{Binding Product.Price}"/>
+                    <GridViewColumn Header="Qty" Width="100" DisplayMemberBinding="{Binding Qty}"/>
+                    <GridViewColumn Header="Total ligne" Width="200" DisplayMemberBinding="{Binding TotalLine}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <Label Content="Total : " HorizontalAlignment="Left" Margin="545,13,0,0" VerticalAlignment="Top" Height="23" Width="48"/>
+        <Label Content="{Binding Total}" HorizontalAlignment="Left" Margin="608,13,0,0" VerticalAlignment="Top" Height="23" Width="63"/>
+        <Button Content="Supprimer de la vente" Command="{Binding DeleteFromSaleCommand}" HorizontalAlignment="Left" Margin="20,378,0,0" VerticalAlignment="Top" Height="23" Width="203"/>
+        <Button Content="Confirmer de la vente" Command="{Binding ConfirmCommand}" HorizontalAlignment="Left" Margin="248,378,0,0" VerticalAlignment="Top" Height="23" Width="204"/>
+        <Button Content="Reset de la vente" Command="{Binding ResetCommand}" HorizontalAlignment="Left" Margin="486,378,0,0" VerticalAlignment="Top" Height="23" Width="204"/>
+    </Grid>
+</Window>

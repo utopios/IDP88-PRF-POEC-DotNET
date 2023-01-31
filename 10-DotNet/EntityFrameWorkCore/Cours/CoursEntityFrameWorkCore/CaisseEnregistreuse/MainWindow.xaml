@@ -5,8 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CaisseEnregistreuse"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="264" Width="557">
     <Grid>
+        <Button Content="Gestion de produit" HorizontalAlignment="Center" Margin="0,34,0,0" VerticalAlignment="Top" Height="62" Width="228" Click="Button_Click"/>
+        <Button Content="Vente" HorizontalAlignment="Center" Margin="0,124,0,0" VerticalAlignment="Top" Height="69" Width="228" Click="Button_Click_1"/>
 
     </Grid>
 </Window>
