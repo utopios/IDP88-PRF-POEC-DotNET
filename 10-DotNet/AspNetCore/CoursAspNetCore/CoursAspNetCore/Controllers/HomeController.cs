@@ -6,11 +6,16 @@ namespace CoursAspNetCore.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        //private readonly ILogger<HomeController> _logger;
 
-        public HomeController(ILogger<HomeController> logger)
+        //public HomeController(ILogger<HomeController> logger)
+        //{
+        //    _logger = logger;
+        //}
+
+        public string Titi()
         {
-            _logger = logger;
+            return "Bonjour je suis titi";
         }
 
         public IActionResult Index()

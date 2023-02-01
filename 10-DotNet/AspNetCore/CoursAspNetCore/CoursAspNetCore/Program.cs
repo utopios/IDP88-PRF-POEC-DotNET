@@ -20,6 +20,7 @@ app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
 
+//Ajout d'une custom route
 app.MapControllerRoute("customRoute", "titi", new { controller = "Home", action = "Index" });
 
 
