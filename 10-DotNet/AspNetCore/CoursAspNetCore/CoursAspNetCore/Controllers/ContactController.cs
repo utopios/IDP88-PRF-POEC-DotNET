@@ -4,19 +4,22 @@ namespace CoursAspNetCore.Controllers
 {
     public class ContactController : Controller
     {
-       public string Index()
+       public IActionResult Index()
         {
-            return "Je suis la page liste contacts";
+            //return "Je suis la page liste contacts";
+            return View();
         }
 
-        public string detail(int? id)
+        public IActionResult detail(int? id)
         {
-            return "Je suis la page detail contact "+id;
+            //return "Je suis la page detail contact "+id;
+            return View();
         }
 
-        public string form()
+        public IActionResult form()
         {
-            return "Je suis la page pour ajouter un contact";
+            //return "Je suis la page pour ajouter un contact";
+            return View();
         }
 
         public string CustomDetail(string firstName, string lastName) { 
