@@ -4,9 +4,11 @@ namespace CoursAspNetCore.Controllers
 {
     public class PersonController : Controller
     {
-        public string ListPersons()
+        public IActionResult ListPersons()
         {
-            return "Je suis une liste de personne";
+            //return new ContentResult() { Content = "<h1>Je suis une liste de personne</h1>", ContentType="text/html" };
+            //return new ViewResult() { ViewName = "" };
+            return View();
         }
     }
 }
