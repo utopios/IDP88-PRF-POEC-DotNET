@@ -3,11 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.4.33122.133
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoursEntityFrameWorkCore", "CoursEntityFrameWorkCore\CoursEntityFrameWorkCore.csproj", "{10B77D9A-A685-4BB7-AA76-F82279894D21}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CoursEntityFrameWorkCore", "CoursEntityFrameWorkCore\CoursEntityFrameWorkCore.csproj", "{10B77D9A-A685-4BB7-AA76-F82279894D21}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Corrections", "Corrections", "{2C834636-D777-45C4-ABE4-1FD8EC9CE0CF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CaisseEnregistreuse", "CaisseEnregistreuse\CaisseEnregistreuse.csproj", "{4E62CEC3-776C-4B34-8A26-FA96DAE3F940}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CaisseEnregistreuse", "CaisseEnregistreuse\CaisseEnregistreuse.csproj", "{4E62CEC3-776C-4B34-8A26-FA96DAE3F940}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LePendu", "LePendu\LePendu.csproj", "{6922413C-BB03-49CD-953A-6AA434DFA857}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,12 +25,17 @@ Global
 		{4E62CEC3-776C-4B34-8A26-FA96DAE3F940}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4E62CEC3-776C-4B34-8A26-FA96DAE3F940}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4E62CEC3-776C-4B34-8A26-FA96DAE3F940}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6922413C-BB03-49CD-953A-6AA434DFA857}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6922413C-BB03-49CD-953A-6AA434DFA857}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6922413C-BB03-49CD-953A-6AA434DFA857}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6922413C-BB03-49CD-953A-6AA434DFA857}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{4E62CEC3-776C-4B34-8A26-FA96DAE3F940} = {2C834636-D777-45C4-ABE4-1FD8EC9CE0CF}
+		{6922413C-BB03-49CD-953A-6AA434DFA857} = {2C834636-D777-45C4-ABE4-1FD8EC9CE0CF}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {0088029F-1210-4D5E-8021-D127C2CA5319}
