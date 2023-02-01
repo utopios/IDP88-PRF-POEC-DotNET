@@ -9,9 +9,9 @@ namespace CoursAspNetCore.Controllers
             return "Je suis la page liste contacts";
         }
 
-        public string detail()
+        public string detail(int? id)
         {
-            return "Je suis la page detail contact";
+            return "Je suis la page detail contact "+id;
         }
 
         public string form()
