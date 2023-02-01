@@ -24,4 +24,7 @@ app.MapControllerRoute(
 app.MapControllerRoute("customRoute", "titi", new { controller = "Home", action = "Index" });
 
 
+//Route avec deux paramètes
+app.MapControllerRoute("customRouteArgs", "custom-contact/{firstName}/{lastName}", new { controller = "Contact", action = "CustomDetail" });
+
 app.Run();

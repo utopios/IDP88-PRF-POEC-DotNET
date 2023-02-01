@@ -18,5 +18,9 @@ namespace CoursAspNetCore.Controllers
         {
             return "Je suis la page pour ajouter un contact";
         }
+
+        public string CustomDetail(string firstName, string lastName) { 
+            return firstName+" "+lastName;
+        }
     }
 }
