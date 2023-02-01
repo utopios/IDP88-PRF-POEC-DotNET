@@ -20,5 +20,14 @@ namespace LePendu.Models
         public string WordValue { get => wordValue; set => wordValue = value; }
 
         public List<PenduUser> Users { get; set; }
+
+        public Word() { 
+            Users= new List<PenduUser>();
+        }
+
+        public override string ToString()
+        {
+            return WordValue;
+        }
     }
 }

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LePendu.Views"
         mc:Ignorable="d"
-        Title="WordWindow" Height="254" Width="424">
+        Title="WordWindow" Height="122" Width="314">
     <Grid>
         <Label Content="Mot : " HorizontalAlignment="Left" Margin="24,10,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.105,0.233"/>
         <TextBox HorizontalAlignment="Left" Margin="79,10,0,0" TextWrapping="Wrap" Text="{Binding WordValue}" VerticalAlignment="Top" Width="206" Height="26"/>

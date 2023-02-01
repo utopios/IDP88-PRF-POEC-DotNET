@@ -1,0 +1,22 @@
+﻿<Window x:Class="LePendu.Views.GameWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:LePendu.Views"
+        mc:Ignorable="d"
+        Title="GameWindow" Height="446" Width="612">
+    <Grid>
+        <Label Content="Joueur : " HorizontalAlignment="Left" Margin="29,23,0,0" VerticalAlignment="Top"/>
+        <Label Content="{Binding Pseudo}" HorizontalAlignment="Left" Margin="107,18,0,0" VerticalAlignment="Top" Height="31" Width="83"/>
+        <Label Content="Masque à trouver : " HorizontalAlignment="Left" Margin="29,72,0,0" VerticalAlignment="Top"/>
+        <Label Content="{Binding WordMask}" HorizontalAlignment="Left" Margin="166,72,0,0" VerticalAlignment="Top"/>
+        <Label Content="Un caractère : " HorizontalAlignment="Left" Margin="37,118,0,0" VerticalAlignment="Top"/>
+        <TextBox HorizontalAlignment="Left" Margin="148,118,0,0" TextWrapping="Wrap" Text="{Binding UserChar}" VerticalAlignment="Top" Width="82" Height="26"/>
+        <Button Content="Jouer" Command="{Binding PlayCommand}" HorizontalAlignment="Left" Margin="259,118,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.025,0.227" Height="26" Width="73"/>
+        <ListBox ItemsSource="{Binding UserWords}" Margin="37,171,52,25"/>
+        <Label Content="nombre Essai :" HorizontalAlignment="Left" Margin="285,71,0,0" VerticalAlignment="Top"/>
+        <Label Content="{Binding Count}" HorizontalAlignment="Left" Margin="376,72,0,0" VerticalAlignment="Top"/>
+
+    </Grid>
+</Window>

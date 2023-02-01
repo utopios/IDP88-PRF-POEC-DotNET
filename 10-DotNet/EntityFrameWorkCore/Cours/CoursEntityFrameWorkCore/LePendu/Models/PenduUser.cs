@@ -25,5 +25,10 @@ namespace LePendu.Models
         public string Pseudo { get => pseudo; set => pseudo = value; }
 
         public List<Word> Words { get; set; }
+
+        public PenduUser()
+        {
+            Words = new List<Word>();
+        }
     }
 }

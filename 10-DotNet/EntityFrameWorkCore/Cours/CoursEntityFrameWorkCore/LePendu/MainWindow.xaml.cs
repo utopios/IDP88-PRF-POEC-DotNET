@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LePendu.Views;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,18 @@ namespace LePendu
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            WordWindow w = new WordWindow();
+            w.Show();
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            UserPenduWindow w = new UserPenduWindow();
+            w.Show();
         }
     }
 }

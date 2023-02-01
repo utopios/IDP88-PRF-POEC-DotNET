@@ -1,0 +1,22 @@
+﻿<Window x:Class="LePendu.Views.UserPenduWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:LePendu.Views"
+        mc:Ignorable="d"
+        Title="UserPenduWindow" Height="226" Width="438">
+    <Grid>
+        <Label Content="Pseudo : " HorizontalAlignment="Left" Margin="26,24,0,0" VerticalAlignment="Top"/>
+        <TextBox HorizontalAlignment="Left" Margin="102,24,0,0" TextWrapping="Wrap" Text="{Binding Pseudo}" VerticalAlignment="Top" Width="146" Height="26"/>
+        <Button Content="Se connecter" Command="{Binding ConnectCommand}" HorizontalAlignment="Left" Margin="270,27,0,0" VerticalAlignment="Top" Height="23" Width="122"/>
+        <StackPanel Visibility="{Binding UserNotExist}" Margin="0,55,0,28">
+            <Label Content="Prénom : "/>
+            <TextBox Text="{Binding FirstName}" />
+            <Label Content="Nom : " />
+            <TextBox Text="{Binding LastName}" />
+            <Button Content="S'enregistrer" Command="{Binding RegisterCommand}"></Button>
+        </StackPanel>
+
+    </Grid>
+</Window>

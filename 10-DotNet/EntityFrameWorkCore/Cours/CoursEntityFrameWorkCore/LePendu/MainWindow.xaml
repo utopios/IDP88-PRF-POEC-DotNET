@@ -5,8 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LePendu"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="257" Width="546">
     <Grid>
+        <Button Content="Ajouter un mot" HorizontalAlignment="Left" Margin="49,10,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.329,1.073" Height="64" Width="436" Click="Button_Click"/>
+        <Button Content="Jouer" HorizontalAlignment="Left" Margin="49,79,0,0" VerticalAlignment="Top" Height="55" Width="436" Click="Button_Click_1"/>
 
     </Grid>
 </Window>
