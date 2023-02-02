@@ -1,0 +1,28 @@
+﻿@model List<Category>
+<div>
+    <h1>Liste des catégories</h1>
+</div>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Titre</th>
+            
+            <th scope="col">Lien</th>
+        </tr>
+    </thead>
+    <tbody>
+        @*@foreach(Product product in (ViewData["products"] as List<Product>))*@
+        @*@foreach (Product product in ViewBag.Products)*@
+        @foreach (Category category in Model)
+        {
+                <tr>
+                <th scope="row">@category.Id</th>
+                <td>@category.Name</td>
+                
+                <td><a asp-action="GetProducts" asp-controller="Category" asp-route-id="@category.Id">Detail</a></td>
+            </tr>
+        }
+    </tbody>
+</table>
