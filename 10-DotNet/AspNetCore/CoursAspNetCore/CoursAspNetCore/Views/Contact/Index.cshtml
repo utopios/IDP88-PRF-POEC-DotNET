@@ -1,5 +1,17 @@
 ﻿@{
     string message = "un message";
     Layout = "_CustomLayout";
+    List<string> contacts = new List<string>() { "toto", "tatat", "titi" };
+    bool test = false;
 }
 <h1>@message</h1>
+@foreach(string s in contacts) {
+    <div>@s</div>
+}
+@*@Html.ActionLink("le lien", "Index", "Home")*@
+<a asp-action="Index" asp-controller="Home">le lien</a>
+@if(test) {
+    <div>test vrai</div>
+}else {
+    <div>faux</div>
+}
