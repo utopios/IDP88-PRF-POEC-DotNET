@@ -1,3 +1,26 @@
 ﻿<div>
     <h1>Liste des produits</h1>
 </div>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Titre</th>
+            <th scope="col">Prix</th>
+            <th scope="col">Catégorie</th>
+        </tr>
+    </thead>
+    <tbody>
+        @*@foreach(Product product in (ViewData["products"] as List<Product>))*@
+            @foreach (Product product in ViewBag.Products)
+        {
+            <tr>
+            <th scope="row">@product.Id</th>
+            <td>@product.Title</td>
+            <td>@product.Price €</td>
+            <td>@product?.Category?.Name</td>
+        </tr>
+        }
+    </tbody>
+</table>
