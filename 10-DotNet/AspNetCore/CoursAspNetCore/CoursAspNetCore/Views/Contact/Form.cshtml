@@ -1,1 +1,12 @@
 ﻿<h1>Formulaire contact</h1>
+<form asp-action="SubmitForm" asp-controller="Contact" method="post">
+    <div>
+        <label>Nom </label><input type="text" name="Name" />
+    </div>
+    <div>
+        <label>Email : </label><input type="text" name="Email" />
+    </div>
+    <div>
+        <button type="submit">Valider</button>
+    </div>
+</form>

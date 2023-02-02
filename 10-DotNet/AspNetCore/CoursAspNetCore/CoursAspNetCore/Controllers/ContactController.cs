@@ -32,7 +32,14 @@ namespace CoursAspNetCore.Controllers
         public IActionResult form()
         {
             //return "Je suis la page pour ajouter un contact";
-            return View("~/Views/Home/Index.cshtml");
+            return View();
+        }
+
+        //public IActionResult SubmitForm(string Name, string Email)
+        public IActionResult SubmitForm(Contact contact)
+        {
+
+            return RedirectToAction("Index");
         }
 
         public string CustomDetail(string firstName, string lastName) { 
