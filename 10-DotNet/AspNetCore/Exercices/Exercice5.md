@@ -1,4 +1,4 @@
-### Exercice 4 Asp.NET Core
+### Exercice 5 Asp.NET Core
 **Objectifs:** Comprendre la récupération des paramètres en GET
 
 En partant de l'exercice 3 ajoutez : 
