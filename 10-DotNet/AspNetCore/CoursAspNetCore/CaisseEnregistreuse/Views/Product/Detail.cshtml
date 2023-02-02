@@ -1,3 +1,21 @@
-﻿<div>
-    <h1>Detail</h1>
+﻿@model Product
+<div class="container">
+    <h1 class="row">Detail</h1>
+    @if(Model != null)
+    {
+        <div class="row">
+            <span class="col">Titre : @Model.Title</span>
+        </div>
+        <div class="col">
+            <span class="col">Prix : @Model.Price €</span>
+        </div>
+        <div class="col">
+            <span class="col">Description : @Model.Description</span>
+        </div>
+    }else
+    {
+        <div class="alert row alert-danger">
+            <span class="col">Aucun produit avec cet id</span>
+        </div>
+    }
 </div>

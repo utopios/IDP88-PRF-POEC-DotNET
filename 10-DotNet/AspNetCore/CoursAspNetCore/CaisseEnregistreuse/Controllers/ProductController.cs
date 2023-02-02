@@ -22,7 +22,7 @@ namespace CaisseEnregistreuse.Controllers
 
         public IActionResult Detail(int? id)
         {
-            return View();
+            return View(_dataDbContext.Products.Include(p=> p.Category).FirstOrDefault( p => p.Id == id));
         }
 
         public IActionResult Form()

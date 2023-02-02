@@ -10,6 +10,7 @@
             <th scope="col">Titre</th>
             <th scope="col">Prix</th>
             <th scope="col">Catégorie</th>
+            <th scope="col">Lien</th>
         </tr>
     </thead>
     <tbody>
@@ -22,6 +23,7 @@
             <td>@product.Title</td>
             <td>@product.Price €</td>
             <td>@product?.Category?.Name</td>
+            <td><a asp-action="Detail" asp-controller="Product" asp-route-id="@product.Id">Detail</a></td>
         </tr>
         }
     </tbody>
