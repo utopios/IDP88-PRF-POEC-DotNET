@@ -1,4 +1,4 @@
-﻿@{
+﻿@*@{
     string message = "un message";
     Layout = "_CustomLayout";
     List<string> contacts = new List<string>() { "toto", "tatat", "titi" };
@@ -7,11 +7,20 @@
 <h1>@message</h1>
 @foreach(string s in contacts) {
     <div>@s</div>
-}
+}*@
 @*@Html.ActionLink("le lien", "Index", "Home")*@
-<a asp-action="Index" asp-controller="Home">le lien</a>
+@*<a asp-action="Index" asp-controller="Home">le lien</a>
 @if(test) {
     <div>test vrai</div>
 }else {
     <div>faux</div>
-}
+}*@
+
+<div>
+    <h1>Liste des contacts</h1>
+    @*@foreach(Contact contact in (ViewData["contacts"] as List<Contact>))*@
+    @foreach (Contact contact in ViewBag.Contacts)
+    {
+        <div>@contact.Name</div>
+    }
+</div>
