@@ -1,4 +1,5 @@
-﻿<div>
+﻿@model List<Product>
+<div>
     <h1>Liste des produits</h1>
 </div>
 
@@ -13,7 +14,8 @@
     </thead>
     <tbody>
         @*@foreach(Product product in (ViewData["products"] as List<Product>))*@
-            @foreach (Product product in ViewBag.Products)
+            @*@foreach (Product product in ViewBag.Products)*@
+        @foreach (Product product in Model)
         {
             <tr>
             <th scope="row">@product.Id</th>

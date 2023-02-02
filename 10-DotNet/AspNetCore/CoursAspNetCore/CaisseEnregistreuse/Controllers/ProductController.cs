@@ -16,8 +16,8 @@ namespace CaisseEnregistreuse.Controllers
         {
             //ViewData["products"] = _dataDbContext.Products.Include(p => p.Category).ToList();
 
-            ViewBag.products = _dataDbContext.Products.Include(p => p.Category).ToList();
-            return View();
+            //ViewBag.products = _dataDbContext.Products.Include(p => p.Category).ToList();
+            return View(_dataDbContext.Products.Include(p => p.Category).ToList());
         }
 
         public IActionResult Detail(int? id)
