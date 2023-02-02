@@ -5,5 +5,6 @@ En partant de l'exercice 3 afficher les produits enregistrés dans une base de d
 
 - ViewData
 - ViewBag
+- view model
 
 ***La gestion de base de données se fera à l'aide d'entityframework core***
