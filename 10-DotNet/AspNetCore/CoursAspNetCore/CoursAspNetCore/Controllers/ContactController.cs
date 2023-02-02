@@ -17,8 +17,9 @@ namespace CoursAspNetCore.Controllers
             //Pour passer des données à la vue on peut utiliser le viewData
             //ViewData["contacts"] = contacts;
             //Pour passer des données à la vue on peut utiliser le ViewBag
-            ViewBag.Contacts = contacts;
-            return View();
+            //ViewBag.Contacts = contacts;
+            //En utilisant les models de view
+            return View(contacts);
         }
 
         public IActionResult detail(int? id)
