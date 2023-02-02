@@ -22,6 +22,6 @@
     @*@foreach (Contact contact in ViewBag.Contacts)*@
     @foreach (Contact contact in Model)
     {
-        <div>@contact.Name</div>
+        <div>@contact.Name<a asp-action="Detail" asp-controller="Contact" asp-route-id="@contact.Id">Detail</a></div>
     }
 </div>

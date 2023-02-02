@@ -9,9 +9,9 @@ namespace CoursAspNetCore.Controllers
         {
             //return "Je suis la page liste contacts";
             List<Contact> contacts = new List<Contact>() { 
-                new Contact() { Name = "toto" },
-                new Contact() { Name = "titi" },
-                new Contact() { Name = "tata" },
+                new Contact() { Id=1, Name = "toto" },
+                new Contact() { Id=2, Name = "titi" },
+                new Contact() { Id=3, Name = "tata" },
             };
 
             //Pour passer des données à la vue on peut utiliser le viewData
@@ -25,7 +25,8 @@ namespace CoursAspNetCore.Controllers
         public IActionResult detail(int? id)
         {
             //return "Je suis la page detail contact "+id;
-            return View("Index");
+            ViewBag.Id = id;
+            return View();
         }
 
         public IActionResult form()
