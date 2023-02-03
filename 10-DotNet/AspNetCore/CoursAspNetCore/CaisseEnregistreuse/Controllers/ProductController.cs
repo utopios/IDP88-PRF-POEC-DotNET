@@ -8,10 +8,12 @@ namespace CaisseEnregistreuse.Controllers
     public class ProductController : Controller
     {
         private DataDbContext _dataDbContext;
+        private IDevice _device;
 
-        public ProductController()
+        public ProductController(IDevice device, DataDbContext dataDbContext)
         {
-            _dataDbContext = new DataDbContext();
+            _dataDbContext = dataDbContext;
+            _device = device;
         }
         public IActionResult Index()
         {
