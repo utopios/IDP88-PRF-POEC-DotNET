@@ -12,6 +12,7 @@
 
   <ItemGroup>
     <Folder Include="Tools\" />
+    <Folder Include="wwwroot\images\" />
   </ItemGroup>
 
 </Project>

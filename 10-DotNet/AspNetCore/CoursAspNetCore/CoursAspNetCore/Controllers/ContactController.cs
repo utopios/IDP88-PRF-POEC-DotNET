@@ -5,6 +5,11 @@ namespace CoursAspNetCore.Controllers
 {
     public class ContactController : Controller
     {
+       private IWebHostEnvironment _env;
+       public ContactController(IWebHostEnvironment env)
+        {
+            _env = env;
+        } 
        public IActionResult Index()
         {
             //return "Je suis la page liste contacts";
@@ -36,9 +41,12 @@ namespace CoursAspNetCore.Controllers
         }
 
         //public IActionResult SubmitForm(string Name, string Email)
-        public IActionResult SubmitForm(Contact contact)
+        public IActionResult SubmitForm(Contact contact, IFormFile avatar)
         {
-
+            string path = Path.Combine(_env.WebRootPath, "images", avatar.FileName) ;
+            Stream stream = System.IO.File.Create(path);
+            avatar.CopyTo(stream);
+            stream.Close();
             return RedirectToAction("Index");
         }
 
