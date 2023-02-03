@@ -1,0 +1,49 @@
+﻿@model List<ToDo>
+@if(ViewBag.Message != null)
+{
+    <div class="container">
+        <div class="row">
+            @ViewBag.Message
+        </div>
+    </div>
+}
+<div class="container">
+    <form class="row m-1" asp-action="SubmitTodo" asp-controller="Todo">
+        <div class="col"><input type="text" name="name" class="form-control p-1" placeholder="Name of todo" /></div>
+        <div class="col"><input type="text" name="description" class="form-control p-1" placeholder="Description of todo" /></div>
+        <div class="col"><button class="btn btn-primary" type="submit">Ajouter</button></div>
+    </form>
+</div>
+<div class="container">
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Name</th>
+                <th scope="col">Description</th>
+                <th scope="col">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (ToDo todo in Model)
+            {
+                <tr>
+                    <th scope="row">@todo.Id</th>
+                    <td>@todo.Name</td>
+                    <td>@todo.Description</td>
+                    <td>
+                        @if(todo.Done)
+                        {
+                            <a class="btn btn-success" asp-action="ChangeStateTodo" asp-controller="Todo" asp-route-id="@todo.Id">Non terminée</a>
+                        }
+                        else
+                        {
+                            <a class="btn btn-warning" asp-action="ChangeStateTodo" asp-controller="Todo" asp-route-id="@todo.Id">terminée</a>
+                        }
+                        <a class="btn btn-danger" asp-action="DeleteTodo" asp-controller="Todo" asp-route-id="@todo.Id">supprimer</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
