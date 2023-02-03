@@ -1,3 +1,26 @@
-﻿<div>
-    <h1>Formulaire</h1>
-</div>
+﻿<form asp-action="SubmitForm" asp-controller="Product" method="post" class="container">
+    <div class="row m-1 justify-content-center">
+        <input type="text" name="Title" placeholder="Le titre du produit" class="form-control col p-1" />
+    </div>
+    <div class="row m-1 justify-content-center">
+        <input type="number" name="Price" placeholder="Le prix du produit" class="form-control col p-1" />
+    </div>
+    <div class="row m-1 justify-content-center">
+        <input type="number" name="Stock" placeholder="Le stock du produit" class="form-control col p-1" />
+    </div>
+    <div class="row m-1 justify-content-center">
+        <textarea class="col form-control p-1" placeholder="Description du produit" name="Description"></textarea>
+    </div>
+    <div class ="row m-1 justify-content-center">
+        <select name="CategoryId" class="col form-control p-1" pla>
+            <option></option>
+            @foreach(Category category in ViewBag.Categories)
+            {
+                <option value="@category.Id">@category.Name</option>
+            }
+        </select>
+    </div>
+    <div class="row m-1 justify-content-center">
+        <button type="submit" class="col btn btn-success p-1">Valider</button>
+    </div>
+</form>

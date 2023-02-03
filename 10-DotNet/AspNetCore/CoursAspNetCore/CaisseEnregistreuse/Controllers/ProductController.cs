@@ -1,4 +1,5 @@
-﻿using CaisseEnregistreuse.Tools;
+﻿using CaisseEnregistreuse.Models;
+using CaisseEnregistreuse.Tools;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -27,7 +28,21 @@ namespace CaisseEnregistreuse.Controllers
 
         public IActionResult Form()
         {
+            ViewBag.Categories = _dataDbContext.Categories.ToList();
             return View();
+        }
+
+        public IActionResult SubmitForm(Product product)
+        {
+            _dataDbContext.Products.Add(product);
+            if(_dataDbContext.SaveChanges() > 0)
+            {
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                return RedirectToAction("Form");
+            }
         }
     }
 }
