@@ -22,5 +22,22 @@ namespace CaisseEnregistreuse.Controllers
             List<Product> products = _dataDbContext.Products.Include(c => c.Category).Where(p=>p.CategoryId == id).ToList();
             return View("~/Views/Product/Index.cshtml", products);
         }
+
+        public IActionResult Form()
+        {
+            return View();
+        }
+
+        public IActionResult SubmitForm(Category category)
+        {
+            _dataDbContext.Categories.Add(category);
+            if(_dataDbContext.SaveChanges() > 0) {
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                return View("Form");
+            }
+        }
     }
 }
