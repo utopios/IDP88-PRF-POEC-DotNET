@@ -1,4 +1,4 @@
-### Exercice 6 Asp.NET Core
+### TP 1 Asp.NET Core
 
 **Objectif:** Mettre en place les différentes notions d'aps.net core (controller, view, model,...)
 
