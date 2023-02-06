@@ -1,1 +1,4 @@
-﻿<div>Favoris Id @ViewBag.FavorisContactId</div>
+﻿<div>Favoris</div>
+@foreach(int id in ViewBag.FavorisContacts) {
+    <div>@id</div>
+}

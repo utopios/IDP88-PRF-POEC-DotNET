@@ -1,6 +1,8 @@
 ﻿using CoursAspNetCore.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Net;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 
 namespace CoursAspNetCore.Controllers
 {
@@ -61,18 +63,31 @@ namespace CoursAspNetCore.Controllers
             //    Name = "favoris",
             //    Value = id.ToString(),
             //};
-            HttpContext.Response.Cookies.Append("favoris", id.ToString());
+            List<int> listeFavoris =getFromCookies();
+            listeFavoris.Add(id);
+            string jsonListe = JsonSerializer.Serialize(listeFavoris);
+            HttpContext.Response.Cookies.Append("favoris",jsonListe);
             return RedirectToAction("Index");
         }
 
         public IActionResult DisplayFavoris()
         {
-            string favorisCookie = HttpContext.Request.Cookies["favoris"];
+            List<int> favorisCookie = getFromCookies();
             if(favorisCookie != null)
             {
-                ViewBag.FavorisContactId = favorisCookie;
+                ViewBag.FavorisContacts = favorisCookie;
             }
             return View();
+        }
+
+        private List<int> getFromCookies()
+        {
+            List<int> list = new List<int>();
+            string favorisCookie = HttpContext.Request.Cookies["favoris"];
+            if(favorisCookie != null) { 
+                list =JsonSerializer.Deserialize<List<int>>(favorisCookie);
+            }
+            return list;
         }
     }
 }
