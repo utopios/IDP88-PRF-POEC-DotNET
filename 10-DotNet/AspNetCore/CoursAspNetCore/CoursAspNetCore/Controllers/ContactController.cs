@@ -66,7 +66,12 @@ namespace CoursAspNetCore.Controllers
             List<int> listeFavoris =getFromCookies();
             listeFavoris.Add(id);
             string jsonListe = JsonSerializer.Serialize(listeFavoris);
-            HttpContext.Response.Cookies.Append("favoris",jsonListe);
+
+            //Utilisation des cookies
+            //HttpContext.Response.Cookies.Append("favoris",jsonListe);
+
+            //Utilisation des sessions
+            HttpContext.Session.SetString("favoris", jsonListe);
             return RedirectToAction("Index");
         }
 
@@ -83,8 +88,11 @@ namespace CoursAspNetCore.Controllers
         private List<int> getFromCookies()
         {
             List<int> list = new List<int>();
-            string favorisCookie = HttpContext.Request.Cookies["favoris"];
-            if(favorisCookie != null) { 
+            //Utilisation des cookies
+            //string favorisCookie = HttpContext.Request.Cookies["favoris"];
+            //Utilisation des sessions
+            string favorisCookie = HttpContext.Session.GetString("favoris");
+            if (favorisCookie != null) { 
                 list =JsonSerializer.Deserialize<List<int>>(favorisCookie);
             }
             return list;
