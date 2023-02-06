@@ -14,7 +14,7 @@ namespace CaisseEnregistreuse.Tools
 
         public DbSet<Product> Products { get; set; }
         public DbSet<Category> Categories { get; set; }
-
+        public DbSet<UserApp> UserApps { get; set; }
         public DbSet<Sale> Sales { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

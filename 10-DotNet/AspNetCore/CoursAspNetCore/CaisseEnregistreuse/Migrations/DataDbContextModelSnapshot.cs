@@ -74,48 +74,6 @@ namespace CaisseEnregistreuse.Migrations
                     b.ToTable("product");
                 });
 
-            modelBuilder.Entity("CaisseEnregistreuse.Models.Sale", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<decimal>("Total")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Sale");
-                });
-
-            modelBuilder.Entity("CaisseEnregistreuse.Models.SaleProduct", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<int>("ProductId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Qty")
-                        .HasColumnType("int");
-
-                    b.Property<int>("SaleId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ProductId");
-
-                    b.HasIndex("SaleId");
-
-                    b.ToTable("SaleProduct");
-                });
-
             modelBuilder.Entity("CaisseEnregistreuse.Models.UserApp", b =>
                 {
                     b.Property<int>("Id")
@@ -146,36 +104,7 @@ namespace CaisseEnregistreuse.Migrations
                     b.Navigation("Category");
                 });
 
-            modelBuilder.Entity("CaisseEnregistreuse.Models.SaleProduct", b =>
-                {
-                    b.HasOne("CaisseEnregistreuse.Models.Product", "Product")
-                        .WithMany("Sales")
-                        .HasForeignKey("ProductId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("CaisseEnregistreuse.Models.Sale", "Sale")
-                        .WithMany("Products")
-                        .HasForeignKey("SaleId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Product");
-
-                    b.Navigation("Sale");
-                });
-
             modelBuilder.Entity("CaisseEnregistreuse.Models.Category", b =>
-                {
-                    b.Navigation("Products");
-                });
-
-            modelBuilder.Entity("CaisseEnregistreuse.Models.Product", b =>
-                {
-                    b.Navigation("Sales");
-                });
-
-            modelBuilder.Entity("CaisseEnregistreuse.Models.Sale", b =>
                 {
                     b.Navigation("Products");
                 });
