@@ -6,9 +6,9 @@ namespace CaisseEnregistreuse.Services
     public class LoginService : ILoginService
     {
         private DataDbContext _dataDbContext;
-        private HttpContextAccessor _httpContextAccessor;
+        private IHttpContextAccessor _httpContextAccessor;
 
-        public LoginService(DataDbContext dataDbContext, HttpContextAccessor httpContextAccessor)
+        public LoginService(DataDbContext dataDbContext, IHttpContextAccessor httpContextAccessor)
         {
             _dataDbContext = dataDbContext;
             _httpContextAccessor = httpContextAccessor;

@@ -6,6 +6,7 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 builder.Services.AddTransient<ICartService, SessionCartService>();
+builder.Services.AddTransient<ILoginService, LoginService>();
 builder.Services.AddSession();
 //Enregistrer les classes
 
