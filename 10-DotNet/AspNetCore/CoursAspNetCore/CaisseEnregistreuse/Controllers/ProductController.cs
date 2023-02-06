@@ -1,4 +1,5 @@
 ﻿using CaisseEnregistreuse.Models;
+using CaisseEnregistreuse.Services;
 using CaisseEnregistreuse.Tools;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -9,11 +10,13 @@ namespace CaisseEnregistreuse.Controllers
     {
         private DataDbContext _dataDbContext;
         private IDevice _device;
+        private ILoginService _loginService;
 
-        public ProductController(IDevice device, DataDbContext dataDbContext)
+        public ProductController(IDevice device, DataDbContext dataDbContext, ILoginService loginService)
         {
             _dataDbContext = dataDbContext;
             _device = device;
+            _loginService = loginService;
         }
         public IActionResult Index()
         {
@@ -30,21 +33,32 @@ namespace CaisseEnregistreuse.Controllers
 
         public IActionResult Form()
         {
-            ViewBag.Categories = _dataDbContext.Categories.ToList();
-            return View();
+            if(_loginService.IsLogged())
+            {
+                ViewBag.Categories = _dataDbContext.Categories.ToList();
+                return View();
+            }
+            return RedirectToAction("LoginForm", "UserApp");
         }
 
         public IActionResult SubmitForm(Product product)
         {
-            _dataDbContext.Products.Add(product);
-            if(_dataDbContext.SaveChanges() > 0)
+            if (_loginService.IsLogged())
             {
-                return RedirectToAction("Index");
-            }
-            else
+                _dataDbContext.Products.Add(product);
+                if (_dataDbContext.SaveChanges() > 0)
+                {
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    return RedirectToAction("Form");
+                }
+            }else
             {
-                return RedirectToAction("Form");
+                return RedirectToAction("LoginForm", "UserApp");
             }
+                
         }
     }
 }
