@@ -37,5 +37,10 @@ namespace CaisseEnregistreuse.Services
             _httpContextAccessor.HttpContext.Session.SetInt32("IsLogged", 1);
             return true;
         }
+
+        public void Logout()
+        {
+            _httpContextAccessor.HttpContext.Session.Clear();
+        }
     }
 }

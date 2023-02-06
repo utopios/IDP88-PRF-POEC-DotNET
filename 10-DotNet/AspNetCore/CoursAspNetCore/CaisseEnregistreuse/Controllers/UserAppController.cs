@@ -43,5 +43,11 @@ namespace CaisseEnregistreuse.Controllers
             }
             return View("LoginForm");
         }
+
+        public IActionResult Logout()
+        {
+            _loginService.Logout();
+            return RedirectToAction("Index", "Product");
+        }
     }
 }

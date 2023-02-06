@@ -6,5 +6,7 @@
         public bool IsLogged();
 
         public string GetEmail();
+
+        public void Logout();
     }
 }

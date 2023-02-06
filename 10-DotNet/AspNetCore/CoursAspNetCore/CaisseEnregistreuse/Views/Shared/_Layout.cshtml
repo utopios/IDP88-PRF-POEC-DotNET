@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿@using CaisseEnregistreuse.Services;
+@inject ILoginService _loginService
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -31,6 +33,21 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-controller="Sale" asp-action="Index">Vente</a>
                         </li>
+                        @if (_loginService.IsLogged())
+                        {
+                            <li class="nav-item"><a>@_loginService.GetEmail()</a></li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-controller="UserApp" asp-action="Logout">Se deconnecter</a>
+                            </li>
+                        }else
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-controller="UserApp" asp-action="LoginForm">Se connecter</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-controller="UserApp" asp-action="RegisterForm">S'inscrire</a>
+                            </li>
+                        }
                     </ul>
                 </div>
             </div>
