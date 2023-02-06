@@ -17,5 +17,6 @@ de recherche classique).
 - Le contrôleur des comptes servira par exemple à la connexion et à la déconnexion des utilisateurs et de leur affectation de leurs droits qui seront stockés dans un cookie.
 
 1. Dans un premier temps on réalisera les contrôleurs livres, auteurs.
+2. Avec la partie session on peut réaliser les contrôleurs utilsateur et panier.
 
 ![TP 2](TP-2.png "TP 2")
