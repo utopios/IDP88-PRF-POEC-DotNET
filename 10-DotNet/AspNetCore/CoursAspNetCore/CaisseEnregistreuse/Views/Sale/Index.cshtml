@@ -1,3 +1,29 @@
-﻿<div>
-    <h1>Page vente</h1>
+﻿@model List<SaleProduct>
+<div>
+    <h1>Panier</h1>
 </div>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Titre</th>
+            <th scope="col">Prix</th>
+            <th scope="col">Qty</th>
+            <th scope="col">Total Ligne</th>
+        </tr>
+    </thead>
+    <tbody>
+       
+        @foreach (SaleProduct product in Model)
+        {
+            <tr>
+                <th scope="row">@product.Product.Id</th>
+                <td>@product.Product.Title</td>
+                <td>@product.Product.Price €</td>
+                <td>@product.Qty</td>
+                <td>@product.TotalLine €</td>
+            </tr>
+        }
+    </tbody>
+</table>

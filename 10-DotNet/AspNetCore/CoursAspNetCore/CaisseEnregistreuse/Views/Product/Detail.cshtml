@@ -6,11 +6,14 @@
         <div class="row">
             <span class="col">Titre : @Model.Title</span>
         </div>
-        <div class="col">
+        <div class="row">
             <span class="col">Prix : @Model.Price €</span>
         </div>
-        <div class="col">
+        <div class="row">
             <span class="col">Description : @Model.Description</span>
+        </div>
+        <div class="row">
+            <span class="col"><a asp-action="AddToCart" asp-controller="Sale" asp-route-id="@Model.Id">Ajouter au panier</a></span>
         </div>
     }else
     {

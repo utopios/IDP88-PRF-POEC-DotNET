@@ -1,14 +1,19 @@
+using CaisseEnregistreuse.Services;
 using CaisseEnregistreuse.Tools;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddTransient<ICartService, CookieCartService>();
 
 //Enregistrer les classes
 
 builder.Services.AddTransient<IDevice,DeviceService>();
 builder.Services.AddDbContext<DataDbContext>();
+
+//Enregister un service pour accéder au HttpContext dans les classes autre que les contrôleurs.
+builder.Services.AddHttpContextAccessor();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
