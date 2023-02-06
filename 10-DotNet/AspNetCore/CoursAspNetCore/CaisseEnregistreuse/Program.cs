@@ -5,8 +5,8 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
-builder.Services.AddTransient<ICartService, CookieCartService>();
-
+builder.Services.AddTransient<ICartService, SessionCartService>();
+builder.Services.AddSession();
 //Enregistrer les classes
 
 builder.Services.AddTransient<IDevice,DeviceService>();
@@ -22,7 +22,7 @@ if (!app.Environment.IsDevelopment())
     app.UseExceptionHandler("/Home/Error");
 }
 app.UseStaticFiles();
-
+app.UseSession();
 app.UseRouting();
 
 app.UseAuthorization();
