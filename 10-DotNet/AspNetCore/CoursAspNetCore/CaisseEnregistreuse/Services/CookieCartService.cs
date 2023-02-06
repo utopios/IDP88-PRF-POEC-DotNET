@@ -53,9 +53,37 @@ namespace CaisseEnregistreuse.Services
             }
         }
 
+
+        //Supprimer du panier
         public void RemoveFromCart(int id)
         {
-            throw new NotImplementedException();
+            List<SaleProduct> products = GetAllCart();
+            Product product = _dataDbContext.Products.Find(id);
+            if (product != null)
+            {
+                SaleProduct productToRemove = null;
+                products.ForEach(p =>
+                {
+                    if (p.Product.Id == product.Id)
+                    {
+                        if((p.Qty-1) > 0)
+                        {
+                            p.Qty--;
+                        }
+                        else
+                        {
+                            productToRemove = p;
+                        }
+                        
+                    }
+                });
+                if (productToRemove != null)
+                {
+                    products.Remove(productToRemove);
+                }
+                WriteToCookie(products);
+
+            }
         }
 
         private void WriteToCookie(List<SaleProduct> products)
