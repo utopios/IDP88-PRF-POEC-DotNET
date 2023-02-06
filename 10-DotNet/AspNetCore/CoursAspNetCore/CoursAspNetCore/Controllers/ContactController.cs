@@ -1,5 +1,6 @@
 ﻿using CoursAspNetCore.Models;
 using Microsoft.AspNetCore.Mvc;
+using System.Net;
 
 namespace CoursAspNetCore.Controllers
 {
@@ -52,6 +53,26 @@ namespace CoursAspNetCore.Controllers
 
         public string CustomDetail(string firstName, string lastName) { 
             return firstName+" "+lastName;
+        }
+
+        public IActionResult AddToFavoris(int id)
+        {
+            //Cookie cookie= new Cookie() { 
+            //    Name = "favoris",
+            //    Value = id.ToString(),
+            //};
+            HttpContext.Response.Cookies.Append("favoris", id.ToString());
+            return RedirectToAction("Index");
+        }
+
+        public IActionResult DisplayFavoris()
+        {
+            string favorisCookie = HttpContext.Request.Cookies["favoris"];
+            if(favorisCookie != null)
+            {
+                ViewBag.FavorisContactId = favorisCookie;
+            }
+            return View();
         }
     }
 }
