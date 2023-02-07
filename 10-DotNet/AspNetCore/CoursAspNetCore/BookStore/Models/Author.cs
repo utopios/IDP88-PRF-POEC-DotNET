@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace BookStore.Models
 {
@@ -8,6 +9,8 @@ namespace BookStore.Models
         [Column("id")]
         public int Id { get; set; }
 
+        [Display(Name ="Nom et prénom de l'auteur")]
+        [Required(ErrorMessage ="Merci de saisir le nom de l'auteur")]
         [Column("name")]
         public string Name { get; set; }
 
