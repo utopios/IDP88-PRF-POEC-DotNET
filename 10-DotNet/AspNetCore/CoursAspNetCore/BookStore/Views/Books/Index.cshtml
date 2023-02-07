@@ -14,10 +14,22 @@
         @foreach (Book book in Model)
         {
             <div class="card col-3">
-                <img class="card-img-top" src="~/@book.Poster" alt="Card image cap">
+                <div class="card-header">
+                    <div class="col-9">
+                        @book.Title
+                    </div>
+                    <div class="col-3"></div>
+                </div>
                 <div class="card-body">
-                    <h5 class="card-title">@book.Title</h5>
-                    <p class="card-text">@book.Description</p>
+                    <div class="row">
+                        <img class="col" src="~/@book.Poster" alt="Card image cap">
+                        <div class="col">
+                            <h5 class="card-title">@book.Title</h5>
+                            <p class="card-text">@book.Description</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer">
                     <a href="#" class="btn btn-primary">Ajouter au panier</a>
                 </div>
             </div>
