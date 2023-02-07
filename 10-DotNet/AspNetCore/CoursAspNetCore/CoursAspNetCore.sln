@@ -9,7 +9,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Correction", "Correction", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CaisseEnregistreuse", "CaisseEnregistreuse\CaisseEnregistreuse.csproj", "{64D5F215-06BD-4D32-941F-0BD37A3E0CC0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TodoList", "TodoList\TodoList.csproj", "{E0C25EC7-59D6-4E2E-8FF3-B56A97C2952B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TodoList", "TodoList\TodoList.csproj", "{E0C25EC7-59D6-4E2E-8FF3-B56A97C2952B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookStore", "BookStore\BookStore.csproj", "{865BFE24-140E-4E55-8015-C52AC54969D9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,6 +31,10 @@ Global
 		{E0C25EC7-59D6-4E2E-8FF3-B56A97C2952B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E0C25EC7-59D6-4E2E-8FF3-B56A97C2952B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E0C25EC7-59D6-4E2E-8FF3-B56A97C2952B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{865BFE24-140E-4E55-8015-C52AC54969D9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{865BFE24-140E-4E55-8015-C52AC54969D9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{865BFE24-140E-4E55-8015-C52AC54969D9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{865BFE24-140E-4E55-8015-C52AC54969D9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -36,6 +42,7 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{64D5F215-06BD-4D32-941F-0BD37A3E0CC0} = {34034FB6-E5AB-4005-B678-E5F2E56772D3}
 		{E0C25EC7-59D6-4E2E-8FF3-B56A97C2952B} = {34034FB6-E5AB-4005-B678-E5F2E56772D3}
+		{865BFE24-140E-4E55-8015-C52AC54969D9} = {34034FB6-E5AB-4005-B678-E5F2E56772D3}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {6B204039-ECAE-4061-9BDC-444B0CD6C687}
