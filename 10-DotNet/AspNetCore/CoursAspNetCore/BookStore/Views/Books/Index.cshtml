@@ -18,7 +18,10 @@
                     <div class="col-9">
                         @book.Title
                     </div>
-                    <div class="col-3"></div>
+                    <div class="col-3">
+                        <a asp-action="edit" asp-controller="Books" asp-route-id="@book.Id">Edit</a>
+                        <a asp-action="Delete" asp-controller="Books" asp-route-id="@book.Id">Delete</a>
+                    </div>
                 </div>
                 <div class="card-body">
                     <div class="row">
@@ -30,7 +33,7 @@
                     </div>
                 </div>
                 <div class="card-footer">
-                    <a href="#" class="btn btn-primary">Ajouter au panier</a>
+                    <a href="#" class="btn btn-primary">Ajouter au panier @book.Price €</a>
                 </div>
             </div>
         }

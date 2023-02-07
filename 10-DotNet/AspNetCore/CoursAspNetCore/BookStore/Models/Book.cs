@@ -26,6 +26,9 @@ namespace BookStore.Models
 
         [Column("description")]
         public string Description { get; set; }
+
+        [Column("price")]
+        public decimal Price { get; set; }
        
     }
 }
