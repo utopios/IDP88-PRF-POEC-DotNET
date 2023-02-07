@@ -1,3 +1,4 @@
+using BookStore.Services;
 using BookStore.Tools;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -5,6 +6,7 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<DataContext>();
+builder.Services.AddScoped<IUpload, UploadService>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

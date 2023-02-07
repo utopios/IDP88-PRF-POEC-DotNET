@@ -7,36 +7,38 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using BookStore.Models;
 using BookStore.Tools;
+using BookStore.Services;
 
 namespace BookStore.Controllers
 {
     public class BooksController : Controller
     {
         private readonly DataContext _context;
-
-        public BooksController(DataContext context)
+        private IUpload _upload;
+        public BooksController(DataContext context, IUpload upload)
         {
             _context = context;
+            _upload = upload;
         }
 
         // GET: Books
-        public async Task<IActionResult> Index()
+        public IActionResult Index()
         {
-            var dataContext = _context.Books.Include(b => b.Author);
-            return View(await dataContext.ToListAsync());
+            List<Book> books = _context.Books.Include(b => b.Author).ToList();
+            return View(books);
         }
 
         // GET: Books/Details/5
-        public async Task<IActionResult> Details(int? id)
+        public IActionResult Details(int? id)
         {
             if (id == null || _context.Books == null)
             {
                 return NotFound();
             }
 
-            var book = await _context.Books
+            Book book =  _context.Books
                 .Include(b => b.Author)
-                .FirstOrDefaultAsync(m => m.Id == id);
+                .FirstOrDefault(m => m.Id == id);
             if (book == null)
             {
                 return NotFound();
@@ -48,25 +50,20 @@ namespace BookStore.Controllers
         // GET: Books/Create
         public IActionResult Create()
         {
-            ViewData["AuthorId"] = new SelectList(_context.Authors, "Id", "Id");
+            ViewBag.Authors = new SelectList(_context.Authors, "Id", "Name");
             return View();
         }
 
-        // POST: Books/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Title,Type,Poster,Date,AuthorId,Description")] Book book)
+       
+        public  IActionResult SubmitCreate([Bind("Title,Type,Date,AuthorId,Description")] Book book, IFormFile poster)
         {
-            if (ModelState.IsValid)
+            book.Poster = _upload.Upload(poster);
+            _context.Books.Add(book);
+            if(_context.SaveChanges() > 0)
             {
-                _context.Add(book);
-                await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["AuthorId"] = new SelectList(_context.Authors, "Id", "Id", book.AuthorId);
-            return View(book);
+            return View("Create");
         }
 
         // GET: Books/Edit/5
