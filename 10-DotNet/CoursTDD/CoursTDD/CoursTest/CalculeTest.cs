@@ -22,5 +22,27 @@ namespace CoursTest
             //Assert
             Assert.AreEqual(40, result);
         }
+
+        [TestMethod]
+        public void WhenDivision_30_10Then_3()
+        {
+            Calcule calcule= new Calcule();
+
+            double result = calcule.Division(30, 10);
+
+            Assert.AreEqual(3, result);
+
+        }
+        [TestMethod]
+        public void WhenDivision_30_0Then_Exception()
+        {
+            Calcule calcule = new Calcule();
+
+            //double result = calcule.Division(30, 0);
+
+            //Act est fait en même temps que l'assert 
+            Assert.ThrowsException<Exception>(() => calcule.Division(30, 0));
+
+        }
     }
 }

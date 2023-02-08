@@ -12,5 +12,17 @@ namespace CoursTDD
         {
             return a + b;
         }
+
+        public double Division(double a, double b)
+        {
+            if(b!= 0)
+            {
+                return a / b;
+            }
+            else
+            {
+                throw new Exception("Impossible");
+            }
+        }
     }
 }
