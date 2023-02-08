@@ -1,0 +1,61 @@
+﻿@model Author
+
+@{
+    ViewData["Title"] = "Ajouter un auteur";
+}
+
+<div class="row">
+    <div class="col-md-8 offset-2">
+        <h2>Ajouter un auteur</h2>
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="col-md-8 offset-2 text-center">
+                <img id="picturePreview" class="rounded" style="max-width: 150px" />
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Firstname" class="label-control"></label>
+                <input asp-for="Firstname" class="form-control" />
+                <span asp-validation-for="Firstname" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Lastname" class="label-control"></label>
+                <input asp-for="Lastname" class="form-control" />
+                <span asp-validation-for="Lastname" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="BirthDate" class="label-control"></label>
+                <input asp-for="BirthDate" type="date" class="form-control" />
+                <span asp-validation-for="BirthDate" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="PictureURL" class="label-control"></label>
+                <input asp-for="PictureURL" class="form-control" />
+                <span asp-validation-for="PictureURL" class="text-danger"></span>
+            </div>
+
+            <br />
+
+            <div class="form-group">
+                <a asp-action="Index" class="btn btn-outline-secondary">Retour aux auteurs</a>
+                <button class="btn btn-outline-success float-end" type="submit"><i class="bi bi-plus-circle"></i> Ajouter</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts{
+<script>
+    $("#PictureURL").on("change", function() {
+        var output = document.getElementById("picturePreview");
+        output.src = $(this).val();
+    })
+    $(document).ready(function() {
+        var output = document.getElementById("picturePreview");
+        output.src = $("#PictureURL").val();
+    })
+</script>
+}

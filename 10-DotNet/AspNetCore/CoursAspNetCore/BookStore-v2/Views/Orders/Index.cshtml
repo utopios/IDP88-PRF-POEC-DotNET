@@ -1,0 +1,46 @@
+﻿@model IEnumerable<Order>
+
+@{
+    ViewData["Title"] = "Liste des commandes";
+}
+
+<div class="row">
+    <div class="col-md-8 offset-2">
+        <p>
+            <h4>Vos achats</h4>
+        </p>
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Id de la vente</th>
+                    <th>Livres</th>
+                    <th>Total</th>
+                    <th>Utilisateur</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach(Order item in Model)
+                {
+                    <tr>
+                        <td class="align-middle">@item.Id</td>
+                        <td class="align-middle">
+                            <ul style="list-style-type:none">
+                                @foreach(OrderItem oItem in item.OrderItems)
+                                {
+                                    <li>
+                                        <div class="alert alert-info" role="alert">
+                                            <span class="badge bg-success">@oItem.Amount</span> [@oItem.Book.Price.ToString("c", CultureInfo.CurrentCulture)] - @oItem.Book.Title
+                                        </div>
+                                    </li>
+                                }
+                            </ul>
+                        </td>
+                        <td class="align-middle">@item.OrderItems.Select(m=>m.Book.Price * m.Amount).Sum().ToString("c", CultureInfo.CurrentCulture)</td>
+                        <td class="align-middle">@item.UserId</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

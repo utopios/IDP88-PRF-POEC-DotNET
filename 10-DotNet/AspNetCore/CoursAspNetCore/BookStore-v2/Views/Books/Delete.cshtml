@@ -1,0 +1,75 @@
+﻿@using TP03.Models.Enums
+@using TP03.Models.ViewModels
+@model Book
+
+@{
+    ViewData["Title"] = "Supprimer " + Model.Title;
+}
+
+<div class="row">
+    <div class="col-md-8 offset-2">
+        <h2>Confirmer la suppression de @Model.Title</h2>
+        <div class="col-md-4 offset-4">
+            <img id="coverPicturePreview" class="img-thumbnail rounded" style="max-width: 100%" />
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label asp-for="Title" class="label-control"></label>
+                    <input asp-for="Title" class="form-control" readonly />
+                </div>
+                <div class="form-group">
+                    <label asp-for="ISBN" class="label-control"></label>
+                    <input asp-for="ISBN" class="form-control" readonly />
+                </div>
+                <div class="form-group">
+                    <label asp-for="Price" class="label-control"></label>
+                    <input asp-for="Price" class="form-control" readonly />
+                </div>
+                <div class="form-group">
+                    <label asp-for="PictureURL" class="label-control"></label>
+                    <input asp-for="PictureURL" class="form-control" readonly />
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label asp-for="BookCategory" class="label-control"></label>
+                    <select asp-for="BookCategory" asp-items="Html.GetEnumSelectList<BookCategory>()" class="form-control" readonly></select>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Author" class="label-control"></label>
+                    <input asp-for="Author.Fullname" class="form-control" readonly />
+                </div>
+                <div class="form-group">
+                    <label asp-for="ReleaseDate" class="label-control"></label>
+                    <input asp-for="ReleaseDate" type="date" class="form-control" readonly />
+                </div>
+            </div>
+        </div>
+
+        <div class="row form-group">
+            <label asp-for="Description" class="label-control"></label>
+            <textarea asp-for="Description" style="min-height: 200px" class="form-control" readonly></textarea>
+        </div>
+
+        <br />
+
+        <form asp-action="Delete" asp-route-id="@Model.Id">
+            <div class="form-group">
+                <button type="submit" class="btn btn-outline-danger float-end"><i class="bi bi-trash"></i> Supprimer</button>
+                <a asp-action="Index" class="btn btn-outline-secondary">Retour aux livres</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts{
+<script>
+        $(document).ready(function() {
+        var output = document.getElementById("coverPicturePreview");
+        output.src = $("#PictureURL").val();
+    })
+</script>
+}

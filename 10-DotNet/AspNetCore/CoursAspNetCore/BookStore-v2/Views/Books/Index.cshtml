@@ -1,0 +1,65 @@
+﻿@model IEnumerable<Book>
+
+@{
+    ViewData["Title"] = "Liste des livres";
+}
+
+<div class="row">
+    @foreach (var book in Model)
+    {
+        <div class="col-md-4 col-xs-6 border-primary mb-3">
+            <div class="card mb-3" style="max-width: 540px;">
+                <div class="row g-0">
+                    <div class="col-md-12">
+                        <div class="card-header text-white bg-info">
+                            <p class="card-text">
+                                <h5 class="card-title">
+                                    @book.Title
+                                    @if(User.HasClaim(x => x.Type == "Admin"))
+                                    {
+                                        <div class="float-end">
+                                            <a asp-action="Edit" asp-route-id="@book.Id" class="col text-white"><i class="bi bi-pencil-square"></i></a>
+                                            <a asp-action="Delete" asp-route-id="@book.Id" class="col text-white"><i class="bi bi-trash"></i></a>
+                                        </div>
+                                    }
+                                </h5>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <img src="@book.PictureURL" style="width: 100%" alt="@book.Title">
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card-body">
+                            <p class="card-text">@book.Description</p>
+                            <p class="card-text"><b>Type : </b>@book.BookCategory</p>
+                            <p class="card-text"><b>Parution : </b>@book.ReleaseDate.ToString("dd MMM yy")</p>
+                            <p class="card-text"><b>Auteur : </b><a asp-controller="Authors" asp-action="Details" asp-route-id="@book.Author.Id">@book.Author.Fullname</a></p>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="card-footer ">
+                            <p class="card-text">
+                                <a class="btn btn-outline-primary float-right" asp-action="Details" asp-route-id="@book.Id">
+                                    <i class="bi bi-eye-fill"></i> Détails
+                                </a>
+                                @if(User.Identity.IsAuthenticated) {
+                                    <a class="btn btn-success text-white float-end"
+                                   asp-controller="Orders"
+                                   asp-action="AddBookToCart"
+                                   asp-route-id="@book.Id">
+                                        <i class="bi bi-cart-plus"></i> Ajouter au panier (@book.Price.ToString("c", CultureInfo.CurrentCulture))
+                                    </a>
+                                }
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+@if(User.HasClaim(x => x.Type == "Admin"))
+{
+    @Html.Partial("_CreateNewItem", "Books")
+}

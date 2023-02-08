@@ -1,0 +1,50 @@
+﻿@model Author
+
+@{
+    ViewData["Title"] = "Détails de " + Model.Fullname;
+}
+
+<div class="row">
+    <div class="col-md-8 offset-2">
+        <h2>Détails de @Model.Fullname</h2>
+
+        <div class="col-md-8 offset-2 text-center">
+            <img id="picturePreview" class="rounded" style="max-width: 150px" />
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Firstname" class="label-control"></label>
+            <input asp-for="Firstname" class="form-control" readonly/>
+        </div>
+        <div class="form-group">
+            <label asp-for="Lastname" class="label-control"></label>
+            <input asp-for="Lastname" class="form-control" readonly/>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="BirthDate" class="label-control"></label>
+            <input asp-for="BirthDate" type="date" class="form-control" readonly/>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="PictureURL" class="label-control"></label>
+            <input asp-for="PictureURL" class="form-control" readonly/>
+        </div>
+
+        <br />
+
+        <div class="form-group">
+            <a asp-action="Index" class="btn btn-outline-secondary">Retour aux auteurs</a>
+            <a class="btn btn-outline-warning float-end" asp-action="Edit" asp-route-id="@Model.Id"><i class="bi bi-pencil-square"></i> Editer</a>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+<script>
+    $(document).ready(function() {
+        var output = document.getElementById("picturePreview");
+        output.src = $("#PictureURL").val();
+    })
+</script>
+}
