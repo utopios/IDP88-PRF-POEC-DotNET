@@ -1,14 +1,18 @@
-﻿@model IEnumerable<BookStore.Models.Book>
-
+﻿@using BookStore.Services;
+@model IEnumerable<BookStore.Models.Book>
+@inject ILogin _loginService
 @{
     ViewData["Title"] = "Index";
 }
 
 <h1>Index</h1>
+@if (_loginService.IsAdmin())
+{
+    <p>
+        <a asp-action="Create">Create New</a>
+    </p>
+}
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
 <div class="container">
     <div class="row">
         @foreach (Book book in Model)
@@ -33,7 +37,11 @@
                     </div>
                 </div>
                 <div class="card-footer">
-                    <a href="#" class="btn btn-primary">Ajouter au panier @book.Price €</a>
+                    @if(_loginService.IsLoggedIn())
+                    {
+                        <a href="#" class="btn btn-primary">Ajouter au panier @book.Price €</a>
+                    }
+                    
                 </div>
             </div>
         }

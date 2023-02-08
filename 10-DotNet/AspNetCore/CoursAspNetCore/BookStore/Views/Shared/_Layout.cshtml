@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿@using BookStore.Services;
+@inject ILogin _loginService;
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -25,17 +27,39 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Authors" asp-action="Index">Auteurs</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Authors" asp-action="Create">Ajouter un auteur</a>
-                        </li>
-                        
+                        @if (_loginService.IsAdmin())
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Authors" asp-action="Create">Ajouter un auteur</a>
+                            </li>
+                        }
+
+                        @if (_loginService.IsLoggedIn())
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark">@_loginService.GetEmail()</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-action="Logout" asp-controller="User">se deconnecter</a>
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-action="LoginForm" asp-controller="User">se connecter</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-action="RegisterForm" asp-controller="User">s'inscrire</a>
+                            </li>
+                        }
                     </ul>
+                    <form asp-action="Search" asp-controller="Books" class="form-inline my-2 my-lg-0">
+                        <input class="form-control mr-sm-2" type="search" name="search" placeholder="Search" aria-label="Search">
+                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                    </form>
                 </div>
-                <form asp-action="Search" asp-controller="Books" class="form-inline my-2 my-lg-0">
-                    <input class="form-control mr-sm-2" type="search" name="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-                </form>
             </div>
+
         </nav>
     </header>
     <div class="container">

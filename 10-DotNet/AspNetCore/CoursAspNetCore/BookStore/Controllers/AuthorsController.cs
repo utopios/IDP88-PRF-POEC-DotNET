@@ -7,16 +7,18 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using BookStore.Models;
 using BookStore.Tools;
+using BookStore.Services;
 
 namespace BookStore.Controllers
 {
     public class AuthorsController : Controller
     {
         private readonly DataContext _context;
-
-        public AuthorsController(DataContext context)
+        private ILogin _loginService;
+        public AuthorsController(DataContext context, ILogin loginService)
         {
             _context = context;
+            _loginService = loginService;
         }
 
         // GET: Authors
@@ -46,60 +48,93 @@ namespace BookStore.Controllers
         // GET: Authors/Create
         public IActionResult Create()
         {
-            return View();
+            if (_loginService.IsAdmin())
+            {
+                return View();
+            }
+            else
+            {
+                return RedirectToAction("LoginForm", "User");
+            }
         }
 
 
         public IActionResult SubmitCreate([Bind("Id,Name")] Author author)
         {
 
-            _context.Authors.Add(author);
-            if (_context.SaveChanges() > 0)
+            if (_loginService.IsAdmin())
             {
-                return RedirectToAction(nameof(Index));
+                _context.Authors.Add(author);
+                if (_context.SaveChanges() > 0)
+                {
+                    return RedirectToAction(nameof(Index));
+                }
+                return View("Create");
             }
-            return View("Create");
+            else
+            {
+                return RedirectToAction("LoginForm", "User");
+            }
+            
         }
 
         
         // GET: Authors/Delete/5
         public IActionResult Delete(int? id)
         {
-            if (id == null || _context.Authors == null)
+            if (_loginService.IsAdmin())
             {
-                return NotFound();
-            }
+                if (id == null || _context.Authors == null)
+                {
+                    return NotFound();
+                }
 
-            Author author =  _context.Authors
-                .FirstOrDefault(m => m.Id == id);
-            if (author == null)
+                Author author = _context.Authors
+                    .FirstOrDefault(m => m.Id == id);
+                if (author == null)
+                {
+                    return NotFound();
+                }
+
+                return View(author);
+            }
+            else
             {
-                return NotFound();
+                return RedirectToAction("LoginForm", "User");
             }
-
-            return View(author);
+            
         }
 
         
         public IActionResult DeleteConfirmed(int id)
         {
-            if (_context.Authors == null)
+            if (_loginService.IsAdmin())
             {
-                return Problem("Pas d'auteur dans la base de donnée");
-            }
-            Author author =  _context.Authors.Find(id);
-            if (author != null)
-            {
-                _context.Authors.Remove(author);
-            }
+                if (_context.Authors == null)
+                {
+                    return Problem("Pas d'auteur dans la base de donnée");
+                }
+                Author author = _context.Authors.Find(id);
+                if (author != null)
+                {
+                    _context.Authors.Remove(author);
+                }
 
-            _context.SaveChanges();
-            return RedirectToAction(nameof(Index));
+                _context.SaveChanges();
+                return RedirectToAction(nameof(Index));
+            }
+            else
+            {
+                return RedirectToAction("LoginForm", "User");
+            }
+            
         }
 
         private bool AuthorExists(int id)
         {
             return _context.Authors.Any(e => e.Id == id);
         }
+
+
     }
 }

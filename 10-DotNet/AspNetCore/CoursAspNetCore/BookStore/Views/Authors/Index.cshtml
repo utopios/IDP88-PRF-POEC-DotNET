@@ -1,14 +1,18 @@
-﻿@model IEnumerable<BookStore.Models.Author>
-
+﻿@using BookStore.Services;
+@model IEnumerable<BookStore.Models.Author>
+@inject ILogin _loginService
 @{
     ViewData["Title"] = "Index";
 }
 
 <h1>Index</h1>
+@if(_loginService.IsAdmin())
+{
+    <p>
+        <a asp-action="Create">Create New</a>
+    </p>
+}
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
 <table class="table">
     <thead>
         <tr>
