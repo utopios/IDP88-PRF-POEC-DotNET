@@ -34,7 +34,7 @@ namespace CoursTDD
             }
         }
 
-        public bool MakeRoll()
+        public bool MakeRoll2()
         {
             int max = 10;
             if (!_lastFrame)
@@ -74,6 +74,32 @@ namespace CoursTDD
                     int p = _generateur.RandomPin(max);
                     Roll r = new Roll(p);
                     Rolls.Add(r);
+                    return true;
+                }
+                return false;
+            }
+        }
+
+
+        public bool MakeRoll()
+        {
+            int max = 10;
+            if (!_lastFrame)
+            {
+                if(Rolls.Count == 0 || (Rolls.Count < 2 && rolls[0].Pins < 10))
+                {
+                    max = Rolls.Count == 0 ? 10 : 10 - Rolls[0].Pins;                    
+                    Rolls.Add(new Roll(_generateur.RandomPin(max)));
+                    return true;
+                }
+                return false;
+            }
+            else
+            {
+                if (rolls.Count <= 2 && (rolls[0].Pins == 10 || (rolls[0].Pins + rolls[1].Pins == 10)))
+                {
+                    max = (Rolls.Count == 2 && Rolls[0].Pins + Rolls[1].Pins != 10) ? 10 - Rolls[1].Pins : 10;
+                    Rolls.Add(new Roll(_generateur.RandomPin(max)));
                     return true;
                 }
                 return false;
