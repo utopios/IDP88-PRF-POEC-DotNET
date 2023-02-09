@@ -39,7 +39,7 @@ public class Product {
 public class Shop {
     private List<Product> products;
     
-    public void update(Product product) {
+    public void Update(Product product) {
         throw new Exception("Not implemented");
     }
 }
