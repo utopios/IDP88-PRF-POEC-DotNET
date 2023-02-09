@@ -40,7 +40,7 @@ public class Shop {
     private List<Product> products;
     
     public void Update(Product product) {
-        throw new Exception("Not implemented");
+        throw new NotImplementedException();
     }
 }
 ```
