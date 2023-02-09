@@ -57,3 +57,18 @@ public interface IGenerateur {
   public int RandomPin(int max);
 }
 ```
+
+### Méthodes de tests
+```
+Roll_SimpleFrame_FirstRoll_CheckScore
+Roll_SimpleFrame_SecondRoll_CheckScore
+Roll_SimpleFrame_SecondRoll_FirstRollStrick_ReturnFalse
+Roll_SimpleFrame_MoreRolls_ReturnFalse
+Roll_LastFrame_SecondRoll_FirstRollStrick_ReturnTrue
+Roll_LastFrame_SecondRoll_FirstRollStrick_CheckScore
+Roll_LastFrame_ThirdRoll_FirstRollStrick_ReturnTrue
+Roll_LastFrame_ThirdRoll_FirstRollStrick_CheckScore
+Roll_LastFrame_ThirdRoll_Spare_ReturnTrue
+Roll_LastFrame_ThirdRoll_Spare_CheckScore
+Roll_LastFrame_FourthRoll_ReturnFalse
+```
