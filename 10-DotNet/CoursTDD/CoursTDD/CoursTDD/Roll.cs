@@ -11,7 +11,9 @@ namespace CoursTDD
         private int pins;
         
         public Roll(int p) { 
-            pins= p;
+            Pins= p;
         }
+
+        public int Pins { get => pins; set => pins = value; }
     }
 }
