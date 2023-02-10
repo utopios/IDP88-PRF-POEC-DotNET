@@ -11,7 +11,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CaisseEnregistreuse", "Cais
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TodoList", "TodoList\TodoList.csproj", "{E0C25EC7-59D6-4E2E-8FF3-B56A97C2952B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookStore", "BookStore\BookStore.csproj", "{865BFE24-140E-4E55-8015-C52AC54969D9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BookStore", "BookStore\BookStore.csproj", "{865BFE24-140E-4E55-8015-C52AC54969D9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DinoAPI", "DinoAPI\DinoAPI.csproj", "{9736F906-7F89-4D9A-8FA1-26EA6A6873FC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -35,6 +37,10 @@ Global
 		{865BFE24-140E-4E55-8015-C52AC54969D9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{865BFE24-140E-4E55-8015-C52AC54969D9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{865BFE24-140E-4E55-8015-C52AC54969D9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9736F906-7F89-4D9A-8FA1-26EA6A6873FC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9736F906-7F89-4D9A-8FA1-26EA6A6873FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9736F906-7F89-4D9A-8FA1-26EA6A6873FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9736F906-7F89-4D9A-8FA1-26EA6A6873FC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
