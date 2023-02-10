@@ -22,7 +22,7 @@ namespace DinoAPI.Datas
 
         public List<Dinosaur> GetAll(string startSpecies)
         {
-            return _dinosaurs.FindAll(d => d.Species.StartsWith(startSpecies));
+            return _dinosaurs.FindAll(d => d.Species!.StartsWith(startSpecies));
         }
 
         public Dinosaur? GetById(int id)
