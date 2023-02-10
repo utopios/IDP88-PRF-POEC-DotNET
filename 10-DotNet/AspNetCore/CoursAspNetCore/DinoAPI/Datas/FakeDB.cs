@@ -10,8 +10,8 @@ namespace DinoAPI.Datas
         {
             _dinosaurs = new List<Dinosaur>()
             {
-                new Dinosaur{ Age=20, Name="Denver", Color=Dinosaur.DinoColor.Green, Specy="Corythosaurus"},
-                new Dinosaur{ Age=16, Name="Petit pieds", Color=Dinosaur.DinoColor.Yellow, Specy="Apatosaurus"}
+                new Dinosaur{ Age=20, Name="Denver", Color=Dinosaur.DinoColor.Green, Species="Corythosaurus"},
+                new Dinosaur{ Age=16, Name="Petit pieds", Color=Dinosaur.DinoColor.Yellow, Species="Apatosaurus"}
             };
         }
 
@@ -20,9 +20,19 @@ namespace DinoAPI.Datas
             return _dinosaurs;
         }
 
+        public List<Dinosaur> GetAll(string startSpecies)
+        {
+            return _dinosaurs.FindAll(d => d.Species.StartsWith(startSpecies));
+        }
+
         public Dinosaur? GetById(int id)
         {
             return _dinosaurs.FirstOrDefault(d => d.Id == id);
+        }
+
+        public Dinosaur? GetByName(string name)
+        {
+            return _dinosaurs.FirstOrDefault(d => d.Name == name);
         }
 
         public bool Add(Dinosaur dinosaur)
@@ -38,7 +48,7 @@ namespace DinoAPI.Datas
             if (dinoFromDB == null) return false;
 
             dinoFromDB.Name = dinosaur.Name;
-            dinoFromDB.Specy = dinosaur.Specy;
+            dinoFromDB.Species = dinosaur.Species;
             dinoFromDB.Age = dinosaur.Age;
             dinoFromDB.Color = dinosaur.Color;
 

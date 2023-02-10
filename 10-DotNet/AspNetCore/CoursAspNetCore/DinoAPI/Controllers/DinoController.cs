@@ -16,15 +16,17 @@ namespace DinoAPI.Controllers
         }
 
         [HttpGet("/dinosaurs")]
-        public IActionResult GetAll()
+        public IActionResult GetAll(string? startSepecies)
         {
+            if (startSepecies != null) return Ok(_fakeDB.GetAll(startSepecies));
+
             return Ok(_fakeDB.GetAll());
         }
 
-        [HttpGet("/dinosaurs/{id}")]
-        public IActionResult GetById(int id)
+        [HttpGet("/dinosaurs/name/{name}")]
+        public IActionResult GetByName(string name)
         {
-            var dino = _fakeDB.GetById(id);
+            var dino = _fakeDB.GetByName(name);
 
             if (dino == null) return NotFound(new
             {
@@ -38,10 +40,26 @@ namespace DinoAPI.Controllers
             });
         }
 
+        [HttpGet("/dinosaurs/{id}")]
+        public IActionResult GetById(int id)
+        {
+            var dino = _fakeDB.GetById(id);
+
+            if (dino == null) return NotFound(new
+            {
+                Message = "There is no Dino with this id."
+            });
+
+            return Ok(new
+            {
+                Message = "Dino found !",
+                Dino = dino
+            });
+        }
+
         [HttpPost("/dinosaurs")]
         public IActionResult Add([FromBody] Dinosaur dinosaur)
         {
-            // on ajoutera la notion de modelstate ici
             if(_fakeDB.Add(dinosaur)) return Ok("Dino added.");
             return BadRequest("Something went wrong...");
         }
@@ -55,8 +73,6 @@ namespace DinoAPI.Controllers
             {
                 Message = "There is no Dino with this id."
             });
-
-            // on ajoutera la notion de modelstate ici
 
             if (!_fakeDB.Edit(id, dinosaur)) return BadRequest("Something went wrong...");
 
