@@ -27,6 +27,8 @@ namespace DinoAPI.Controllers
             return Ok(_fakeDB.GetAll());
         }
 
+        [Authorize(Roles = "Admin")]
+        [Authorize(Policy = "AdminPolicy")]
         [HttpGet("/dinosaurs/name/{name}")]
         public IActionResult GetByName(string name)
         {
