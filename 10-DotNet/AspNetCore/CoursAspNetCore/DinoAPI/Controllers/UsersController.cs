@@ -1,5 +1,6 @@
 ﻿using DinoAPI.Datas;
 using DinoAPI.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -7,6 +8,7 @@ namespace DinoAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize(Roles = "Admin")]
     public class UsersController : ControllerBase
     {
         private readonly ApplicationDbContext _db;
@@ -16,6 +18,7 @@ namespace DinoAPI.Controllers
         }
 
         [HttpGet("/users")]
+        [AllowAnonymous]
         public IActionResult GetAll(string? startFirstName)
         {
             if (startFirstName != null)

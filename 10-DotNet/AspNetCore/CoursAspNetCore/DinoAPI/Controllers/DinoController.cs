@@ -9,6 +9,7 @@ namespace DinoAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     //[EnableCors(PolicyName = "allConnections")]
     public class DinoController : ControllerBase
     {
@@ -18,8 +19,8 @@ namespace DinoAPI.Controllers
             _fakeDB= fakeDB;
         }
 
-        [Authorize]
         [HttpGet("/dinosaurs")]
+        [AllowAnonymous]
         public IActionResult GetAll(string? startSepecies)
         {
             if (startSepecies != null) return Ok(_fakeDB.GetAll(startSepecies));
@@ -27,8 +28,8 @@ namespace DinoAPI.Controllers
             return Ok(_fakeDB.GetAll());
         }
 
-        [Authorize(Roles = "Admin")]
-        [Authorize(Policy = "AdminPolicy")]
+        //[Authorize(Roles = "Admin")]
+        //[Authorize(Policy = "AdminPolicy")]
         [HttpGet("/dinosaurs/name/{name}")]
         public IActionResult GetByName(string name)
         {
@@ -86,6 +87,7 @@ namespace DinoAPI.Controllers
         }
 
         [HttpDelete("/dinosaurs/{id}")]
+        [Authorize(Roles = "Admin")]
         public IActionResult Remove(int id)
         {
             var dino = _fakeDB.GetById(id);
