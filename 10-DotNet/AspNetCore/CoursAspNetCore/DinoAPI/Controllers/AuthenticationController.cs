@@ -23,7 +23,7 @@ namespace DinoAPI.Controllers
             _db= dbContext;
         }
 
-        [HttpPost("register")]
+        [HttpPost("[action]")] // la route prend le nom de la méthode/l'action
         public IActionResult Register([FromBody] User user)
         {
             if (_db.Users.FirstOrDefault(u => u.Email == user.Email) != null)
@@ -81,12 +81,14 @@ namespace DinoAPI.Controllers
             });
         }
 
-
+        [NonAction] // empêche que cette fonction soit une Action / devienne un Endpoint de l'API
         private string EncryptPassword(string? password)
         {
             if (string.IsNullOrEmpty(password)) return "";
             return Convert.ToBase64String(Encoding.UTF8.GetBytes(password + _securityKey));
         }
+
+        [NonAction]
         private string DecryptPassword(string? cryptedString)
         {
             if (string.IsNullOrEmpty(cryptedString)) return "";
