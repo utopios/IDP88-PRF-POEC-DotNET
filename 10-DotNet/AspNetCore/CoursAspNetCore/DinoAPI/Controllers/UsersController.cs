@@ -1,4 +1,5 @@
 ﻿using DinoAPI.Datas;
+using DinoAPI.Helpers;
 using DinoAPI.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
@@ -8,7 +9,7 @@ namespace DinoAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize(Roles = "Admin")]
+    [Authorize(Roles = Constants.RoleAdmin)]
     public class UsersController : ControllerBase
     {
         private readonly ApplicationDbContext _db;

@@ -1,4 +1,5 @@
 ﻿using DinoAPI.Datas;
+using DinoAPI.Helpers;
 using DinoAPI.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Cors;
@@ -87,7 +88,7 @@ namespace DinoAPI.Controllers
         }
 
         [HttpDelete("/dinosaurs/{id}")]
-        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = Constants.RoleAdmin)]
         public IActionResult Remove(int id)
         {
             var dino = _fakeDB.GetById(id);

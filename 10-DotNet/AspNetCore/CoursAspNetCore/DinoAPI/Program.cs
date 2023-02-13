@@ -1,4 +1,5 @@
 using DinoAPI.Datas;
+using DinoAPI.Helpers;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
@@ -7,6 +8,14 @@ using System.Security.Claims;
 using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
+
+// permet de récupérer la section AppSetings du fichier appsettings.json
+var appSettingsSection = builder.Configuration.GetSection(nameof(AppSettings));
+// on l'enregistre dans les services
+builder.Services.Configure<AppSettings>(appSettingsSection);
+
+AppSettings appSettings = appSettingsSection.Get<AppSettings>();
+
 
 // Add services to the container.
 builder.Services.AddSingleton<FakeDB>();
@@ -25,7 +34,7 @@ builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlSer
 //    });
 //});
 
-var key = Encoding.ASCII.GetBytes("clé très sécurisée: Denver le dernier dinosaur !");
+var key = Encoding.ASCII.GetBytes(appSettings.SecretKey);
 
 // Authentication
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
@@ -38,9 +47,9 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
             IssuerSigningKey = new SymmetricSecurityKey(key), // clé cryptée en elle même
             ValidateLifetime = true, // vérification du temps d'expiration du Token
             ValidateAudience = true, // vérification de l'audience du token
-            ValidAudience = "dinocorp", // l'audience
+            ValidAudience = appSettings.ValidAudience, // l'audience
             ValidateIssuer = true, // vérification du donneur du token
-            ValidIssuer = "dinocorp", // le donneur
+            ValidIssuer = appSettings.ValidIssuer, // le donneur
             ClockSkew = TimeSpan.Zero // décallage possible de l'expiration du token
         };
     });
@@ -48,13 +57,13 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
 // Authorization
 builder.Services.AddAuthorization(options =>
 {
-    options.AddPolicy("AdminPolicy", police =>
+    options.AddPolicy(Constants.PolicyAdmin, police =>
     {
-        police.RequireClaim(ClaimTypes.Role, "Admin");
+        police.RequireClaim(ClaimTypes.Role, Constants.RoleAdmin);
     });
-    options.AddPolicy("UserPolicy", police =>
+    options.AddPolicy(Constants.PolicyUser, police =>
     {
-        police.RequireClaim(ClaimTypes.Role, "User");
+        police.RequireClaim(ClaimTypes.Role, Constants.RoleUser);
         police.RequireClaim("EstUnDresseurDeDino", "true");
     });
 });

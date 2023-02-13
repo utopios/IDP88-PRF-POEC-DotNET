@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using DinoAPI.Validators;
+using System.ComponentModel.DataAnnotations;
 
 namespace DinoAPI.Models
 {
@@ -22,6 +23,7 @@ namespace DinoAPI.Models
         [RegularExpression(@"^[^@\s]+@[^@\s]+\.[^@\s]+$", ErrorMessage = "Invalid email address")]
         public string? Email { get; set; }
         [Required]
+        [PasswordValidator]
         //validateur custom de password à faire
         public string? PassWord { get; set; }
         [Required]

@@ -1,9 +1,11 @@
 ﻿using DinoAPI.Datas;
 using DinoAPI.DTOs;
+using DinoAPI.Helpers;
 using DinoAPI.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
@@ -17,10 +19,13 @@ namespace DinoAPI.Controllers
     public class AuthenticationController : ControllerBase
     {
         private readonly ApplicationDbContext _db;
+        private readonly AppSettings _settings;
         private readonly string _securityKey = "clé super secrète";
-        public AuthenticationController(ApplicationDbContext dbContext)
+        public AuthenticationController(ApplicationDbContext dbContext,
+            IOptions<AppSettings> appSettings)
         {
             _db= dbContext;
+            _settings = appSettings.Value;
         }
 
         [HttpPost("[action]")] // la route prend le nom de la méthode/l'action
@@ -60,12 +65,12 @@ namespace DinoAPI.Controllers
             };
 
             SigningCredentials signingCredentials = new SigningCredentials(
-                new SymmetricSecurityKey(Encoding.ASCII.GetBytes("clé très sécurisée: Denver le dernier dinosaur !")),
+                new SymmetricSecurityKey(Encoding.ASCII.GetBytes(_settings.SecretKey!)),
                 SecurityAlgorithms.HmacSha256);
 
             JwtSecurityToken jwt = new JwtSecurityToken(
-                issuer: "dinocorp",
-                audience: "dinocorp",
+                issuer: _settings.ValidIssuer,
+                audience: _settings.ValidAudience,
                 claims: claims,
                 signingCredentials: signingCredentials,
                 expires: DateTime.Now.AddDays(7)
