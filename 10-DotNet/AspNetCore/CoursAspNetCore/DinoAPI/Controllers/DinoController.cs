@@ -1,5 +1,7 @@
 ﻿using DinoAPI.Datas;
 using DinoAPI.Models;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -7,6 +9,7 @@ namespace DinoAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    //[EnableCors(PolicyName = "allConnections")]
     public class DinoController : ControllerBase
     {
         private readonly FakeDB _fakeDB;
@@ -15,6 +18,7 @@ namespace DinoAPI.Controllers
             _fakeDB= fakeDB;
         }
 
+        [Authorize]
         [HttpGet("/dinosaurs")]
         public IActionResult GetAll(string? startSepecies)
         {
