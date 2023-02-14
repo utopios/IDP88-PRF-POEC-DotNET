@@ -1,5 +1,7 @@
 using DinoAPI.Datas;
 using DinoAPI.Helpers;
+using DinoAPI.Models;
+using DinoAPI.Repositories;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
@@ -16,9 +18,9 @@ builder.Services.Configure<AppSettings>(appSettingsSection);
 
 AppSettings appSettings = appSettingsSection.Get<AppSettings>();
 
-
 // Add services to the container.
-builder.Services.AddSingleton<FakeDB>();
+//builder.Services.AddSingleton<FakeDB>();
+builder.Services.AddScoped<IRepository<Dinosaur>, DinoRepository>();
 
 string connectionString = builder.Configuration.GetConnectionString("DefaultConnection")!;
 builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(connectionString));

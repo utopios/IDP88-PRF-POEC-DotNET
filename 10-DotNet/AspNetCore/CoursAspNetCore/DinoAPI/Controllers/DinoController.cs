@@ -1,9 +1,7 @@
-﻿using DinoAPI.Datas;
-using DinoAPI.Helpers;
+﻿using DinoAPI.Helpers;
 using DinoAPI.Models;
+using DinoAPI.Repositories;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Cors;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DinoAPI.Controllers
@@ -14,27 +12,31 @@ namespace DinoAPI.Controllers
     //[EnableCors(PolicyName = "allConnections")]
     public class DinoController : ControllerBase
     {
-        private readonly FakeDB _fakeDB;
-        public DinoController(FakeDB fakeDB)
+        private readonly IRepository<Dinosaur> _dinoRepository;
+
+        public DinoController(IRepository<Dinosaur> dinoRepository)
         {
-            _fakeDB= fakeDB;
+            this._dinoRepository = dinoRepository;
         }
 
         [HttpGet("/dinosaurs")]
         [AllowAnonymous]
-        public IActionResult GetAll(string? startSepecies)
+        public async Task<IActionResult> GetAll(string? startSpecies)
         {
-            if (startSepecies != null) return Ok(_fakeDB.GetAll(startSepecies));
+            if (startSpecies != null) 
+                return Ok(
+                    await _dinoRepository.GetAll(d => d.Species!.StartsWith(startSpecies))
+                    );
 
-            return Ok(_fakeDB.GetAll());
+            return Ok(await _dinoRepository.GetAll());
         }
 
         //[Authorize(Roles = "Admin")]
         //[Authorize(Policy = "AdminPolicy")]
         [HttpGet("/dinosaurs/name/{name}")]
-        public IActionResult GetByName(string name)
+        public async Task<IActionResult> GetByName(string name)
         {
-            var dino = _fakeDB.GetByName(name);
+            var dino = await _dinoRepository.Get(d => d.Name == name);
 
             if (dino == null) return NotFound(new
             {
@@ -49,9 +51,9 @@ namespace DinoAPI.Controllers
         }
 
         [HttpGet("/dinosaurs/{id}")]
-        public IActionResult GetById(int id)
+        public async Task<IActionResult> GetById(int id)
         {
-            var dino = _fakeDB.GetById(id);
+            var dino = await _dinoRepository.GetById(id);
 
             if (dino == null) return NotFound(new
             {
@@ -66,39 +68,41 @@ namespace DinoAPI.Controllers
         }
 
         [HttpPost("/dinosaurs")]
-        public IActionResult Add([FromBody] Dinosaur dinosaur)
+        public async Task<IActionResult> Add([FromBody] Dinosaur dinosaur)
         {
-            if(_fakeDB.Add(dinosaur)) return Ok("Dino added.");
+            if(await _dinoRepository.Add(dinosaur)) return Ok("Dino added.");
             return BadRequest("Something went wrong...");
         }
 
         [HttpPut("/dinosaurs/{id}")]
-        public IActionResult Update(int id, [FromBody] Dinosaur dinosaur)
+        public async Task<IActionResult> Update(int id, [FromBody] Dinosaur dinosaur)
         {
-            var dino = _fakeDB.GetById(id);
+            var dinoFromDb = await _dinoRepository.GetById(id);
 
-            if (dino == null) return NotFound(new
+            if (dinoFromDb == null) return NotFound(new
             {
                 Message = "There is no Dino with this id."
             });
 
-            if (!_fakeDB.Edit(id, dinosaur)) return BadRequest("Something went wrong...");
+            dinosaur.Id = id;
+
+            if (!await _dinoRepository.Update(dinosaur)) return BadRequest("Something went wrong...");
 
             return Ok("Dino Updated !");
         }
 
         [HttpDelete("/dinosaurs/{id}")]
         [Authorize(Roles = Constants.RoleAdmin)]
-        public IActionResult Remove(int id)
+        public async Task<IActionResult> Remove(int id)
         {
-            var dino = _fakeDB.GetById(id);
+            var dino = _dinoRepository.GetById(id);
 
             if (dino == null) return NotFound(new
             {
                 Message = "There is no Dino with this id."
             });
 
-            if (!_fakeDB.Delete(id)) return BadRequest("Something went wrong...");
+            if (!await _dinoRepository.Delete(id)) return BadRequest("Something went wrong...");
 
             return Ok("Dino Deleted !");
         }

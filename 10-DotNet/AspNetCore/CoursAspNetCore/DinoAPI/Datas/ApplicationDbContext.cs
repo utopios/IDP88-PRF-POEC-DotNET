@@ -10,7 +10,7 @@ namespace DinoAPI.Datas
 
         }
 
-        //public DbSet<Dinosaur> Dinosaurs { get; set; }
+        public DbSet<Dinosaur> Dinosaurs { get; set; }
         public DbSet<User> Users { get; set; }
 
     }
