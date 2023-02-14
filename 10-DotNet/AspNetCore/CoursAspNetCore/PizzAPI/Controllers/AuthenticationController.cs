@@ -10,6 +10,7 @@ using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
+using Microsoft.EntityFrameworkCore;
 
 namespace PizzAPI.Controllers
 {
@@ -28,26 +29,26 @@ namespace PizzAPI.Controllers
         }
 
         [HttpPost("[action]")]
-        public IActionResult Register([FromBody] User user)
+        public async Task<IActionResult> Register([FromBody] User user)
         {
-            if (_db.Users.FirstOrDefault(u => u.Email == user.Email) != null)
+            if (await _db.Users.FirstOrDefaultAsync(u => u.Email == user.Email) != null)
                 return BadRequest("Email is already taken!");
 
             user.PassWord = EncryptPassword(user.PassWord);
             // isAdmin => false
 
-            _db.Users.Add(user);
+            await _db.Users.AddAsync(user);
 
-            if (_db.SaveChanges() > 0) return Ok("User regitered.");
+            if (await _db.SaveChangesAsync() > 0) return Ok("User regitered.");
             return BadRequest("Something went wrong...");
         }
 
         [HttpPost("login")]
-        public IActionResult Login([FromBody] LoginRequestDTO login)
+        public async Task<IActionResult> Login([FromBody] LoginRequestDTO login)
         {
             login.PassWord = EncryptPassword(login.PassWord);
 
-            var user = _db.Users.FirstOrDefault(u => u.Email == login.Email && u.PassWord == login.PassWord);
+            var user = await _db.Users.FirstOrDefaultAsync(u => u.Email == login.Email && u.PassWord == login.PassWord);
 
             if (user == null) return BadRequest("Invalid Authentication !");
 

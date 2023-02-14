@@ -22,44 +22,44 @@ namespace PizzAPI.Controllers
 
         [HttpGet("menu")]
         [Authorize(Roles = Constants.RoleUser+","+Constants.RoleAdmin)]
-        public IActionResult Menu()
+        public async Task<IActionResult> Menu()
         {
-            return Ok(_dbContext.Pizzas.Include(p => p.Ingredients ).ToList());
+            return Ok(await _dbContext.Pizzas.Include(p => p.Ingredients ).ToListAsync());
         }
 
         [HttpPost("pizza")]
-        public IActionResult AddPizza([FromBody] Pizza pizza)
+        public async Task<IActionResult> AddPizza([FromBody] Pizza pizza)
         {
-            _dbContext.Pizzas.Add(pizza);
+            await _dbContext.Pizzas.AddAsync(pizza);
 
-            if (_dbContext.SaveChanges() >= 1)
+            if (await _dbContext.SaveChangesAsync() >= 1)
                 return Ok("Pizza added");
 
             return BadRequest("Something went wrong");
         }
 
         [HttpPost("pizza/add-topping/{pizzaId}")]
-        public IActionResult AddTopping(int pizzaId, [FromBody] Ingredient ingredient)
+        public async Task<IActionResult> AddTopping(int pizzaId, [FromBody] Ingredient ingredient)
         {
-            if (_dbContext.Pizzas.Find(pizzaId) == null)
+            if (await _dbContext.Pizzas.FindAsync(pizzaId) == null)
                 return BadRequest("Pizza not found");
 
             ingredient.PizzaId = pizzaId;
-            _dbContext.Ingredients.Add(ingredient);
+            await _dbContext.Ingredients.AddAsync(ingredient);
 
-            if (_dbContext.SaveChanges() >= 1)
+            if (await _dbContext.SaveChangesAsync() >= 1)
                 return Ok("Topping added");
 
             return BadRequest("Something went wrong");
         }
 
         [HttpDelete("pizza/remove-topping/{pizzaId}/{toppingId}")]
-        public IActionResult RemoveTopping(int pizzaId, int toppingId)
+        public async Task<IActionResult> RemoveTopping(int pizzaId, int toppingId)
         {
-            if (_dbContext.Pizzas.Find(pizzaId) == null)
+            if (await _dbContext.Pizzas.FindAsync(pizzaId) == null)
                 return BadRequest("Pizza not found");
 
-            var ing = _dbContext.Ingredients.Find(toppingId);
+            var ing = await _dbContext.Ingredients.FindAsync(toppingId);
 
             if (ing == null)
                 return BadRequest("Topping not found");
@@ -69,16 +69,16 @@ namespace PizzAPI.Controllers
 
             _dbContext.Ingredients.Remove(ing);
 
-            if (_dbContext.SaveChanges() == 1)
+            if (await _dbContext.SaveChangesAsync() == 1)
                 return Ok("Topping removed");
 
             return BadRequest("Something went wrong");
         }
 
         [HttpPut("pizza/{id}")]
-        public IActionResult UpdatePizza(int id, [FromBody] Pizza pizza)
+        public async Task<IActionResult> UpdatePizza(int id, [FromBody] Pizza pizza)
         {
-            var pizzaFromDb = _dbContext.Pizzas.Include(p=> p.Ingredients).FirstOrDefault(p => p.Id == id);
+            var pizzaFromDb = await _dbContext.Pizzas.Include(p=> p.Ingredients).FirstOrDefaultAsync(p => p.Id == id);
 
             if (pizzaFromDb == null) return NotFound(new
             {
@@ -94,21 +94,21 @@ namespace PizzAPI.Controllers
             if (pizzaFromDb.Statuts != pizza.Statuts)
                 pizzaFromDb.Statuts= pizza.Statuts;
 
-            if (_dbContext.SaveChanges() == 0) return BadRequest("Something went wrong...");
+            if (await _dbContext.SaveChangesAsync() == 0) return BadRequest("Something went wrong...");
 
             return Ok("Pizza Updated !");
         }
 
         [HttpDelete("pizza/{id}")]
-        public IActionResult RemovePizza(int id)
+        public async Task<IActionResult> RemovePizza(int id)
         {
-            var pizz = _dbContext.Pizzas.Find(id);
+            var pizz = await _dbContext.Pizzas.FindAsync(id);
             if ( pizz == null)
                 return BadRequest("Pizza not found");
 
             _dbContext.Pizzas.Remove(pizz);
 
-            if (_dbContext.SaveChanges() == 1)
+            if (await _dbContext.SaveChangesAsync() == 1)
                 return Ok("Pizza removed");
 
             return BadRequest("Something went wrong");
