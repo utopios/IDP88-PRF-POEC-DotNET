@@ -1,11 +1,12 @@
-using DinoAPI.Datas;
-using DinoAPI.Helpers;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
+using PizzAPI.Datas;
+using PizzAPI.Helpers;
 using System.Security.Claims;
 using System.Text;
+using System.Text.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -17,22 +18,8 @@ builder.Services.Configure<AppSettings>(appSettingsSection);
 AppSettings appSettings = appSettingsSection.Get<AppSettings>();
 
 
-// Add services to the container.
-builder.Services.AddSingleton<FakeDB>();
-
 string connectionString = builder.Configuration.GetConnectionString("DefaultConnection")!;
 builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(connectionString));
-
-// ajout de policy pour les cors
-//builder.Services.AddCors(options =>
-//{
-//    options.AddPolicy("allConnections", options=> {
-//        options.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader();
-//    });
-//    options.AddPolicy("angular", options => {
-//        options.WithOrigins("http://angularaddress:angularport").AllowAnyMethod().AllowAnyHeader();
-//    });
-//});
 
 var key = Encoding.ASCII.GetBytes(appSettings.SecretKey!);
 
@@ -40,7 +27,7 @@ var key = Encoding.ASCII.GetBytes(appSettings.SecretKey!);
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(options =>
     {
-        options.SaveToken= true;
+        options.SaveToken = true;
         options.TokenValidationParameters = new TokenValidationParameters()
         {
             ValidateIssuerSigningKey = true, // utilisation d'une clé cryptée pour la sécurité du token
@@ -64,13 +51,13 @@ builder.Services.AddAuthorization(options =>
     options.AddPolicy(Constants.PolicyUser, police =>
     {
         police.RequireClaim(ClaimTypes.Role, Constants.RoleUser);
-        police.RequireClaim("EstUnDresseurDeDino", "true");
     });
 });
 
+// pour éviter les cycles/la redondance (un ingrédient qui a sa pizza dans le json qui a elle même son ingrédient
+builder.Services.AddControllers().AddJsonOptions(x =>
+                x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles);
 
-builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(c =>
 {
@@ -110,9 +97,6 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
-// c'est ici que l'on dit que l'on va utiliser les cors sur l'application
-// on laisse vide quand on utilise les policy
-// il reste possible de préciser un policy générale qui s'appliquera à toute l'application
 app.UseCors(option =>
 {
     option.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader();
