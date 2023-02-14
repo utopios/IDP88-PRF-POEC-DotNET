@@ -1,8 +1,12 @@
-﻿using DinoAPI.Helpers;
+﻿using AutoMapper;
+using DinoAPI.DTOs;
+using DinoAPI.Helpers;
+using DinoAPI.Migrations;
 using DinoAPI.Models;
 using DinoAPI.Repositories;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
 
 namespace DinoAPI.Controllers
 {
@@ -13,22 +17,28 @@ namespace DinoAPI.Controllers
     public class DinoController : ControllerBase
     {
         private readonly IRepository<Dinosaur> _dinoRepository;
+        private readonly IMapper _mapper;
 
-        public DinoController(IRepository<Dinosaur> dinoRepository)
+        public DinoController(IRepository<Dinosaur> dinoRepository,
+                              IMapper mapper)
         {
             this._dinoRepository = dinoRepository;
+            this._mapper = mapper;
         }
 
         [HttpGet("/dinosaurs")]
         [AllowAnonymous]
         public async Task<IActionResult> GetAll(string? startSpecies)
         {
-            if (startSpecies != null) 
-                return Ok(
-                    await _dinoRepository.GetAll(d => d.Species!.StartsWith(startSpecies))
-                    );
+            List<Dinosaur> dinos;
+            if (startSpecies != null)
+                dinos = (await _dinoRepository.GetAll(d => d.Species!.StartsWith(startSpecies))).ToList();
+            else
+                dinos = (await _dinoRepository.GetAll()).ToList();
 
-            return Ok(await _dinoRepository.GetAll());
+            List<DinosaurDTO> dinosDTO = _mapper.Map<List<Dinosaur>, List<DinosaurDTO>>(dinos);
+
+            return Ok(dinosDTO);
         }
 
         //[Authorize(Roles = "Admin")]
@@ -36,7 +46,7 @@ namespace DinoAPI.Controllers
         [HttpGet("/dinosaurs/name/{name}")]
         public async Task<IActionResult> GetByName(string name)
         {
-            var dino = await _dinoRepository.Get(d => d.Name == name);
+            var dino = _mapper.Map<Dinosaur?, DinosaurDTO?>(await _dinoRepository.Get(d => d.Name == name));
 
             if (dino == null) return NotFound(new
             {
@@ -53,9 +63,9 @@ namespace DinoAPI.Controllers
         [HttpGet("/dinosaurs/{id}")]
         public async Task<IActionResult> GetById(int id)
         {
-            var dino = await _dinoRepository.GetById(id);
+            var dinoDTO = _mapper.Map<Dinosaur?, DinosaurDTO?>(await _dinoRepository.GetById(id));
 
-            if (dino == null) return NotFound(new
+            if (dinoDTO == null) return NotFound(new
             {
                 Message = "There is no Dino with this id."
             });
@@ -63,20 +73,23 @@ namespace DinoAPI.Controllers
             return Ok(new
             {
                 Message = "Dino found !",
-                Dino = dino
+                Dino = dinoDTO
             });
         }
 
         [HttpPost("/dinosaurs")]
-        public async Task<IActionResult> Add([FromBody] Dinosaur dinosaur)
+        public async Task<IActionResult> Add([FromBody] DinosaurDTO dinosaurDTO)
         {
+            var dinosaur = _mapper.Map<DinosaurDTO, Dinosaur>(dinosaurDTO);
             if(await _dinoRepository.Add(dinosaur)) return Ok("Dino added.");
             return BadRequest("Something went wrong...");
         }
 
         [HttpPut("/dinosaurs/{id}")]
-        public async Task<IActionResult> Update(int id, [FromBody] Dinosaur dinosaur)
+        public async Task<IActionResult> Update(int id, [FromBody] DinosaurDTO dinosaurDTO)
         {
+            var dinosaur = _mapper.Map<DinosaurDTO, Dinosaur>(dinosaurDTO);
+
             var dinoFromDb = await _dinoRepository.GetById(id);
 
             if (dinoFromDb == null) return NotFound(new
