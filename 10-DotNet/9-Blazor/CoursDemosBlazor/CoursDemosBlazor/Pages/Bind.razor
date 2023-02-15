@@ -1,0 +1,26 @@
+﻿@page "/bind"
+
+<p>
+    <input @bind="inputValue" /> @*par défaut l'évent de bind est onchange*@
+</p>
+
+<p>
+    <input @bind="inputValue2" /> 
+</p>
+
+<p>
+    <input @bind="InputValue" @bind:event="oninput" />
+</p>
+
+<ul>
+    <li><code>inputValue</code>: @inputValue</li>
+    <li><code>inputValue2</code>: @inputValue2</li>
+    <li><code>InputValue</code>: @InputValue</li>
+</ul>
+
+@code {
+    private string? inputValue;
+    private string? inputValue2 = "du texte par défaut";
+
+    private string? InputValue { get; set; }
+}

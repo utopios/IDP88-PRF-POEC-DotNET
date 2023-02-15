@@ -1,0 +1,26 @@
+﻿@page "/render-fragment-parent"
+@using CoursDemosBlazor.Components
+
+<h1>Render child content</h1>
+
+<RenderFragmentChild>
+    Content of the child component is supplied
+    by the parent component.
+</RenderFragmentChild>
+
+<RenderFragmentChild>
+</RenderFragmentChild>
+
+<RenderFragmentChild>
+    <b>Texte en gras</b>
+</RenderFragmentChild>
+
+
+@for (int c = 0; c < 3; c++)
+{
+    var current = c;
+
+        <RenderFragmentChild>
+            Count: @current
+        </RenderFragmentChild>
+}

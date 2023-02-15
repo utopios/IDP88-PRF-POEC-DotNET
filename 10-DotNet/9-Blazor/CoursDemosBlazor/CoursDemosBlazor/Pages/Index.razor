@@ -1,4 +1,5 @@
 ﻿@page "/"
+@using CoursDemosBlazor.Components
 
 <PageTitle>Index</PageTitle>
 
@@ -6,4 +7,15 @@
 
 Welcome to your new app.
 
+<BoldTextComponent Text="Mon texte"></BoldTextComponent>
+
 <SurveyPrompt Title="How is Blazor working for you?" />
+
+<Counter/>
+
+<h4>@MaChaineCascading</h4>
+
+@code {
+    [CascadingParameter]
+    protected string MaChaineCascading { get; set; }
+}

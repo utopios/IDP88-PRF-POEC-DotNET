@@ -1,18 +1,17 @@
 ﻿@page "/counter"
+@page "/counter2"
+@page "/counter2/{value:int}"
+@*@inject NavigationManager nav*@
 
 <PageTitle>Counter</PageTitle>
+<!-- commentaire HTML visible dans les fichier source en front -->
+@* commmentaire blazor *@
 
 <h1>Counter</h1>
 
 <p role="status">Current count: @currentCount</p>
 
+<p>@Value</p>
+
 <button class="btn btn-primary" @onclick="IncrementCount">Click me</button>
 
-@code {
-    private int currentCount = 0;
-
-    private void IncrementCount()
-    {
-        currentCount++;
-    }
-}

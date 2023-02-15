@@ -1,0 +1,14 @@
+﻿@page "/on-init"
+
+<p>@message</p>
+
+@code {
+    private string? message;
+
+    protected override void OnInitialized()
+    {
+        string msg = $"Started OnInitialized at {DateTime.Now}";
+        Thread.Sleep(5000);
+        message = msg + $"Initialized at {DateTime.Now}";
+    }
+}
