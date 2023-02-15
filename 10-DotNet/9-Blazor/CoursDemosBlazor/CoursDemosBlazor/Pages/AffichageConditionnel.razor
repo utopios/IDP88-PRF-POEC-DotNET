@@ -1,0 +1,16 @@
+﻿@page "/affichageconditionnel"
+
+<h3>AffichageConditionnel</h3>
+
+<input type="checkbox" @bind="Checked" />
+
+@if (Checked)
+{
+    <h1>C'est coché !</h1>
+}
+
+
+@code {
+
+    public bool Checked { get; set; }
+}
