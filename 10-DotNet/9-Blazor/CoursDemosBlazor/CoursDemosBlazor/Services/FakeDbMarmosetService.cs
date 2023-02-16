@@ -15,8 +15,7 @@ namespace CoursDemosBlazor.Services
 
         public async Task<bool> Post(Marmoset marmoset)
         {
-            var count = ++LastId;
-            marmoset.Id = count + 1;
+            marmoset.Id = ++LastId;
             Marmosets.Add(marmoset);
             Console.WriteLine(Marmosets.Count.ToString());
             return true;
