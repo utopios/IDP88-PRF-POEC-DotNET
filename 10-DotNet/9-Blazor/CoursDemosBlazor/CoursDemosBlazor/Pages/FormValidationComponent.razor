@@ -1,0 +1,61 @@
+﻿@page "/form"
+@using CoursDemosBlazor.Models;
+@*@using Microsoft.AspNetCore.Components.Forms // inutile car déjà dans le _Imports à la racine*@
+
+<h3>FormValidationComponent</h3>
+
+<EditForm Model="Marmoset" OnValidSubmit="HandleSubmit">
+    <DataAnnotationsValidator />
+
+    <div class="mb-3">
+        <label for="name" class="form-label">Nom du Ouistiti</label>
+        <InputText class="form-control" id="name" @bind-Value="Marmoset.Name" />
+        <small>
+            <ValidationMessage For="() => Marmoset.Name"/>
+        </small>
+    </div>
+
+    <div class="mb-3">
+        <label for="description" class="form-label">Description du Ouistiti</label>
+        <InputTextArea class="form-control" id="description" @bind-Value="Marmoset.Description" rows="5" />
+        <small>
+            <ValidationMessage For="() => Marmoset.Description"/>
+        </small>
+    </div>
+
+    <div class="mb-3 form-check">
+        <InputCheckbox type="checkbox" class="form-check-input" id="ownsBanana" @bind-Value="Marmoset.OwnsBanana" />
+        <label class="form-check-label" for="ownsBanana">Possède une banane</label>
+        <small>
+            <ValidationMessage For="() => Marmoset.OwnsBanana" />
+        </small>
+    </div>
+
+    <div class="mb-3">
+        <label for="fur" class="form-label">Couleur de fourrure</label>
+        <InputSelect id="fur" class="form-select" placeholder="Choisir une couleur de fourrure" @bind-Value="Marmoset.FurColor">
+            @foreach (Marmoset.FurColors color in Enum.GetValues(typeof(Marmoset.FurColors)))
+            {
+                <option value="@color">@color</option>
+            }
+        </InputSelect>
+        <small>
+            <ValidationMessage For="() => Marmoset.FurColor" />
+        </small>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+    <div>
+        <ValidationSummary />
+    </div>
+
+</EditForm>
+
+@code {
+    private Marmoset Marmoset { get; set; } = new();
+
+    private void HandleSubmit()
+    {
+        Console.WriteLine(Marmoset);
+    }
+}
