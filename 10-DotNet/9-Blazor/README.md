@@ -31,3 +31,21 @@
 13. [Cycle de vie des composants](https://learn.microsoft.com/fr-fr/aspnet/core/blazor/components/lifecycle?view=aspnetcore-6.0)
     
 **TP Magic Number**
+
+
+#### 4. [GÉRER DES FORMULAIRES](https://learn.microsoft.com/fr-fr/aspnet/core/blazor/forms-and-input-components?view=aspnetcore-6.0)
+1. Utilisation d’EditForm
+2. Modèle de validation
+3. Utilisation des attributs de validation (Required, StringLength, Range, ErrorMessage)
+
+**TP Formulaire**
+ 
+ 
+#### 5. CONSOMMER UNE API AVEC BLAZOR
+1. [Injection de dépendance](https://learn.microsoft.com/fr-fr/aspnet/core/blazor/fundamentals/dependency-injection?view=aspnetcore-6.0)
+2. [Enregistrement de services (Singleton, Scoped)](https://learn.microsoft.com/fr-fr/aspnet/core/blazor/fundamentals/dependency-injection?view=aspnetcore-6.0#add-services-to-a-blazor-webassembly-app)
+3. [Injection de services](https://learn.microsoft.com/fr-fr/aspnet/core/blazor/fundamentals/dependency-injection?view=aspnetcore-6.0#request-a-service-in-a-component)
+4. [Initialisation du HttpClient](https://learn.microsoft.com/fr-fr/aspnet/core/blazor/call-web-api?view=aspnetcore-6.0&pivots=webassembly)
+5. Appels asynchrones (Async, Await, Task)
+
+**TP Final Pizza**
