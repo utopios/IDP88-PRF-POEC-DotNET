@@ -1,6 +1,8 @@
 ﻿@page "/form"
 @using CoursDemosBlazor.Models;
+@using CoursDemosBlazor.Services;
 @*@using Microsoft.AspNetCore.Components.Forms // inutile car déjà dans le _Imports à la racine*@
+@inject IMarmosetService _marmosetService
 
 <h3>FormValidationComponent</h3>
 
@@ -51,11 +53,37 @@
 
 </EditForm>
 
+<p>@ErrorApiMessage</p>
+
+<input type="number" @bind="DeleteId"/>
+<button @onclick="HandleDelete" class="btn btn-danger"> Supprimer un Ouistiti </button>
+
 @code {
     private Marmoset Marmoset { get; set; } = new();
 
-    private void HandleSubmit()
+    private string? ErrorApiMessage { get; set; }
+
+    private int DeleteId { get; set; } = 1;
+
+    private async Task HandleSubmit()
     {
         Console.WriteLine(Marmoset);
+        var result = await _marmosetService.Post(Marmoset);
+        if (!result)
+            ErrorApiMessage = "L'api n'a pas fonctionné !";
+        else
+        {
+            ErrorApiMessage = "";
+            Marmoset = new();
+        }
+    }
+
+    private async Task HandleDelete()
+    {
+        var result = await _marmosetService.Delete(DeleteId);
+        if (!result)
+            ErrorApiMessage = "L'api n'a pas fonctionné !";
+        else
+            ErrorApiMessage = "";
     }
 }
