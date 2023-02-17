@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33110.190
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PizzAPI", "PizzAPI\PizzAPI.csproj", "{BBC850B9-F04B-4B60-9B7D-7145E27E11F0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PizzBlazor", "PizzBlazor\PizzBlazor.csproj", "{28419C3A-152B-4084-87B3-5F0E4B965106}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PizzCore", "PizzCore\PizzCore.csproj", "{F458EA58-4111-4995-848B-06F528D75F20}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BBC850B9-F04B-4B60-9B7D-7145E27E11F0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BBC850B9-F04B-4B60-9B7D-7145E27E11F0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BBC850B9-F04B-4B60-9B7D-7145E27E11F0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BBC850B9-F04B-4B60-9B7D-7145E27E11F0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{28419C3A-152B-4084-87B3-5F0E4B965106}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{28419C3A-152B-4084-87B3-5F0E4B965106}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{28419C3A-152B-4084-87B3-5F0E4B965106}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{28419C3A-152B-4084-87B3-5F0E4B965106}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F458EA58-4111-4995-848B-06F528D75F20}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F458EA58-4111-4995-848B-06F528D75F20}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F458EA58-4111-4995-848B-06F528D75F20}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F458EA58-4111-4995-848B-06F528D75F20}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F50F3C04-36C5-4FF7-8732-367BF8F3379A}
+	EndGlobalSection
+EndGlobal
