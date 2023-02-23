@@ -1,0 +1,61 @@
+@page "/"
+@using pokemonblazor.Services
+@using pokemonblazor.DTOs
+@inject LoginService _loginService;
+@inject NavigationManager _NavigationManager;
+@inject HttpClient _HttpClient
+
+<h3>Pokemons</h3>
+
+@if (PokemonsData != null)
+{
+    @foreach (PokemonResponseDTO pokemon in PokemonsData)
+    {
+        <div>
+            @pokemon.Name
+            <div>
+                @foreach (ImageDto img in pokemon.Images)
+                {
+                    <img src="@img.Url" height="300"/>
+                }
+            </div>
+        </div>
+    }
+    <button @onclick="Disconnect" class="btn btn-danger">Disconnect</button>
+    <button @onclick="CatchRandom" class="btn btn-danger">Catch Random Pokemon</button>
+}
+
+@code {
+    public List<PokemonResponseDTO>? PokemonsData { get; set; }
+
+    protected async override void OnInitialized()
+    {
+        if (!_loginService.IsLogged)
+        {
+            _NavigationManager.NavigateTo("Login"); 
+
+        }
+        else
+        {
+            _HttpClient.DefaultRequestHeaders.Remove("Authorization"); // on le retire au cas où on l'a déjà ajouté
+            _HttpClient.DefaultRequestHeaders.Add("Authorization", "Bearer "+_loginService.Token);
+            PokemonsData = await _HttpClient.GetFromJsonAsync<List<PokemonResponseDTO>>("http://localhost:5009/pokemon");
+            StateHasChanged();
+        }
+
+    }
+
+    protected void Disconnect()
+    {
+        _loginService.IsLogged = false;
+        _NavigationManager.NavigateTo("Login");
+    }
+
+    protected async void CatchRandom()
+    {
+        _HttpClient.DefaultRequestHeaders.Remove("Authorization"); // on le retire au cas où on l'a déjà ajouté
+        _HttpClient.DefaultRequestHeaders.Add("Authorization", "Bearer " + _loginService.Token);
+        await _HttpClient.GetFromJsonAsync<PokemonResponseDTO>("http://localhost:5009/pokemon/catch-random");
+        OnInitialized();
+    }
+}
