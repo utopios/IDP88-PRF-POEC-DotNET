@@ -1,0 +1,98 @@
+﻿@page "/pizzas"
+@using System.Globalization
+@using PizzBlazor.DTOs
+
+<div class="container-fluid">
+    <h3>Pizzas</h3>
+    <div class="row text-center">
+        <div class="custom-control custom-checkbox">
+            <input type="checkbox" class="custom-control-input" id="admin" @bind="IsAdminMode" />
+            <label class="custom-control-label" for="admin">Mode admin</label>
+        </div>
+    </div>
+    @if (IsAdminMode)
+    {
+        <div class="row">
+            <button class="btn btn-success" @onclick="AddPizza"><i class="bi bi-plus-square"></i>&ensp; Ajouter une Pizza</button>
+        </div>
+        @if (PizzaToEdit != null)
+        {
+            <EditForm OnValidSubmit="SubmitPizza" Model="PizzaToEdit">
+                <DataAnnotationsValidator />
+                <div class="form-row">
+                    <div class="form-group" style="width:100%">
+                        <label for="name">Nom:</label>
+                        <InputText class="form-control" id="name" placeholder="Saisir le nom" @bind-Value="PizzaToEdit.Name" />
+                        <small><ValidationMessage For="() => this.PizzaToEdit.Name" /></small>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group" style="width:100%">
+                        <label for="ingredients">Ingrédients (séparés par virgule):</label>
+                        <InputText class="form-control" id="ingredients" placeholder="Saisir les ingrédients" @bind-Value="PizzaToEdit.IngredientsString" />
+                        <small><ValidationMessage For="() => this.PizzaToEdit.IngredientsString" /></small>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group" style="width:100%">
+                        <label for="price">Prix (entier)</label>
+                        <InputNumber class="form-control" id="price" placeholder="Saisir le prix" @bind-Value="PizzaToEdit.Price" />
+                        <small><ValidationMessage For="() => this.PizzaToEdit.Price" /></small>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group" style="width:100%">
+                        <label for="imageLink">Lien vers l'image:</label>
+                        <InputText class="form-control" id="imageLink" placeholder="Saisir le lien vers l'image" @bind-Value="PizzaToEdit.ImageLink" />
+                        <small><ValidationMessage For="() => this.PizzaToEdit.ImageLink" /></small>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <button type="submit" class="btn btn-primary">Validation</button>
+                </div>
+            </EditForm>
+        }
+    }
+    <div class="row">
+        <div class="col-8">
+            @LoadingMessage
+            @foreach (var pizza in PizzaList)
+            {
+                <div class="row p-2">
+                    <div class="col-2">
+                        <img src="@pizza.ImageLink" style="width:100%" />
+                    </div>
+                    <div class="col">
+                        <h5 class="text-warning text-uppercase font-weight-bold">@pizza.Name</h5>
+                        <small class="font-italic">@string.Join(", ", pizza.Ingredients)</small>
+                    </div>
+                    <div class="col-2">
+                        <h5 class="text-primary font-weight-bold">@pizza.Price.ToString("C", CultureInfo.CreateSpecificCulture("fr-FR"))</h5>
+                        <div class="row p-2">
+                            <button class="col btn btn-success" @onclick="(e)=>AddToCart(pizza)"><i class="bi bi-basket2-fill"></i></button>
+                            @if (IsAdminMode)
+                            {
+                                <button class="col btn text-primary border-primary" @onclick="(e) => EditPizza(pizza)"><i class="bi bi-pencil-square"></i></button>
+                                <button class="col btn btn-danger" @onclick="(e) => DeletePizza(pizza.Id)"><i class="bi bi-trash3"></i></button>
+                            }
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+        <div class="col">
+            @foreach (var pizzaDict in Cart)
+            {
+                <div class="row align-items-center">
+                    <span class="col text-warning text-uppercase font-weight-bold">@pizzaDict.Key.Name x @pizzaDict.Value</span>
+                    <span class="col-3 font-weight-bold">
+                        @((pizzaDict.Key.Price*pizzaDict.Value).ToString("C", CultureInfo.CreateSpecificCulture("fr-FR")))
+                    </span>
+                    <button class="col-1 btn text-danger font-weight-bold" @onclick="(e)=>RemoveFromCart(pizzaDict.Key)"><i class="bi bi-cart-dash"></i></button>
+                </div>
+            }
+            <h3 class="font-weight-bold">Total : @Total.ToString("C", CultureInfo.CreateSpecificCulture("fr-FR"))</h3>
+            <button class="btn btn-danger" @onclick="EmptyCart"><span class="bi bi-cart-x"></span>&ensp; Vider le panier</button>
+        </div>
+    </div>
+</div>
